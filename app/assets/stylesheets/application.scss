@@ -12,4 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require bootstrap.min.css
  */
+
+@import "bootstrap";
+@import "blue";
+@import "essentials";
+@import "extralayers";
+@import "header-1";
+@import "layout";
+@import "settings";
