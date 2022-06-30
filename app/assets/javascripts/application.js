@@ -21,11 +21,12 @@
 
 
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
 
-//= require contact
-
-//= require scripts
 
 //= require quote
+//= require contact
 
-//= require_tree .
+
