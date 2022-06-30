@@ -52,6 +52,11 @@ gem 'bootstrap-slider-rails', '~> 9.8'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# JQuery
+gem 'jquery-rails', '~>4.4'
+
+# Devise - user/admin interface
+gem 'devise'
 
 
 
