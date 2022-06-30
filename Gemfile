@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.8'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +34,26 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+
+# Use Bootstrap to call the assets
+gem 'bootstrap', '~> 5.1.3'
+
+# Use Jquery gem
+gem 'jquery-rails', '~> 4.4'
+
+# Use font-awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+
+# To sanitize html, images and... 
+gem 'html-proofer', '~> 3.19', '>= 3.19.4'
+
+# To use the revolution slider
+gem 'bootstrap-slider-rails', '~> 9.8'
+
 gem 'bootsnap', '>= 1.1.0', require: false
+
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +67,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano', '~> 3.10', require: false
+
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+  gem 'ed25519', '>= 1.2', '< 2.0'
+  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+
 end
 
 group :test do
