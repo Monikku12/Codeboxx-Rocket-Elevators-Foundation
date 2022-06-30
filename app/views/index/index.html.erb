@@ -51,9 +51,9 @@
 		menu-vertical-hide		= hidden, open on click
 		
 		BACKGROUND IMAGE [together with .boxed class]
-		data-background="assets/assets/images/_smarty/boxed_background/1.jpg"
+		
 	-->
-	<body class="smoothscroll enable-animation">
+	<body class="">
 
 		<!-- wrapper -->
 		<div id="wrapper">
@@ -97,7 +97,7 @@
 
 						<!-- Logo -->
 						<a class="logo float-left scrollTo" href="#top">
-							<%img src="/assets/images/R2.png" alt="" />
+							<%= image_tag("R2", alt: "Logo") %>
 						</a>
 
 						<!-- 
@@ -117,7 +117,7 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="index.html" id="home-nav">
+										<a href="#home" id="home-nav">
 											HOME
 										</a>
 									</li>
@@ -195,8 +195,8 @@
 						<!-- SLIDE 1 -->
 						<li data-transition="parallaxtobottom" data-slotamount="7" data-masterspeed="600" data-delay="7000" data-saveperformance="off"  data-title="The company">
 							<!-- MAIN IMAGE -->
-							<%img src="/assets/images/AdobeStock_sky.jpeg"  alt="cover image"  data-bgposition="center" data-bgfit="cover" data-bgrepeat="no-repeat">
-
+							<%= image_tag("AdobeStock_sky", alt:"cover image", bgposition:"center", bgfit:"cover", bgrepeat:"no-repeat") %>
+							
 							<div class="tp-caption white_big skewfromleft tp-resizeme"
 								data-x="371"
 								data-y="100" 
@@ -276,7 +276,7 @@
 						<!-- SLIDE 2 -->
 						<li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-delay="7000" data-saveperformance="off" data-title="Residential">
 							<!-- MAIN IMAGE -->
-							<%img src="/assets/images/AdobeStock_residentialslide.jpeg" alt="cover image"  data-bgposition="center" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("AdobeStock_residentialslide", alt:"cover image", bgposition:"center", bgfit:"cover", bgrepeat:"no-repeat") %>
 
 							<div class="overlay dark-0"><!-- dark overlay [0 to 9 opacity] --></div>
 
@@ -334,7 +334,7 @@
 						<!-- SLIDE 3 -->
 						<li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-delay="7000" data-saveperformance="off" data-title="Commercial">
 							<!-- MAIN IMAGE -->
-							<%img src="/assets/images/AdobeStock_office.jpeg" alt="cover image"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("AdobeStock_office", alt:"cover image", bgposition:"center top", bgfit:"cover", bgrepeat:"no-repeat") %>
 
 							<div class="overlay dark-0"><!-- dark overlay [0 to 9 opacity] --></div>
 
@@ -366,7 +366,7 @@
 								data-endelementdelay="0.1"
 								data-endspeed="500"
 								style="z-index: 3; font-size:30px; color:#FFF; font-weight:400; text-shadow:none;">
-									You are shining with your commercial </br>
+									You are shining with your commercial
 									projects: let us help you!
 							</div>
 
@@ -414,21 +414,22 @@
 
 					<div class="row">
 						<div class="col-sm-4">
-							<%img class="img-fluid" src="/assets/images/awardresized.jpg" alt="img" />
+							<%= image_tag("awardresized", class:"img-fluid", alt:"img") %>
 							<h3 class="mt-10">Projects and awards</h3>
 							<p>We are working around the world on all types of projects. You have great ideas and we have great solutions to help you achieve it !</p>
+							<%= link_to("MORE INFO", {}, {:name => "Portfolio"}) %>
 							<a href="#portfolio" class="btn btn-default">MORE INFO</a>
 						</div>
 
 						<div class="col-sm-4">
-							<%img class="img-fluid" src="/assets/images/AdobeStock_residential2.jpeg" alt="img" />
+							<%= image_tag("AdobeStock_residential2", class:"img-fluid", alt:"img") %>
 							<h3 class="mt-10">Residential division</h3>
 							<p>You are building or renovating your residential building ? Take advantage of our experience in the residential field.</p>
 							<a href="residential.html" class="btn btn-default">MORE INFO</a>
 						</div>
 
 						<div class="col-sm-4">
-							<%img class="img-fluid" src="/assets/images/AdobeStock_office2.jpeg" alt="img" />
+							<%= image_tag("AdobeStock_office2", class:"img-fluid", alt:"img") %>
 							<h3 class="mt-10">Commercial division</h3>
 							<p>Our commercial division will suit all your needs: from your blueprint project to the maintenance of existing systems.</p>
 							<a href="commercial.html" class="btn btn-default">MORE INFO</a>
@@ -444,7 +445,7 @@
 
 
 			<!-- Parallax En affaires ! -->
-			<%section class="parallax parallax-1" style="background-image: url('/assets/images/AdobeStock_3slides.jpeg');">
+			<section class="parallax parallax-1" style="background-image:" <%= image_tag("AdobeStock_3slides") %>>
 				<div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
 				<div class="container">
@@ -496,7 +497,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/remakable.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/remakable.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -506,7 +507,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/remakable.jpg" width="600" height="399" alt="">
+										<%= image_tag("remakable", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -531,7 +532,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Island.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Island.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -540,7 +541,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Island.jpg" width="600" height="399" alt="">
+										<%= image_tag("Island", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -565,7 +566,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential1.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential1.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -574,7 +575,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/residential1.jpg" width="600" height="399" alt="">
+										<%= image_tag("residential1", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -599,7 +600,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/skypodobser.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/skypodobser.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -608,7 +609,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/skypodobser.jpg" width="600" height="399" alt="">
+										<%= image_tag("skypodobser", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -633,7 +634,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Counterweightless.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Counterweightless.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -642,7 +643,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Counterweightless.jpg" width="600" height="399" alt="">
+										<%= image_tag("Counterweightless", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -667,7 +668,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Mall.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Mall.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -677,7 +678,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Mall.jpg" width="600" height="399" alt="">
+										<%= image_tag("Mall", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -702,7 +703,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential3.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential3.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -711,7 +712,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/residential3.jpg" width="600" height="399" alt="">
+										<%= image_tag("residential3", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -736,7 +737,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Orangecounty.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Orangecounty.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -745,7 +746,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Orangecounty.jpg" width="600" height="399" alt="">
+										<%= image_tag("Orangecounty", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -770,7 +771,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Residential2.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Residential2.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -779,7 +780,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Residential2.jpg" width="600" height="399" alt="">
+										<%= image_tag("Residential2", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -804,7 +805,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Outdoor China.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Outdoor China.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -813,7 +814,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Outdoor China.jpg" width="600" height="399" alt="">
+										<%= image_tag("Outdoor China", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -838,7 +839,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/Residential4.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/Residential4.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -847,7 +848,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/Residential4.jpg" width="600" height="399" alt="">
+										<%= image_tag("Residential4", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -872,7 +873,7 @@
 											<span class="inner">
 
 												<!-- lightbox -->
-												<a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential6.jpg" data-plugin-options='{"type":"image"}'>
+												<%# <a class="ico-rounded lightbox" href="/assets/images/Portfolio/residential6.jpg" data-plugin-options='{"type":"image"}'> %>
 													<span class="fa fa-plus fs-20"></span>
 												</a>
 
@@ -881,7 +882,7 @@
 											</span>
 										</span>
 
-										<%img class="img-fluid" src="/assets/images/Portfolio/residential6.jpg" width="600" height="399" alt="">
+										<%= image_tag("residential6", class:"img-fluid", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -913,7 +914,7 @@
 					<div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
 						<div id="CEO" class="testimonial">
 							<figure>
-								<%img class="rounded" src="/assets/images/CEO.jpg" alt="" />
+								<%= image_tag("CEO", class:"rounded", alt:"") %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">Leading the way for all of us.</p>
@@ -925,7 +926,7 @@
 						</div>
 						<div id="employee" class="testimonial">
 							<figure>
-								<%img class="rounded" src="/assets/images/employee-of-the-month.jpg" alt="" />
+								<%= image_tag("employee-of-the-month", class:"rounded", alt:"") %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">The future looks bright.</p>
@@ -975,7 +976,7 @@
 					<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
 						<div class="img-hover">
 							<a href="https://www.prnewswire.com/news-releases/tk-elevator-launches-max-link-digital-emergency-communications-in-north-america-301533071.html">
-								<%img class="img-fluid" src="/assets/images/TK_elevator.png" alt="">
+								<%= image_tag("TK_elevator", class:"img-fluid", alt:"") %>
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://www.prnewswire.com/news-releases/tk-elevator-launches-max-link-digital-emergency-communications-in-north-america-301533071.html">TK Elevators</a></h4>
@@ -990,7 +991,7 @@
 						</div>
 						<div class="img-hover">
 							<a href="https://www.wsj.com/articles/smart-office-buildings-can-help-sniff-out-viruses-but-are-vulnerable-to-hacks-11651579200">
-								<%img class="img-fluid" src="/assets/images/Smart.jpg" alt="">
+								<%= image_tag("Smart", class:"img-fluid", alt:"") %>
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://www.wsj.com/articles/smart-office-buildings-can-help-sniff-out-viruses-but-are-vulnerable-to-hacks-11651579200">Smart Office Buildings</a></h4>
@@ -1005,7 +1006,7 @@
 						</div>
 						<div class="img-hover">
 							<a href="https://thedailyvale.com/2022/05/24/elevators-and-escalators-market-size-scope-forecast/">
-								<%img class="img-fluid" src="/assets/images/Market.png" alt="">
+								<%= image_tag("Market", class:"img-fluid", alt:"") %>
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://thedailyvale.com/2022/05/24/elevators-and-escalators-market-size-scope-forecast/">Promising future</a></h4>
@@ -1020,7 +1021,7 @@
 						</div>
 						<div class="img-hover">
 							<a href="https://www.bizjournals.com/sacramento/news/2022/05/24/construction-projects-downtown-sacramento.html">
-								<%img class="img-fluid" src="/assets/images/building.png" alt="">
+								<%= image_tag("building", class:"img-fluid", alt:"") %>
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://www.bizjournals.com/sacramento/news/2022/05/24/construction-projects-downtown-sacramento.html">Booming in construction</a></h4>
@@ -1035,7 +1036,7 @@
 						</div>
 						<div class="img-hover">
 							<a href="https://www.ashevillenc.gov/news/city-of-asheville-says-farewell-to-one-of-the-last-manual-elevators-in-north-carolina/">
-								<%img class="img-fluid" src="/assets/images/OldManual.png" alt="">
+								<%= image_tag("OldManual", class:"img-fluid", alt:"") %>
 							</a>
 							<h4 class="text-left mt-20"><a href="https://www.ashevillenc.gov/news/city-of-asheville-says-farewell-to-one-of-the-last-manual-elevators-in-north-carolina/">One Last Ride</a></h4>
 							<p class="text-left">North Carolina oldest manual elevator will be making its last ride in a beautiful mountain city.</p>
@@ -1049,7 +1050,7 @@
 						</div>
 						<div class="img-hover">
 							<a href="https://www.webuildvalue.com/en/infrastructure/the-jeddah-tower-saudi-arabia-aims-for-the-sky.html">
-								<%img class="img-fluid" src="/assets/images/highesttower.png" alt="">
+								<%= image_tag("highesttower", class:"img-fluid", alt:"") %>
 							</a>
 							<h4 class="text-left mt-20"><a href="https://www.webuildvalue.com/en/infrastructure/the-jeddah-tower-saudi-arabia-aims-for-the-sky.html">The Jeddah Tower</a></h4>
 							<p class="text-left">The highest tower in the world, in Saudi Arabia, is going to need some elevator skills!</p>
@@ -1080,62 +1081,61 @@
 					<ul class="row clients-dotted list-inline">
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/bbb.png" alt="client" />
+								<%= image_tag("bbb", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/Apple.png" alt="client" />
+								<%= image_tag("Apple", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/clover.png" alt="client" />
+								<%= image_tag("clover", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/spacex.png" alt="client" />
+								<%= image_tag("spacex", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 
-							<%img class="img-fluid" src="/assets/images/Travel.png" alt="client" />
+								<%= image_tag("Travel", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/Greener.png" alt="client" />
+								<%= image_tag("Greener", class:"img-fluid", alt:"client") %>							
+						</li>
+						<li class="col-md-3 col-sm-3 col-6">
+							
+								<%= image_tag("hult", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/hult.png" alt="client" />
+								<%= image_tag("Justice", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/Justice.png" alt="client" />
+								<%= image_tag("linked_in", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/linked_in.png" alt="client" />
+								<%= image_tag("Linux", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/Linux.png" alt="client" />
+								<%= image_tag("Medecine", class:"img-fluid", alt:"client") %>
 							
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							
-								<%img class="img-fluid" src="/assets/images/Medecine.png" alt="client" />
-							
-						</li>
-						<li class="col-md-3 col-sm-3 col-6">
-							
-								<%img class="img-fluid" src="/assets/images/Tree.png" alt="client" />
+								<%= image_tag("Tree", class:"img-fluid", alt:"client") %>
 							
 						</li>
 					</ul>
@@ -1402,12 +1402,12 @@
 		<a href="#" id="toTop"></a>
 
 
-		<!-- PRELOADER -->
-		<div id="preloader">
-			<div class="inner">
-				<span class="loader"></span>
-			</div>
-		</div><!-- /PRELOADER -->
+		<%# # <!-- PRELOADER -->
+		# <div id="preloader">
+		# 	<div class="inner">
+		# 		<span class="loader"></span>
+		# 	</div>
+		# </div><!-- /PRELOADER --> %>
 
 
 		

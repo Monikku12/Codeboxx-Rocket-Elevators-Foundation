@@ -44,6 +44,12 @@ gem 'jquery-rails', '~> 4.4'
 # Use font-awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
+# To sanitize html, images and... 
+gem 'html-proofer', '~> 3.19', '>= 3.19.4'
+
+# To use the revolution slider
+gem 'bootstrap-slider-rails', '~> 9.8'
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
