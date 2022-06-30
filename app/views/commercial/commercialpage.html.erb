@@ -101,7 +101,7 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="index.html" id="home-nav">
+										<a href="<%= index_path %>" id="home-nav">
 											HOME
 										</a>
 									</li>
@@ -111,7 +111,7 @@
 										</a>
 									</li>
 									<li><!-- PORTFOLIO -->
-										<a href="index.html#portfolio" id="portfolio-nav">
+										<a href="<%= index/portfolio_path %>" id="portfolio-nav">
 											PORTFOLIO
 										</a>
 									</li>
@@ -168,16 +168,13 @@
 							<%= image_tag("AdobeStock_commercial2", class: "img-fluid", alt: "img", bgposition:"center") %>
 							<h3 class="mt-10">Commercial division</h3>
 							<p>You have big projects ahead? Building or renovating, our commercial division is there for you!</p>
-							<a href="#" class="btn btn-default">MORE INFO</a>
 						</div>
 
 						<div class="col-sm-6">
 							<%= image_tag("AdobeStock_maintenance", class: "img-fluid", alt: "img", bgposition:"center") %>
 							<h3 class="mt-10">Maintenance services</h3>
 							<p>Our commercial division offers professional maintenance services that will help keep your existing system in good shape.</p>
-							<a href="#" class="btn btn-default">MORE INFO</a>
 						</div>
-
 					</div>
 
 				</div>
