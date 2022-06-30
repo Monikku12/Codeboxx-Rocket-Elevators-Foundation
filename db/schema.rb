@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_06_29_114018) do
 
-  create_table "high_scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "game"
-    t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "player_name"
-  end
-
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "building_type"
     t.integer "number_of_apartments"
