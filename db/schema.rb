@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_07_01_183622) do
 
   create_table "employee_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -35,19 +36,23 @@ ActiveRecord::Schema.define(version: 2022_07_01_183622) do
     t.string "quality_of_elevator_service"
     t.integer "unit_price_of_each_elevator"
     t.integer "amount_of_elevator_needed"
+
     t.text "total_price_of_the_elevators"
     t.text "installation_fees"
     t.text "final_price"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

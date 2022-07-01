@@ -80,9 +80,7 @@
 						</button>
 
 						<!-- Logo -->
-						<a class="logo float-left scrollTo" href="<%= index_path %>">
-							<%= image_tag("R2", alt: "Logo") %>
-						</a>
+						<%= link_to image_tag("R2", alt: "Logo"),  "#{root_path}#toTop", :class => "logo float-left scrollTo", 'data-turbolinks': false %>
 
 						<!-- 
 							Top Nav 
@@ -101,34 +99,22 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="<%= index_path %>" id="home-nav">
-											HOME
-										</a>
+										<%= link_to "HOME", root_path, 'data-turbolinks': false %>
 									</li>
 									<li><!-- SERVICES -->
-										<a href="<%= index_path(@services_id) %>" id="services-nav">
-											SERVICES
-										</a>
+										<%= link_to "SERVICES", "#{root_path}#services", 'data-turbolinks': false %>
 									</li>
 									<li><!-- PORTFOLIO -->
-										<a href="<%= index_path(@portfolio_id) %>" id="portfolio-nav">
-											PORTFOLIO
-										</a>
+										<%= link_to "PORTFOLIO", "#{root_path}#portfolio", 'data-turbolinks': false %>
 									</li>
 									<li><!-- NEWS -->
-										<a href="<%= index_path(@news_id) %>" id="news-nav">
-											NEWS
-										</a>
+										<%= link_to "NEWS", "#{root_path}#news", 'data-turbolinks': false %>
 									</li>
 									<li><!-- CLIENTS -->
-										<a href="<%= index_path(@clients_id) %>" id="clients-nav">
-											CLIENTS
-										</a>
+										<%= link_to "CLIENTS", "#{root_path}#clients", 'data-turbolinks': false %>
 									</li>
 									<li><!-- CONTACT -->
-										<a href="<%= index_path(@contact_id) %>" id="contact-nav">
-											CONTACT
-										</a>
+										<%= link_to "CONTACT", "#{root_path}#contact", 'data-turbolinks': false %>
 									</li>
 								</ul>
 
