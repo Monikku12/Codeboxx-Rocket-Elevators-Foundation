@@ -28,4 +28,4 @@
 Rocket_Elevators_Information_System copy/*
 
 # Sensitive files
-config/database.yml
+/config/database.yml
