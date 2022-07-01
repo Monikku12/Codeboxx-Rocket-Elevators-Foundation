@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Rocket Elevator - Elevate safety, speed and style - Residential</title>
+		<title>Rocket Elevators - Elevate Safety, Speed and Style</title>
 		<meta name="description" content="Since 1976, Rocket Elevators is elevating safety, speed and style. Check out our residential elevator products and services at www.mathieubernier.com" />
 		<meta name="Author" content="Mathieu Bernier [www.mathieubernier.com]" />
 
@@ -80,7 +80,7 @@
 						</button>
 
 						<!-- Logo -->
-						<a class="logo float-left scrollTo" href="#top">
+						<a class="logo float-left scrollTo" href="<%= index_path %>">
 							<%= image_tag("R2", alt: "Logo") %>
 						</a>
 
@@ -101,32 +101,32 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="index.html" id="home-nav">
+										<a href="<%= index_path %>" id="home-nav">
 											HOME
 										</a>
 									</li>
 									<li><!-- SERVICES -->
-										<a href="#services" id="services-nav">
+										<a href="<%= index_path(@services_id) %>" id="services-nav">
 											SERVICES
 										</a>
 									</li>
 									<li><!-- PORTFOLIO -->
-										<a href="index.html#portfolio" id="portfolio-nav">
+										<a href="<%= index_path(@portfolio_id) %>" id="portfolio-nav">
 											PORTFOLIO
 										</a>
 									</li>
 									<li><!-- NEWS -->
-										<a href="index.html#news" id="news-nav">
+										<a href="<%= index_path(@news_id) %>" id="news-nav">
 											NEWS
 										</a>
 									</li>
 									<li><!-- CLIENTS -->
-										<a href="index.html#clients" id="clients-nav">
+										<a href="<%= index_path(@clients_id) %>" id="clients-nav">
 											CLIENTS
 										</a>
 									</li>
 									<li><!-- CONTACT -->
-										<a href="#contact" id="contact-nav">
+										<a href="<%= index_path(@contact_id) %>" id="contact-nav">
 											CONTACT
 										</a>
 									</li>
