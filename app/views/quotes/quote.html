@@ -178,7 +178,8 @@
 
 
 			<!-- FORM QUOTATION FOR ELEVATORS IN JAVASCRIPT -->
-
+	<!-- <form action="assets/php/contact.php" method="post" enctype="multipart/form-data"> -->
+		<fieldset>
 			<section id="quote">
 				<div class="container">
 
@@ -245,7 +246,7 @@
 							</div>
 							
 					
-						<hr />
+					<hr />
 						
 						<div id="elevator-amount">
 							<label>Elevator amount</label>
@@ -271,7 +272,7 @@
 							<input type ="text"  name="final-price" readonly id="final">
 						</div>
 
-						<!-- to create the radio button for the product line --> 
+					<!-- to create the radio button for the product line --> 
 					<hr>
 						<p id="productline">Select your product line</p>
 							
@@ -288,13 +289,18 @@
 								<label for="excelium">Excelium</label>
 							</div>
 						
-							Your installation fees will be: <input type="number" name="cost" id="result" readonly="readonly">			
-						
-			
-						<hr />
-						
+						<p	Your installation fees will be: <input type="number" name="cost" id="result" readonly="readonly"></p>			
+					<hr />
+				</fieldset>
 
-			</section>		
+						<!-- Submit button -->
+						<div class="row">
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-blue"><i class="fa fa-check"></i> SUBMIT</button>
+							</div>
+						</div>
+			</section>
+		</form>
 			
 			<hr class="m-0" /><!-- 1px line separator --> <!-- to add a line separator showing the end of the quote -->
 			

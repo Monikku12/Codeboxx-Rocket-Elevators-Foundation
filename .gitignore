@@ -27,4 +27,5 @@
 /config/master.key
 Rocket_Elevators_Information_System copy/*
 
+# Sensitive files
 config/database.yml
