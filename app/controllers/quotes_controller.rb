@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /quotes or /quotes.json
   def index
     @quotes = Quote.all
@@ -17,6 +17,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/edit
   def edit
+
   end
 
   # POST /quotes or /quotes.json

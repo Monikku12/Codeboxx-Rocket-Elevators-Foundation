@@ -22,10 +22,10 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
 
 
 //= require quote
 //= require contact
-
+//= require_tree .
 

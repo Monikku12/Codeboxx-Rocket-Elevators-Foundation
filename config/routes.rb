@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+
   get 'commercial', to: 'index#commercialpage', as: "commercial"
   get 'residential', to: 'index#residentialpage', as: "residential"
   get 'index', to: 'index#index'
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
   root to: 'index#index'
 
   resources :quotes
-
+  resources :employee_lists
   
 end
 

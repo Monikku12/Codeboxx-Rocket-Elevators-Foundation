@@ -55,9 +55,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # JQuery
 gem 'jquery-rails', '~>4.4'
 
-# Devise - user/admin interface
-gem 'devise'
-
 
 
 group :development, :test do
@@ -96,3 +93,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # JQuery
  gem 'jquery-rails', '~>4.4'
+
+ gem 'devise'
+
+ gem 'rails_admin', '~> 2'
+ 
+ gem 'cancancan', '~> 3.4'
