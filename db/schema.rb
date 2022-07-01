@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_01_173749) do
+ActiveRecord::Schema.define(version: 2022_07_01_183622) do
 
   create_table "employee_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "first_name"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2022_07_01_173749) do
     t.string "quality_of_elevator_service"
     t.integer "unit_price_of_each_elevator"
     t.integer "amount_of_elevator_needed"
-    t.float "total_price_of_the_elevators"
-    t.float "installation_fees"
-    t.float "final_price"
+    t.text "total_price_of_the_elevators"
+    t.text "installation_fees"
+    t.text "final_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
