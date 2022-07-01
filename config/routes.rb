@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   get 'commercial', to: 'commercial#commercialpage', as:'commercial'
   get 'residential', to: 'residential#residentialpage', as:'residential'
   get 'index', to: 'index#index', as:'index'
