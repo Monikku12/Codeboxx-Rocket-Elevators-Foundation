@@ -52,6 +52,11 @@ gem 'bootstrap-slider-rails', '~> 9.8'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# JQuery
+gem 'jquery-rails', '~>4.4'
+
+# Devise - user/admin interface
+gem 'devise'
 
 
 
@@ -88,3 +93,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# JQuery
+ gem 'jquery-rails', '~>4.4'
