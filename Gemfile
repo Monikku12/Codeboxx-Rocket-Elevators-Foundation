@@ -38,9 +38,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Bootstrap to call the assets
 gem 'bootstrap', '~> 5.1.3'
 
-# Use Jquery gem
-gem 'jquery-rails', '~> 4.4'
-
 # Use font-awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
@@ -52,8 +49,6 @@ gem 'bootstrap-slider-rails', '~> 9.8'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# JQuery
-gem 'jquery-rails', '~>4.4'
 
 
 
