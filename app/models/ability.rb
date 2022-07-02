@@ -8,8 +8,7 @@ class Ability
       can :access, :rails_admin
       can :manage, :all
     else
-      cannot :read, :admin,
-      cannot :read, :quotes_edit
+      cannot :read, :admin
     end
    
     # Define abilities for the user here. For example:
