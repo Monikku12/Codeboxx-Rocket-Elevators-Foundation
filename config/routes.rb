@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
+  get 'termsAndConditions', to: 'index#termsAndConditions', as: "termsAndConditions"
+  get 'privacy', to: 'index#privacy', as: "privacy"
   get 'commercial', to: 'index#commercialpage', as: "commercial"
   get 'residential', to: 'index#residentialpage', as: "residential"
   get 'index', to: 'index#index'
