@@ -30,6 +30,6 @@ Things you may want to cover:
   From the website, a login panel will get you to the admin section. You will be able to manage your users, your employees and the quotes requested by your clients.
 
 * Deployment instructions
-  Go to www.mathieubernier.com to checkout all the functionnalities of the website
+  Go to www.mathieubernier.com to checkout all the functionalities of the website
 
 
