@@ -21,17 +21,15 @@ Things you may want to cover:
 * System dependencies
   MySQL: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
   PostgreSQL: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04
-
-* Configuration
+  See gem files for more infos about uploaded gems necessary
 
 * Database creation
+  DBeaver community : https://dbeaver.io/download/
 
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+  From the website, a login panel will get you to the admin section. You will be able to manage your users, your employees and the quotes requested by your clients.
 
 * Deployment instructions
+  Go to www.mathieubernier.com to checkout all the functionnalities of the website
 
-* ...
+
