@@ -49,9 +49,6 @@ gem 'bootstrap-slider-rails', '~> 9.8'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-
-
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -72,7 +69,6 @@ group :development do
   gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
-
 end
 
 group :test do
@@ -94,3 +90,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'rails_admin', '~> 2'
  
  gem 'cancancan', '~> 3.4'
+
+ # Use postgresql as the database for Data Warehouse
+gem 'pg'
