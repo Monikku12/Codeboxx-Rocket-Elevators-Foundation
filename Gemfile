@@ -96,5 +96,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'cancancan', '~> 3.4'
 
  # Use postgresql as the database for the Warehouse
- gem 'pg'
+ #gem 'pg'
  
