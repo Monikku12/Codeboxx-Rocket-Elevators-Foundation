@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_202744) do
+ActiveRecord::Schema.define(version: 2022_07_04_221928) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2022_07_04_202744) do
     t.string "postal_code"
     t.string "country"
     t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "number_and_street"
+    t.string "building_administrator_full_name"
+    t.string "building_administrator_email"
+    t.string "building_administrator_phone"
+    t.string "building_technical_contact_full_name"
+    t.string "building_technical_contact_email"
+    t.string "building_technical_contact_phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

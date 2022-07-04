@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  resources :buildings
   resources :customers
   resources :addresses
   resources :leads
