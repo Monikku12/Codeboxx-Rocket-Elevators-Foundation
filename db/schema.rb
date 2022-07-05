@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_000315) do
     t.string "full_name"
     t.string "company_name"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.string "project_name"
     t.text "project_description"
     t.string "department"
