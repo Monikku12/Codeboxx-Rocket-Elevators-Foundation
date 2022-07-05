@@ -97,4 +97,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
  # Use postgresql as the database for the Warehouse
  gem 'pg'
- 
+
+#  Second data base helper
+ gem 'secondbase'

@@ -270,6 +270,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    secondbase (2.2.0)
+      rails (>= 4.0)
     selenium-webdriver (4.3.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -348,6 +350,7 @@ DEPENDENCIES
   rails (~> 5.2.8)
   rails_admin (~> 2)
   sass-rails (~> 5.0)
+  secondbase
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
