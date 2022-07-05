@@ -52,13 +52,10 @@
   </div>
 
   <div class="field">
+    <%= form.label :file_description %>
+    <%= form.text_field :file_description %>
     <%= form.label :file_attachment %>
-    <%= form.text_field :file_attachment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= form.file_field :file_attachment %>
   </div>
 
   <div class="actions">
