@@ -1,2 +1,2 @@
 class BuildingDetail < ApplicationRecord
-end
+    end

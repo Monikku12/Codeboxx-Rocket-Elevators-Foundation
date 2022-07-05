@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_205617) do
+ActiveRecord::Schema.define(version: 2022_07_05_212647) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 2022_07_05_205617) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "number_and_street"
     t.string "building_administrator_full_name"
@@ -50,6 +57,10 @@ ActiveRecord::Schema.define(version: 2022_07_05_205617) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
+    t.bigint "buildingdetail_id"
+    t.bigint "building_detail_id"
+    t.index ["building_detail_id"], name: "index_buildings_on_building_detail_id"
+    t.index ["buildingdetail_id"], name: "index_buildings_on_buildingdetail_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -149,6 +160,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_205617) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "buildings", "building_details"
   add_foreign_key "buildings", "customers"
   add_foreign_key "customers", "users"
   add_foreign_key "employee_lists", "users"
