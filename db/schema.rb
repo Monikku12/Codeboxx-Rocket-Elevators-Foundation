@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_213120) do
+ActiveRecord::Schema.define(version: 2022_07_05_213442) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_213120) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_batteries_on_column_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -162,6 +164,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_213120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "batteries", "columns"
   add_foreign_key "buildings", "batteries"
   add_foreign_key "buildings", "building_details"
   add_foreign_key "buildings", "customers"
