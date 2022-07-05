@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_213442) do
+ActiveRecord::Schema.define(version: 2022_07_05_213645) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_213442) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "elevator_id"
+    t.index ["elevator_id"], name: "index_columns_on_elevator_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -168,6 +170,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_213442) do
   add_foreign_key "buildings", "batteries"
   add_foreign_key "buildings", "building_details"
   add_foreign_key "buildings", "customers"
+  add_foreign_key "columns", "elevators"
   add_foreign_key "customers", "users"
   add_foreign_key "employee_lists", "users"
 end
