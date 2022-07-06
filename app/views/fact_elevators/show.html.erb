@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @fact_elevator.serial_number %>
+</p>
+
+<p>
+  <strong>Date of commissioning:</strong>
+  <%= @fact_elevator.date_of_commissioning %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @fact_elevator.building_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @fact_elevator.customer_id %>
+</p>
+
+<p>
+  <strong>Building city:</strong>
+  <%= @fact_elevator.building_city %>
+</p>
+
+<%= link_to 'Edit', edit_fact_elevator_path(@fact_elevator) %> |
+<%= link_to 'Back', fact_elevators_path %>

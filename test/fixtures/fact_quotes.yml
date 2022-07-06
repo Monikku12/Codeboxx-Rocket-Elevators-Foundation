@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creation_date: 2022-07-06
+  company_name: MyText
+  quote_email: MyText
+  Nb_Elevator: 1
+
+two:
+  creation_date: 2022-07-06
+  company_name: MyText
+  quote_email: MyText
+  Nb_Elevator: 1

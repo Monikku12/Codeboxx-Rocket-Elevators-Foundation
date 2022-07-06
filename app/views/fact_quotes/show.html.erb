@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creation date:</strong>
+  <%= @fact_quote.creation_date %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @fact_quote.company_name %>
+</p>
+
+<p>
+  <strong>Quote email:</strong>
+  <%= @fact_quote.quote_email %>
+</p>
+
+<p>
+  <strong>Nb elevator:</strong>
+  <%= @fact_quote.Nb_Elevator %>
+</p>
+
+<%= link_to 'Edit', edit_fact_quote_path(@fact_quote) %> |
+<%= link_to 'Back', fact_quotes_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fact Quotes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Creation date</th>
+      <th>Company name</th>
+      <th>Quote email</th>
+      <th>Nb elevator</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fact_quotes.each do |fact_quote| %>
+      <tr>
+        <td><%= fact_quote.creation_date %></td>
+        <td><%= fact_quote.company_name %></td>
+        <td><%= fact_quote.quote_email %></td>
+        <td><%= fact_quote.Nb_Elevator %></td>
+        <td><%= link_to 'Show', fact_quote %></td>
+        <td><%= link_to 'Edit', edit_fact_quote_path(fact_quote) %></td>
+        <td><%= link_to 'Destroy', fact_quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fact Quote', new_fact_quote_path %>
