@@ -1,2 +1,0 @@
-class FactElevator < ApplicationRecord
-end

@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   
   
-  resources :dim_customers
-  resources :fact_elevators
-  resources :fact_contacts
   resources :elevators
   resources :batteries
   resources :columns

@@ -1,2 +1,0 @@
-class DimCustomer < ApplicationRecord
-end
