@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_07_06_112548) do
 
+
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
     t.string "status"
@@ -156,6 +157,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_112548) do
     t.text "final_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "quote_email"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
