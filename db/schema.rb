@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_143852) do
+
+ActiveRecord::Schema.define(version: 2022_07_05_213645) do
+
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -37,6 +39,15 @@ ActiveRecord::Schema.define(version: 2022_07_05_143852) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_batteries_on_column_id"
+  end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -49,6 +60,14 @@ ActiveRecord::Schema.define(version: 2022_07_05_143852) do
     t.string "building_technical_contact_phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "customer_id"
+    t.bigint "buildingdetail_id"
+    t.bigint "building_detail_id"
+    t.bigint "battery_id"
+    t.index ["battery_id"], name: "index_buildings_on_battery_id"
+    t.index ["building_detail_id"], name: "index_buildings_on_building_detail_id"
+    t.index ["buildingdetail_id"], name: "index_buildings_on_buildingdetail_id"
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -59,6 +78,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_143852) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "elevator_id"
+    t.index ["elevator_id"], name: "index_columns_on_elevator_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -73,6 +94,8 @@ ActiveRecord::Schema.define(version: 2022_07_05_143852) do
     t.string "service_technical_manager_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -146,5 +169,11 @@ ActiveRecord::Schema.define(version: 2022_07_05_143852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "batteries", "columns"
+  add_foreign_key "buildings", "batteries"
+  add_foreign_key "buildings", "building_details"
+  add_foreign_key "buildings", "customers"
+  add_foreign_key "columns", "elevators"
+  add_foreign_key "customers", "users"
   add_foreign_key "employee_lists", "users"
 end
