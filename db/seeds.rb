@@ -19,7 +19,6 @@ User.create(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password12
 User.create(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
 User.create(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
 
-puts Faker::Name.name
 
 
 EmployeeList.create(id: 1, first_name: 'Mathieu', last_name: 'Houde', title: 'Gopher', email: 'mathieu.houde@codeboxx.biz', user_id: 1).save!
@@ -33,3 +32,103 @@ EmployeeList.create(id: 8, first_name: "Kiril", last_name: "Kleinerman", title: 
 EmployeeList.create(id: 9, first_name: "Felicia", last_name: "Hartono", title: "Scrums are too early", email: 'felicia.hartono@codeboxx.biz', user_id: 9).save!
 EmployeeList.create(id: 10, first_name: "Eileen", last_name: "Ai", title: "They really are.", email: 'eileen.ai@codeboxx.biz', user_id: 10).save!
 
+Faker::Config.locale = 'en-US'
+
+10.times do
+    building_detail = BuildingDetail.new(
+    
+    key: Faker::Lorem.sentence,
+    value: Faker::Lorem.sentence(word_count: 2),
+    )
+    building_detail.save
+end
+
+def createAddressfunction
+    address = Address.new(
+
+    type_of_address: ['Business', 'Billing', 'Shipping', 'Home'].sample,
+    status: ['Active', 'Inactive'].sample,
+    entity: ['Customer', 'Building'].sample,
+    number_and_street: Faker::Address.street_address,
+    suite_or_apartment: Faker::Address.secondary_address,
+    city: Faker::Address.city,
+    postal_code: Faker::Address.zip_code,
+    country: Faker::Address.country,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    address.save
+    return address
+end
+
+
+10.times do
+    
+    address = createAddressfunction()
+    
+    customer = Customer.new(
+    company_name: Faker::Company.name,
+    address_id: address.id,
+    company_contact_full_name: Faker::Name.name,
+    company_contact_phone: Faker::PhoneNumber.phone_number,
+    company_contact_email: Faker::Internet.email,
+    company_description: Faker::Company.industry,
+    service_technical_authority_full_name: Faker::Name.name,
+    service_technical_authority_phone: Faker::PhoneNumber.phone_number,
+    service_technical_manager_email: Faker::Internet.email,
+    )
+    customer.save
+end
+
+10.times do
+    
+    building = Building.new(
+        
+    number_and_street: ['AAA'].sample, 
+    building_administrator_full_name: Faker::Name.name,
+    building_administrator_email: Faker::Internet.email,
+    building_administrator_phone: Faker::PhoneNumber.phone_number,
+    building_technical_contact_full_name: Faker::Name.name,
+    building_technical_contact_email: Faker::Internet.email,
+    building_technical_contact_phone: Faker::PhoneNumber.phone_number,
+    )
+    building.save
+end
+
+10.times do
+    elevator = Elevator.new(
+    serial_number: Faker::Number.number(digits: 8),
+    model: ["Standard", "premium", "Excelium"].sample,
+    elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    status: ["Active", "Inactive", "Intervention"].sample,
+    commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    inspection_certificate: Faker::Lorem.paragraph,
+    information: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    elevator.save
+end
+
+10.times do
+    column = Column.new(
+    column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    number_of_floors_served: Faker::Number.between(from:2, to:150),
+    status: ["Active", "Inactive", "Intervention"].sample,
+    information: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    column.save
+end
+
+10.times do
+    battery = Battery.new(
+    batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    status: ["Active", "Inactive", "Intervention"].sample,
+    commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    certificate_of_operation: Faker::Lorem.paragraphs,
+    informations: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    battery.save
+end

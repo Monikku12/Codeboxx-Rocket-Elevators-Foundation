@@ -99,4 +99,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'pg'
 
  gem 'faker'
+
+ gem 'rubocop-faker'
  
+ # To get localization of our data see config/environments for setup
+ gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
