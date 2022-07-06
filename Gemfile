@@ -4,24 +4,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.8'
+  gem 'rails', '~> 5.2.8'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3.11'
+  gem 'puma', '~> 4.3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+  gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+  gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+  gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+  gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+  gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -36,18 +36,18 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 
 # Use Bootstrap to call the assets
-gem 'bootstrap', '~> 5.1.3'
+  gem 'bootstrap', '~> 5.1.3'
 
 # Use font-awesome
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+  gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 # To sanitize html, images and... 
-gem 'html-proofer', '~> 3.19', '>= 3.19.4'
+  gem 'html-proofer', '~> 3.19', '>= 3.19.4'
 
 # To use the revolution slider
-gem 'bootstrap-slider-rails', '~> 9.8'
+  gem 'bootstrap-slider-rails', '~> 9.8'
 
-gem 'bootsnap', '>= 1.1.0', require: false
+  gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -80,19 +80,22 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # JQuery
- gem 'jquery-rails', '~>4.4'
+  gem 'jquery-rails', '~>4.4'
 
- gem 'devise'
+  gem 'devise'
 
- gem 'rails_admin', '~> 2'
+  gem 'rails_admin', '~> 2'
  
- gem 'cancancan', '~> 3.4'
+  gem 'cancancan', '~> 3.4'
 
- # Use postgresql as the database for the Warehouse
- gem 'pg'
+# Use postgresql as the database for the Warehouse
+  gem 'pg'
 
 #  Second data base helper
- gem 'secondbase'
+  gem 'secondbase'
+
+# Add fake data
+  gem 'faker'

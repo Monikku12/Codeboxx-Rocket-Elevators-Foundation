@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  resources :building_details
   resources :elevators
   resources :batteries
   resources :columns

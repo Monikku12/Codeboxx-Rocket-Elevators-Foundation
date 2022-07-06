@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.select :type, [ "Residential", "Commercial", "Corporate", "Hybrid" ] %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, [ "Active", "Inactive", "Intervention" ] %>
   </div>
 
   <div class="field">
@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :certificate_of_operation %>
-    <%= form.text_field :certificate_of_operation %>
+    <%= form.select :certificate_of_operation, [ "Distributed", "Pending" ] %>
   </div>
 
   <div class="field">
