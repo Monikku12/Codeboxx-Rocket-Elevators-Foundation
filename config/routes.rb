@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
- 
-  resources :quotes
-  resources :employee_lists
+  
+  
   resources :building_details
   resources :elevators
   resources :batteries
@@ -10,7 +9,6 @@ Rails.application.routes.draw do
   resources :customers
   resources :addresses
   resources :leads
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
@@ -23,5 +21,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'index#index'
 
+  resources :quotes
+  resources :employee_lists
+  
 end
 
