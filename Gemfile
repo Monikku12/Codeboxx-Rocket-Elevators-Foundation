@@ -99,6 +99,3 @@ end
 
 # Add fake data
   gem 'faker'
-
-# Use for Rake task
-  gem 'rake'
