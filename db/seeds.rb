@@ -8,16 +8,17 @@
 
 require 'faker'
 
-User.create(id: 1, email: 'mathieu.houde@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 2, email: 'patrick.thibault@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 3, email: 'francis.patry-jessop@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 4, email: 'david.amyot@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 5, email: 'marie-eve.goupil@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 6, email: 'francois.boivin@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 7, email: 'timothy.wever@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
+User.create(id: 1, email: 'mathieu.houde@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 2, email: 'patrick.thibault@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 3, email: 'francis.patry-jessop@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 4, email: 'david.amyot@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 5, email: 'marie-eve.goupil@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 6, email: 'francois.boivin@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 7, email: 'timothy.wever@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+
 
 
 
@@ -34,14 +35,15 @@ EmployeeList.create(id: 10, first_name: "Eileen", last_name: "Ai", title: "They 
 
 Faker::Config.locale = 'en-US'
 
-10.times do
-    building_detail = BuildingDetail.new(
-    
-    key: Faker::Lorem.sentence,
-    value: Faker::Lorem.sentence(word_count: 2),
+def createUserfunction
+    user = User.new(
+    email: Faker::Internet.email,
+    encrypted_password: Faker::Internet.password(min_length: 8),
+    reset_password_token: Faker::Number.number(digits: 5),
     )
-    building_detail.save
-end
+    user.save
+    return user  
+end    
 
 def createAddressfunction
     address = Address.new(
@@ -61,11 +63,16 @@ def createAddressfunction
 end
 
 
-10.times do
-    
+# 10.times do
+#     address = createAddressfunction()
+#     user = createUserfunction()
+
+def createCustomerfunction
     address = createAddressfunction()
-    
+    user = createUserfunction()
+
     customer = Customer.new(
+
     company_name: Faker::Company.name,
     address_id: address.id,
     company_contact_full_name: Faker::Name.name,
@@ -75,24 +82,13 @@ end
     service_technical_authority_full_name: Faker::Name.name,
     service_technical_authority_phone: Faker::PhoneNumber.phone_number,
     service_technical_manager_email: Faker::Internet.email,
+    user_id: user.id,
     )
     customer.save
+    return customer
 end
 
-10.times do
-    
-    building = Building.new(
-        
-    number_and_street: ['AAA'].sample, 
-    building_administrator_full_name: Faker::Name.name,
-    building_administrator_email: Faker::Internet.email,
-    building_administrator_phone: Faker::PhoneNumber.phone_number,
-    building_technical_contact_full_name: Faker::Name.name,
-    building_technical_contact_email: Faker::Internet.email,
-    building_technical_contact_phone: Faker::PhoneNumber.phone_number,
-    )
-    building.save
-end
+
 
 10.times do
     elevator = Elevator.new(
@@ -107,9 +103,7 @@ end
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     elevator.save
-end
 
-10.times do
     column = Column.new(
     column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
     number_of_floors_served: Faker::Number.between(from:2, to:150),
@@ -118,9 +112,7 @@ end
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     column.save
-end
 
-10.times do
     battery = Battery.new(
     batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
     status: ["Active", "Inactive", "Intervention"].sample,
@@ -131,4 +123,36 @@ end
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     battery.save
+
+    building_detail = BuildingDetail.new(
+    key: Faker::Lorem.sentence,
+    value: Faker::Lorem.sentence(word_count: 2),
+    )
+    building_detail.save
+end
+
+10.times do
+    user = createUserfunction()
+    customer = createCustomerfunction()
+    
+    building = Building.new(  
+    customer_id: customer.id,
+    number_and_street: ['AAA'].sample, 
+    building_administrator_full_name: Faker::Name.name,
+    building_administrator_email: Faker::Internet.email,
+    building_administrator_phone: Faker::PhoneNumber.phone_number,
+    building_technical_contact_full_name: Faker::Name.name,
+    building_technical_contact_email: Faker::Internet.email,
+    building_technical_contact_phone: Faker::PhoneNumber.phone_number,
+    )
+    puts building.number_and_street
+    puts building.building_administrator_full_name
+    puts building.building_administrator_email
+    puts building.building_administrator_phone
+    puts building.building_technical_contact_full_name
+    puts building.building_technical_contact_email
+    puts building.building_administrator_phone
+    building.save!
+    puts building.save
+
 end
