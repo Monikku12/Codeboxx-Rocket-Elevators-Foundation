@@ -1,0 +1,5 @@
+class RemoveBuildingdetailidFromBuilding < ActiveRecord::Migration[5.2]
+  def change
+    remove_reference :buildings, :buildingdetailid, foreign_key: true
+  end
+end
