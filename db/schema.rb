@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_07_06_175133) do
-
+ActiveRecord::Schema.define(version: 2022_07_07_163700) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -48,6 +46,8 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_building_details_on_building_id"
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -61,12 +61,10 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
-    t.bigint "building_detail_id"
     t.bigint "battery_id"
     t.bigint "address_id"
     t.index ["address_id"], name: "index_buildings_on_address_id"
     t.index ["battery_id"], name: "index_buildings_on_battery_id"
-    t.index ["building_detail_id"], name: "index_buildings_on_building_detail_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -114,7 +112,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employee_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "title"
@@ -122,7 +120,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_employee_lists_on_user_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -159,6 +157,7 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "quote_email"
+    t.string "compagny_name"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -172,12 +171,12 @@ ActiveRecord::Schema.define(version: 2022_07_06_175133) do
   end
 
   add_foreign_key "batteries", "columns"
+  add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses"
   add_foreign_key "buildings", "batteries"
-  add_foreign_key "buildings", "building_details"
   add_foreign_key "buildings", "customers"
   add_foreign_key "columns", "elevators"
   add_foreign_key "customers", "addresses"
   add_foreign_key "customers", "users"
-  add_foreign_key "employee_lists", "users"
+  add_foreign_key "employees", "users"
 end
