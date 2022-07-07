@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_213645) do
+
+ActiveRecord::Schema.define(version: 2022_07_06_175133) do
+
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -27,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_07_05_213645) do
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "type"
+    t.string "batterie_type"
     t.string "status"
     t.integer "employeeId"
     t.date "commissioning_date"
@@ -61,13 +63,15 @@ ActiveRecord::Schema.define(version: 2022_07_05_213645) do
     t.bigint "customer_id"
     t.bigint "building_detail_id"
     t.bigint "battery_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_buildings_on_address_id"
     t.index ["battery_id"], name: "index_buildings_on_battery_id"
     t.index ["building_detail_id"], name: "index_buildings_on_building_detail_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "type"
+    t.string "column_type"
     t.integer "number_of_floors_served"
     t.string "status"
     t.text "information"
@@ -91,13 +95,15 @@ ActiveRecord::Schema.define(version: 2022_07_05_213645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_customers_on_address_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "serial_number"
     t.string "model"
-    t.string "type"
+    t.string "elevator_type"
     t.string "status"
     t.date "commissioning_date"
     t.date "last_inspection_date"
@@ -166,10 +172,12 @@ ActiveRecord::Schema.define(version: 2022_07_05_213645) do
   end
 
   add_foreign_key "batteries", "columns"
+  add_foreign_key "buildings", "addresses"
   add_foreign_key "buildings", "batteries"
   add_foreign_key "buildings", "building_details"
   add_foreign_key "buildings", "customers"
   add_foreign_key "columns", "elevators"
+  add_foreign_key "customers", "addresses"
   add_foreign_key "customers", "users"
   add_foreign_key "employee_lists", "users"
 end
