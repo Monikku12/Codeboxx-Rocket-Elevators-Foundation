@@ -62,7 +62,7 @@ def createAddressfunction
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     address.save
-    return address
+    
 end
 
 
@@ -84,7 +84,7 @@ def createCustomerfunction()
     # user_id : ?
     )
     customer.save
-    return customer
+   
 end
 
 # createCustomerfunction()
@@ -103,7 +103,7 @@ def createEleColBatfunction()
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     elevator.save
-    return elevator
+ 
 
     elevatortest = Elevator.last
 
@@ -116,7 +116,7 @@ def createEleColBatfunction()
     elevator_id: elevatortest.id,
     )
     column.save
-    return column
+    
 
     columntest = Column.last
 
@@ -132,8 +132,7 @@ def createEleColBatfunction()
     column_id: columntest.id,
     )
     battery.save
-    return battery
-
+   
 end
 
 def createBuildingdetailsfunction
@@ -175,3 +174,7 @@ def createBuildingfunction
     return building
 
 end
+
+def createQuotesFunctio
+    building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    number_of_apartements: Faker::Number.between(from:2, to:150),
