@@ -41,7 +41,7 @@ namespace :fake do
       )
 
       building = Building.create!(  
-        number_and_street: ['AAA'].sample, 
+        #number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
         building_administrator_email: Faker::Internet.email,
         building_administrator_phone: Faker::PhoneNumber.phone_number,
@@ -60,19 +60,28 @@ namespace :fake do
         building: building,
       )
 
- 5.times     
-      battery = Battery.create(
+
+      employee = Employee.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        title: Faker::Name.middle_name,
+        email: Faker::Internet.email,  
+        user: user,
+      )
+
+       
+      battery = Battery.create!(
         batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
         status: ["Active", "Inactive", "Intervention"].sample,
-        employeeId: employeeIdtest.id,
+        employee: employee,
         commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
         last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
         certificate_of_operation: Faker::Lorem.paragraphs,
         informations: Faker::Lorem.paragraphs,
         notes: Faker::Lorem.paragraph(sentence_count: 2),
-        column_id: columntest.id,
+        #column: column,
       )
-
+      
     end
     #data = JSON.load file
     #pp hash["addresses"]
