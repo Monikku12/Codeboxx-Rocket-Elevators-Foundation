@@ -1,6 +1,6 @@
 namespace :get_fact_elevator_data do
-  desc "retreive data from mysql:elevator"
-  task retreive_data_elevator: :environment do
+  desc "retrieve  data from mysql:elevator"
+  task retrieve_data_elevator: :environment do
     puts "Change 'number_and_street' to 'building_city'"
     elevator = Elevator.select ("serial_number, commissioning_date")
     puts elevator
