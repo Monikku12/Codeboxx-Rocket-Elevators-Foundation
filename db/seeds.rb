@@ -35,15 +35,18 @@ EmployeeList.create(id: 10, first_name: "Eileen", last_name: "Ai", title: "They 
 
 Faker::Config.locale = 'en-US'
 
-def createUserfunction
-    user = User.new(
-    email: Faker::Internet.email,
-    encrypted_password: Faker::Internet.password(min_length: 8),
-    reset_password_token: Faker::Number.number(digits: 5),
-    )
-    user.save
-    return user  
-end    
+# password = Faker::Internet.password(min_length: 6) 
+
+# 10.times do
+#     user = User.create!(
+    
+#     email: Faker::Internet.email,
+#     password: password,
+#     password_confirmation: password,   
+#     )
+#     user.save
+#     puts user
+# end    
 
 def createAddressfunction
     address = Address.new(
@@ -63,18 +66,14 @@ def createAddressfunction
 end
 
 
-# 10.times do
-#     address = createAddressfunction()
-#     user = createUserfunction()
-
-def createCustomerfunction
-    address = createAddressfunction()
-    user = createUserfunction()
-
-    customer = Customer.new(
+def createCustomerfunction()     
+    # address = createAddressfunction()
+    addresstest = Address.last
+    
+    customer = Customer.create(
 
     company_name: Faker::Company.name,
-    address_id: address.id,
+    address_id: addresstest.id,
     company_contact_full_name: Faker::Name.name,
     company_contact_phone: Faker::PhoneNumber.phone_number,
     company_contact_email: Faker::Internet.email,
@@ -82,16 +81,17 @@ def createCustomerfunction
     service_technical_authority_full_name: Faker::Name.name,
     service_technical_authority_phone: Faker::PhoneNumber.phone_number,
     service_technical_manager_email: Faker::Internet.email,
-    user_id: user.id,
+    # user_id : ?
     )
     customer.save
     return customer
 end
 
+# createCustomerfunction()
 
+def createEleColBatfunction()
 
-10.times do
-    elevator = Elevator.new(
+    elevator = Elevator.create(
     serial_number: Faker::Number.number(digits: 8),
     model: ["Standard", "premium", "Excelium"].sample,
     elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
@@ -103,56 +103,75 @@ end
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     )
     elevator.save
+    return elevator
 
-    column = Column.new(
+    elevatortest = Elevator.last
+
+    column = Column.create(
     column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
     number_of_floors_served: Faker::Number.between(from:2, to:150),
     status: ["Active", "Inactive", "Intervention"].sample,
     information: Faker::Lorem.paragraphs,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
+    elevator_id: elevatortest.id,
     )
     column.save
+    return column
 
-    battery = Battery.new(
+    columntest = Column.last
+
+    battery = Battery.create(
     batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
     status: ["Active", "Inactive", "Intervention"].sample,
+    employeeId: ["employeeID"].sample,
     commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
     last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
     certificate_of_operation: Faker::Lorem.paragraphs,
     informations: Faker::Lorem.paragraphs,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
+    column_id: columntest.id,
     )
     battery.save
+    return battery
 
+end
+
+def createBuildingdetailsfunction
+    
     building_detail = BuildingDetail.new(
     key: Faker::Lorem.sentence,
     value: Faker::Lorem.sentence(word_count: 2),
     )
     building_detail.save
+    return building_detail
+
 end
 
-10.times do
-    user = createUserfunction()
-    customer = createCustomerfunction()
-    
+def createBuildingfunction
+    # createEleColBatfunction()
+    # customer = createCustomerfunction()
+    # address = createAddressfunction()
+    customertest = Customer.last
+    building_detailtest = BuildingDetail.last
+    batterytest = Battery.last
+    # puts customertest.id   
+    addresstest = Address.last
+
     building = Building.new(  
-    customer_id: customer.id,
-    number_and_street: ['AAA'].sample, 
+    
+    # number_and_street: ['AAA'].sample, 
     building_administrator_full_name: Faker::Name.name,
     building_administrator_email: Faker::Internet.email,
     building_administrator_phone: Faker::PhoneNumber.phone_number,
     building_technical_contact_full_name: Faker::Name.name,
     building_technical_contact_email: Faker::Internet.email,
     building_technical_contact_phone: Faker::PhoneNumber.phone_number,
+    customer_id: customertest.id,
+    building_detail_id: building_detailtest.id,
+    battery_id: batterytest.id,
+    address_id: addresstest.id,
     )
-    puts building.number_and_street
-    puts building.building_administrator_full_name
-    puts building.building_administrator_email
-    puts building.building_administrator_phone
-    puts building.building_technical_contact_full_name
-    puts building.building_technical_contact_email
-    puts building.building_administrator_phone
     building.save!
-    puts building.save
+    return building
 
 end
