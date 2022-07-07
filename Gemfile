@@ -100,5 +100,12 @@ end
 # Add fake data
   gem 'faker'
 
-# Use for Rake task
-  gem 'rake'
+ gem 'faker'
+
+ gem 'rubocop-faker'
+ 
+ # To get localization of our data see config/environments for setup
+ gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
+
+
+

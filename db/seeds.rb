@@ -8,18 +8,18 @@
 
 require 'faker'
 
-User.create(id: 1, email: 'mathieu.houde@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 2, email: 'patrick.thibault@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 3, email: 'francis.patry-jessop@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 4, email: 'david.amyot@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 5, email: 'marie-eve.goupil@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 6, email: 'francois.boivin@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 7, email: 'timothy.wever@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-User.create(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
+User.create(id: 1, email: 'mathieu.houde@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 2, email: 'patrick.thibault@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 3, email: 'francis.patry-jessop@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 4, email: 'david.amyot@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 5, email: 'marie-eve.goupil@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 6, email: 'francois.boivin@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 7, email: 'timothy.wever@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
+User.create(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123').save!
 
-puts Faker::Name.name
+
 
 
 EmployeeList.create(id: 1, first_name: 'Mathieu', last_name: 'Houde', title: 'Gopher', email: 'mathieu.houde@codeboxx.biz', user_id: 1).save!
@@ -33,3 +33,145 @@ EmployeeList.create(id: 8, first_name: "Kiril", last_name: "Kleinerman", title: 
 EmployeeList.create(id: 9, first_name: "Felicia", last_name: "Hartono", title: "Scrums are too early", email: 'felicia.hartono@codeboxx.biz', user_id: 9).save!
 EmployeeList.create(id: 10, first_name: "Eileen", last_name: "Ai", title: "They really are.", email: 'eileen.ai@codeboxx.biz', user_id: 10).save!
 
+Faker::Config.locale = 'en-US'
+
+# password = Faker::Internet.password(min_length: 6) 
+
+# 10.times do
+#     user = User.create!(
+    
+#     email: Faker::Internet.email,
+#     password: password,
+#     password_confirmation: password,   
+#     )
+#     user.save
+#     puts user
+# end    
+
+def createAddressfunction
+    address = Address.new(
+
+    type_of_address: ['Business', 'Billing', 'Shipping', 'Home'].sample,
+    status: ['Active', 'Inactive'].sample,
+    entity: ['Customer', 'Building'].sample,
+    number_and_street: Faker::Address.street_address,
+    suite_or_apartment: Faker::Address.secondary_address,
+    city: Faker::Address.city,
+    postal_code: Faker::Address.zip_code,
+    country: Faker::Address.country,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    address.save
+    return address
+end
+
+
+def createCustomerfunction()     
+    # address = createAddressfunction()
+    addresstest = Address.last
+    
+    customer = Customer.create(
+
+    company_name: Faker::Company.name,
+    address_id: addresstest.id,
+    company_contact_full_name: Faker::Name.name,
+    company_contact_phone: Faker::PhoneNumber.phone_number,
+    company_contact_email: Faker::Internet.email,
+    company_description: Faker::Company.industry,
+    service_technical_authority_full_name: Faker::Name.name,
+    service_technical_authority_phone: Faker::PhoneNumber.phone_number,
+    service_technical_manager_email: Faker::Internet.email,
+    # user_id : ?
+    )
+    customer.save
+    return customer
+end
+
+# createCustomerfunction()
+
+def createEleColBatfunction()
+
+    elevator = Elevator.create(
+    serial_number: Faker::Number.number(digits: 8),
+    model: ["Standard", "premium", "Excelium"].sample,
+    elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    status: ["Active", "Inactive", "Intervention"].sample,
+    commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    inspection_certificate: Faker::Lorem.paragraph,
+    information: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    )
+    elevator.save
+    return elevator
+
+    elevatortest = Elevator.last
+
+    column = Column.create(
+    column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    number_of_floors_served: Faker::Number.between(from:2, to:150),
+    status: ["Active", "Inactive", "Intervention"].sample,
+    information: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    elevator_id: elevatortest.id,
+    )
+    column.save
+    return column
+
+    columntest = Column.last
+
+    battery = Battery.create(
+    batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+    status: ["Active", "Inactive", "Intervention"].sample,
+    employeeId: ["employeeID"].sample,
+    commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+    certificate_of_operation: Faker::Lorem.paragraphs,
+    informations: Faker::Lorem.paragraphs,
+    notes: Faker::Lorem.paragraph(sentence_count: 2),
+    column_id: columntest.id,
+    )
+    battery.save
+    return battery
+
+end
+
+def createBuildingdetailsfunction
+    
+    building_detail = BuildingDetail.new(
+    key: Faker::Lorem.sentence,
+    value: Faker::Lorem.sentence(word_count: 2),
+    )
+    building_detail.save
+    return building_detail
+
+end
+
+def createBuildingfunction
+    # createEleColBatfunction()
+    # customer = createCustomerfunction()
+    # address = createAddressfunction()
+    customertest = Customer.last
+    building_detailtest = BuildingDetail.last
+    batterytest = Battery.last
+    # puts customertest.id   
+    addresstest = Address.last
+
+    building = Building.new(  
+    
+    # number_and_street: ['AAA'].sample, 
+    building_administrator_full_name: Faker::Name.name,
+    building_administrator_email: Faker::Internet.email,
+    building_administrator_phone: Faker::PhoneNumber.phone_number,
+    building_technical_contact_full_name: Faker::Name.name,
+    building_technical_contact_email: Faker::Internet.email,
+    building_technical_contact_phone: Faker::PhoneNumber.phone_number,
+    customer_id: customertest.id,
+    building_detail_id: building_detailtest.id,
+    battery_id: batterytest.id,
+    address_id: addresstest.id,
+    )
+    building.save!
+    return building
+
+end
