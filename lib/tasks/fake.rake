@@ -40,8 +40,6 @@ namespace :fake do
         user: user,
       )
 
-     
-
       building = Building.create!(  
         number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
@@ -60,6 +58,19 @@ namespace :fake do
         key: Faker::Lorem.sentence,
         value: Faker::Lorem.sentence(word_count: 2),
         building: building,
+      )
+
+ 5.times     
+      battery = Battery.create(
+        batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+        status: ["Active", "Inactive", "Intervention"].sample,
+        employeeId: employeeIdtest.id,
+        commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+        last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+        certificate_of_operation: Faker::Lorem.paragraphs,
+        informations: Faker::Lorem.paragraphs,
+        notes: Faker::Lorem.paragraph(sentence_count: 2),
+        column_id: columntest.id,
       )
 
     end
