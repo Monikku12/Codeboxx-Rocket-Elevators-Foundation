@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   root to: 'index#index'
 
   resources :quotes
-  resources :employee_lists
+  resources :employees
   
 end
 

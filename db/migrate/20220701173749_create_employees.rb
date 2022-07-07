@@ -1,6 +1,6 @@
-class CreateEmployeeLists < ActiveRecord::Migration[5.2]
+class CreateEmployees < ActiveRecord::Migration[5.2]
   def change
-    create_table :employee_lists do |t|
+    create_table :employees do |t|
       t.string :first_name
       t.string :last_name
       t.string :title
