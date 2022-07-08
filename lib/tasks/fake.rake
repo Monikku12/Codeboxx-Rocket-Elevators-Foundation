@@ -92,7 +92,7 @@ namespace :fake do
           battery: battery,
         )
       
-        elevator = Elevator.create!(
+        elevator = Elevator.create(
           serial_number: Faker::Number.number(digits: 8),
           model: ["Standard", "premium", "Excelium"].sample,
           elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
@@ -107,9 +107,13 @@ namespace :fake do
         
       end
 
+
+
       25.times do  
-               
-        lead = Lead.create!(
+       
+
+        
+        lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
           email: Faker::Internet.email,
@@ -119,7 +123,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-          lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
         quote = Quote.create!(
