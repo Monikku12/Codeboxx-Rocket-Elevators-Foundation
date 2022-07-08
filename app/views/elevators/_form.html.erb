@@ -18,17 +18,17 @@
 
   <div class="field">
     <%= form.label :model %>
-    <%= form.select :model, ['Standard', 'Premium', 'Excelium'] %>
+    <%= form.select :model, [ "Standard", "Premium", "Excelium" ] %>
   </div>
 
   <div class="field">
     <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.select :type, [ "Residential", "Commercial", "Corporate", "Hybrid" ] %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, [ "Active", "Inactive", "Intervention" ] %>
   </div>
 
   <div class="field">
