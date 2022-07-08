@@ -156,34 +156,34 @@ namespace :fake do
   end
 
   task postgre: :environment do
-  #   Lead.all.each do |l|
-  #     contact = FactContact.create!(
-  #       creation_date: l.created_at,
-  #       company_name: l.company_name,
-  #       email: l.email,
-  #       project_name: l.project_name,
-  #     )
-  #   end
+    Lead.all.each do |l|
+      contact = FactContact.create!(
+        creation_date: l.created_at,
+        company_name: l.company_name,
+        email: l.email,
+        project_name: l.project_name,
+      )
+    end
 
-    # Quote.all.each do |q|
-    #   quote = FactQuote.create!(
-    #     creation_date: q.created_at,
-    #     company_name: q.compagny_name,
-    #     quote_email: q.quote_email,
-    #     nb_elevator: q.amount_of_elevator_needed,
-    #   )
-    # end
+    Quote.all.each do |q|
+      quote = FactQuote.create!(
+        creation_date: q.created_at,
+        company_name: q.compagny_name,
+        quote_email: q.quote_email,
+        nb_elevator: q.amount_of_elevator_needed,
+      )
+    end
 
-    # Elevator.all.each do |e|
-    #   elevators = FactElevator.create!(
-    #     serial_number: e.serial_number,
-    #     date_of_commissioning: e.commissioning_date,
-    #     building_id: e.column.battery.building,
-    #     customer_id: e.column.battery.building.customer_id,
-    #     building_city: e.column.battery.building.address.city,
-    #   )
-    #   puts FactElevator.first.inspect
-    # end
+    Elevator.all.each do |e|
+      elevators = FactElevator.create!(
+        serial_number: e.serial_number,
+        date_of_commissioning: e.commissioning_date,
+        building_id: e.column.battery.building,
+        customer_id: e.column.battery.building.customer_id,
+        building_city: e.column.battery.building.address.city,
+      )
+      puts FactElevator.first.inspect
+    end
     
     Customer.all.each do |c|
       count_elevator = 0
