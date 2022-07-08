@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'commercial', to: 'index#commercialpage', as: "commercial"
   get 'residential', to: 'index#residentialpage', as: "residential"
   get 'index', to: 'index#index'
-
+  get 'lead', to: 'leads#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'index#index'
 
