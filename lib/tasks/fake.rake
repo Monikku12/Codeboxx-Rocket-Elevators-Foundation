@@ -105,26 +105,28 @@ namespace :fake do
         
       end
 
-      # Quote = Quotes.create!(
-      #   building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-      #   number_of_appartments: Faker::Number.between(from:40, to:800),
-      #   number_of_floors: Faker::Number.between(from:5, to:100),
-      #   number_of_basements: Faker::Number.between(from:1, to:5),
-      #   number_of_businesses: Faker::Number.between(from:1, to:20),
-      #   number_of_elevator_cages: Faker::Number.between(from:1, to:20),
-      #   number_of_seperate_tenant_companies: Faker::Number.between(from:1, to:20),
-      #   maximum_number_of_occupants_per_floor: Faker::Number.between(from:80, to:300),
-      #   hours_of_activity: Faker::Number.between(from:1, to:24),
-      #   quality_of_elevator_service: ["Standard", "premium", "Excelium"].sample,
-      #   unit_price_of_each_elevator: Faker::Number.number(digits: 4),
-      #   amount_of_elevator_needed: Faker::Number.between(from:4, to:12),
-      #   total_price_of_the_elevators: Faker::Number.number(digits: 6),
-      #   installation_fees: Faker::Number.number(digits: 3),
-      #   final_price: Faker::Number.number(digits: 7),
-      #   quote_email: Faker::Internet.email,
-      #   compagny_name: Faker::Company.industry,
-      # )
-
+      25.times do  
+        quote = Quote.create!(
+          building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          number_of_apartments: Faker::Number.between(from:40, to:800),
+          number_of_floors: Faker::Number.between(from:5, to:100),
+          number_of_basement: Faker::Number.between(from:1, to:5),
+          number_of_businesses: Faker::Number.between(from:1, to:20),
+          number_of_parking_space: Faker::Number.between(from:1, to:350),
+          number_of_elevator_cages: Faker::Number.between(from:1, to:20),
+          number_of_seperate_tenant_companies: Faker::Number.between(from:1, to:20),
+          maximum_number_of_occupants_per_floor: Faker::Number.between(from:80, to:300),
+          hours_of_activity: Faker::Number.between(from:1, to:24),
+          quality_of_elevator_service: ["Standard", "premium", "Excelium"].sample,
+          unit_price_of_each_elevator: Faker::Number.number(digits: 4),
+          amount_of_elevator_needed: Faker::Number.between(from:4, to:12),
+          total_price_of_the_elevators: Faker::Number.number(digits: 6),
+          installation_fees: Faker::Number.number(digits: 3),
+          final_price: Faker::Number.number(digits: 7),
+          quote_email: Faker::Internet.email,
+          compagny_name: Faker::Company.industry,
+        )
+      end
       # lead = Leads.create(
       #   full_name: Faker::Name.name,
       #   compagny_name: Faker::Company.industry,
