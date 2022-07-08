@@ -154,4 +154,38 @@ namespace :fake do
     #pp hash["addresses"]
     puts "-----------------------"
   end
+
+  task postgre: :environment do
+  #   Lead.all.each do |l|
+  #     contact = FactContact.create!(
+  #       creation_date: l.created_at,
+  #       company_name: l.company_name,
+  #       email: l.email,
+  #       project_name: l.project_name,
+  #     )
+  #   end
+
+    # Quote.all.each do |q|
+    #   quote = FactQuote.create!(
+    #     creation_date: q.created_at,
+    #     company_name: q.compagny_name,
+    #     quote_email: q.quote_email,
+    #     nb_elevator: q.amount_of_elevator_needed,
+    #   )
+    # end
+
+
+
+
+
+
+
+
+
+
+  end
+
+
+
+
 end
