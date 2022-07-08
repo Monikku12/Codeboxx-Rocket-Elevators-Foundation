@@ -1,16 +1,20 @@
 namespace :dwh do
   require "json"
+
   task fake: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
     addresses = data["addresses"]
+
     addresses.each do |address|
       #pp "Address is : #{address["address1"]}"
+
       user = User.create!(
-        email: Faker::Internet.email,
-        password: 'password123',
+        email: Faker::Internet.email, 
+        password: 'password123', 
       )
+
       _address = Address.create!(
         type_of_address: ['Business', 'Billing', 'Shipping', 'Home'].sample,
         status: ['Active', 'Inactive'].sample,
@@ -22,6 +26,7 @@ namespace :dwh do
         country: address["state"],
         notes: Faker::Lorem.paragraph(sentence_count: 2),
       )
+
       customer = Customer.create!(
         company_name: Faker::Company.name,
         address: _address,
@@ -34,8 +39,9 @@ namespace :dwh do
         service_technical_manager_email: Faker::Internet.email,
         user: user,
       )
-        building = Building.create!(
-        #number_and_street: ['AAA'].sample,
+
+        building = Building.create!(  
+        #number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
         building_administrator_email: Faker::Internet.email,
         building_administrator_phone: Faker::PhoneNumber.phone_number,
@@ -47,30 +53,60 @@ namespace :dwh do
         #battery: battery,
         address: _address,
       )
+
       building_detail = BuildingDetail.create!(
         key: Faker::Lorem.sentence,
         value: Faker::Lorem.sentence(word_count: 2),
         building: building,
       )
+
+<<<<<<< HEAD
+<<<<<<<< HEAD:lib/tasks/dwh.rake
+      5.times do  
+        battery = Battery.create(
+          batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          status: ["Active", "Inactive", "Intervention"].sample,
+          employeeId: employeeIdtest.id,
+========
+=======
+>>>>>>> developement
       # employee = Employee.create!(
       #   first_name: Faker::Name.first_name,
       #   last_name: Faker::Name.last_name,
       #   title: Faker::Name.middle_name,
-      #   email: Faker::Internet.email,
+      #   email: Faker::Internet.email,  
       #   user: user,
       # )
+
       5.times do
         battery = Battery.create!(
           batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
           employeeId: ["aaa"].sample,
+<<<<<<< HEAD
+>>>>>>>> developement:lib/tasks/fake.rake
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          certificate_of_operation: Faker::Lorem.paragraphs,
+          informations: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+<<<<<<<< HEAD:lib/tasks/dwh.rake
+          column_id: columntest.id,
+        )
+      end
+    data = JSON.load file
+    pp hash["addresses"]
+========
+=======
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           certificate_of_operation: Faker::Lorem.paragraphs,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
+>>>>>>> developement
           building: building,
         )
+
         column = Column.create!(
           column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           number_of_floors_served: Faker::Number.between(from:2, to:150),
@@ -79,20 +115,28 @@ namespace :dwh do
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           battery: battery,
         )
+      
         elevator = Elevator.create(
           serial_number: Faker::Number.number(digits: 8),
           model: ["Standard", "premium", "Excelium"].sample,
           elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
+<<<<<<< HEAD
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+=======
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+>>>>>>> developement
           inspection_certificate: Faker::Lorem.paragraph,
           information: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           column: column,
         )
+        
       end
-      25.times do
+
+      25.times do  
         quote = Quote.create!(
           building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           number_of_apartments: Faker::Number.between(from:40, to:800),
@@ -112,8 +156,12 @@ namespace :dwh do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
+<<<<<<< HEAD
+=======
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+>>>>>>> developement
         )
+            
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -124,6 +172,17 @@ namespace :dwh do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
+<<<<<<< HEAD
+        )
+      end
+>>>>>>>> developement:lib/tasks/fake.rake
+    end
+  puts "-----------------------"
+  end
+
+    
+
+=======
           lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
       end
@@ -132,4 +191,5 @@ namespace :dwh do
     #pp hash["addresses"]
     puts "-----------------------"
   end
+>>>>>>> developement
 end
