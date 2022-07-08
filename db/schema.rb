@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "column_id"
-    t.index ["column_id"], name: "index_batteries_on_column_id"
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_batteries_on_building_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -61,10 +61,8 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
-    t.bigint "battery_id"
     t.bigint "address_id"
     t.index ["address_id"], name: "index_buildings_on_address_id"
-    t.index ["battery_id"], name: "index_buildings_on_battery_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -76,8 +74,8 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "elevator_id"
-    t.index ["elevator_id"], name: "index_columns_on_elevator_id"
+    t.bigint "battery_id"
+    t.index ["battery_id"], name: "index_columns_on_battery_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -110,6 +108,8 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -170,13 +170,13 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "batteries", "columns"
+  add_foreign_key "batteries", "buildings"
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses"
-  add_foreign_key "buildings", "batteries"
   add_foreign_key "buildings", "customers"
-  add_foreign_key "columns", "elevators"
+  add_foreign_key "columns", "batteries"
   add_foreign_key "customers", "addresses"
   add_foreign_key "customers", "users"
+  add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
 end
