@@ -126,18 +126,19 @@ namespace :fake do
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
         )
+            
+        lead = Lead.create(
+          full_name: Faker::Name.name,
+          company_name: Faker::Company.industry,
+          email: Faker::Internet.email,
+          phone: Faker::PhoneNumber.phone_number,
+          project_name: Faker::Lorem.paragraphs,
+          project_description: Faker::Lorem.paragraphs,
+          department: Faker::Lorem.paragraph(sentence_count: 2),
+          message: Faker::Lorem.paragraph(sentence_count: 2),
+          file_attachment: ['test'].sample,
+        )
       end
-      # lead = Leads.create(
-      #   full_name: Faker::Name.name,
-      #   compagny_name: Faker::Company.industry,
-      #   email: Faker::Internet.email,
-      #   phone: Faker::PhoneNumber.phone_number,
-      #   project_name: Faker::Lorem.paragraphs,
-      #   project_description: Faker::Lorem.paragraphs,
-      #   departement: Faker::Lorem.paragraphs,
-      #   message: Faker::Lorem.paragraph(sentence_count: 2),
-      # )
-      
     end
     #data = JSON.load file
     #pp hash["addresses"]
