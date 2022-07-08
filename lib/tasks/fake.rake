@@ -125,6 +125,7 @@ namespace :fake do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
+          customer: customer,
         )
             
         lead = Lead.create(
@@ -137,6 +138,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
+          quote: quote,
         )
       end
     end

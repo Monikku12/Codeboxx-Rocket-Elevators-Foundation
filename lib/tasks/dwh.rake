@@ -1,7 +1,7 @@
-namespace :fake do
+namespace :dwh do
   require "json"
 
-  task data: :environment do
+  task fake: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
@@ -126,6 +126,8 @@ namespace :fake do
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          customer: customer,
+
         )
             
         lead = Lead.create(
@@ -139,6 +141,7 @@ namespace :fake do
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
           lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          quote: quote,
         )
       end
     end
