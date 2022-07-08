@@ -40,7 +40,7 @@ namespace :fake do
         user: user,
       )
 
-      building = Building.create!(  
+        building = Building.create!(  
         #number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
         building_administrator_email: Faker::Internet.email,
@@ -50,7 +50,7 @@ namespace :fake do
         building_technical_contact_phone: Faker::PhoneNumber.phone_number,
         customer: customer,
         #building_detail: building_detail,
-        # battery: battery,
+        #battery: battery,
         address: _address,
       )
 
@@ -60,49 +60,48 @@ namespace :fake do
         building: building,
       )
 
-      employee = Employee.create!(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        title: Faker::Name.middle_name,
-        email: Faker::Internet.email,  
-        user: user,
-      )
+      # employee = Employee.create!(
+      #   first_name: Faker::Name.first_name,
+      #   last_name: Faker::Name.last_name,
+      #   title: Faker::Name.middle_name,
+      #   email: Faker::Internet.email,  
+      #   user: user,
+      # )
 
-    
       5.times do
         battery = Battery.create!(
           batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
-          employee: employee,
+          employeeId: ["aaa"].sample,
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
           certificate_of_operation: Faker::Lorem.paragraphs,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           building: building,
-          # column: column,
         )
 
-        # column = Column.create!(
-        #   column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-        #   number_of_floors_served: Faker::Number.between(from:2, to:150),
-        #   status: ["Active", "Inactive", "Intervention"].sample,
-        #   information: Faker::Lorem.paragraphs,
-        #   notes: Faker::Lorem.paragraph(sentence_count: 2),
-        #   #elevator: elevator,
-        # )
-
-        # elevator = Elevator.create(
-        #   serial_number: Faker::Number.number(digits: 8),
-        #   model: ["Standard", "premium", "Excelium"].sample,
-        #   elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-        #   status: ["Active", "Inactive", "Intervention"].sample,
-        #   commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        #   last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        #   inspection_certificate: Faker::Lorem.paragraph,
-        #   information: Faker::Lorem.paragraphs,
-        #   notes: Faker::Lorem.paragraph(sentence_count: 2),
-        # )
+        column = Column.create!(
+          column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          number_of_floors_served: Faker::Number.between(from:2, to:150),
+          status: ["Active", "Inactive", "Intervention"].sample,
+          information: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          battery: battery,
+        )
+      
+        elevator = Elevator.create(
+          serial_number: Faker::Number.number(digits: 8),
+          model: ["Standard", "premium", "Excelium"].sample,
+          elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          status: ["Active", "Inactive", "Intervention"].sample,
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          inspection_certificate: Faker::Lorem.paragraph,
+          information: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          column: column,
+        )
         
       end
 
