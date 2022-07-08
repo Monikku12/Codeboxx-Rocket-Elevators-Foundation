@@ -73,8 +73,8 @@ namespace :fake do
           batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
           employeeId: ["aaa"].sample,
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           certificate_of_operation: Faker::Lorem.paragraphs,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
@@ -95,8 +95,8 @@ namespace :fake do
           model: ["Standard", "premium", "Excelium"].sample,
           elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           inspection_certificate: Faker::Lorem.paragraph,
           information: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
@@ -125,7 +125,7 @@ namespace :fake do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
-          quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
             
         lead = Lead.create(
@@ -138,7 +138,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
       end
     end
