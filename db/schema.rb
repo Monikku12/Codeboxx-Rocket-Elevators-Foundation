@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_133449) do
+ActiveRecord::Schema.define(version: 2022_07_08_184625) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_133449) do
     t.binary "file_attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "lead_created_at"
+    t.datetime "lead_created_at"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_133449) do
     t.datetime "updated_at", null: false
     t.string "quote_email"
     t.string "compagny_name"
-    t.string "quote_created_at"
+    t.datetime "quote_created_at"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
