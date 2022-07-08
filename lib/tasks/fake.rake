@@ -174,18 +174,41 @@ namespace :fake do
     #   )
     # end
 
+    # Elevator.all.each do |e|
+    #   elevators = FactElevator.create!(
+    #     serial_number: e.serial_number,
+    #     date_of_commissioning: e.commissioning_date,
+    #     building_id: e.column.battery.building,
+    #     customer_id: e.column.battery.building.customer_id,
+    #     building_city: e.column.battery.building.address.city,
+    #   )
+    #   puts FactElevator.first.inspect
+    # end
 
-
-
-
-
-
-
-
-
+    Customer.all.each do |c|
+      elevators = DimCustomer.create!(
+        creation_date: c.created_at,
+        company_name: c.company_name,
+        full_name: c.company_contact_full_name,
+        company_contact_email: c.company_contact_email,
+        nb_elevator: count_elevator
+          Building.each do |building|
+            building.count.each do
+            # puts building.count
+              battery.count.each do
+              # puts battery.count
+                column.count.each do
+                # puts column.count
+                  count_elevator += elevator.count
+                  # puts elevator.count
+                  end
+                end
+              end
+            end
+          end
+        customer_city: c.address.city
+        )
+        puts elevators.company_name
+      end    
   end
-
-
-
-
 end
