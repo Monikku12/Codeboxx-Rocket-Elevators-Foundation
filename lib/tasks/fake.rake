@@ -1,7 +1,7 @@
-namespace :dwh do
+namespace :fake do
   require "json"
 
-  task fake: :environment do
+  task data: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
@@ -38,6 +38,7 @@ namespace :dwh do
         service_technical_authority_phone: Faker::PhoneNumber.phone_number,
         service_technical_manager_email: Faker::Internet.email,
         user: user,
+       
       )
 
         building = Building.create!(  
@@ -59,52 +60,27 @@ namespace :dwh do
         value: Faker::Lorem.sentence(word_count: 2),
         building: building,
       )
-
-<<<<<<< HEAD
-<<<<<<<< HEAD:lib/tasks/dwh.rake
-      5.times do  
-        battery = Battery.create(
-          batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-          status: ["Active", "Inactive", "Intervention"].sample,
-          employeeId: employeeIdtest.id,
-========
-=======
->>>>>>> developement
-      # employee = Employee.create!(
-      #   first_name: Faker::Name.first_name,
-      #   last_name: Faker::Name.last_name,
-      #   title: Faker::Name.middle_name,
-      #   email: Faker::Internet.email,  
-      #   user: user,
-      # )
+      
+      employee = Employee.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        title: Faker::Name.middle_name,
+        email: Faker::Internet.email,  
+        user: user,
+      )
 
       5.times do
         battery = Battery.create!(
           batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
           employeeId: ["aaa"].sample,
-<<<<<<< HEAD
->>>>>>>> developement:lib/tasks/fake.rake
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
           certificate_of_operation: Faker::Lorem.paragraphs,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
-<<<<<<<< HEAD:lib/tasks/dwh.rake
-          column_id: columntest.id,
-        )
-      end
-    data = JSON.load file
-    pp hash["addresses"]
-========
-=======
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          certificate_of_operation: Faker::Lorem.paragraphs,
-          informations: Faker::Lorem.paragraphs,
-          notes: Faker::Lorem.paragraph(sentence_count: 2),
->>>>>>> developement
           building: building,
+          employee: employee,
         )
 
         column = Column.create!(
@@ -121,13 +97,8 @@ namespace :dwh do
           model: ["Standard", "premium", "Excelium"].sample,
           elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
-<<<<<<< HEAD
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-=======
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
->>>>>>> developement
           inspection_certificate: Faker::Lorem.paragraph,
           information: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
@@ -136,7 +107,25 @@ namespace :dwh do
         
       end
 
+
+
       25.times do  
+       
+
+        
+        lead = Lead.create(
+          full_name: Faker::Name.name,
+          company_name: Faker::Company.industry,
+          email: Faker::Internet.email,
+          phone: Faker::PhoneNumber.phone_number,
+          project_name: Faker::Lorem.paragraphs,
+          project_description: Faker::Lorem.paragraphs,
+          department: Faker::Lorem.paragraph(sentence_count: 2),
+          message: Faker::Lorem.paragraph(sentence_count: 2),
+          file_attachment: ['test'].sample,
+          
+        )
+
         quote = Quote.create!(
           building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           number_of_apartments: Faker::Number.between(from:40, to:800),
@@ -156,46 +145,13 @@ namespace :dwh do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
-<<<<<<< HEAD
-=======
-          quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-<<<<<<< HEAD
->>>>>>> developement
-=======
-          customer: customer,
+          
+        )  
 
->>>>>>> developement
-        )
-            
-        lead = Lead.create(
-          full_name: Faker::Name.name,
-          company_name: Faker::Company.industry,
-          email: Faker::Internet.email,
-          phone: Faker::PhoneNumber.phone_number,
-          project_name: Faker::Lorem.paragraphs,
-          project_description: Faker::Lorem.paragraphs,
-          department: Faker::Lorem.paragraph(sentence_count: 2),
-          message: Faker::Lorem.paragraph(sentence_count: 2),
-          file_attachment: ['test'].sample,
-<<<<<<< HEAD
-        )
-      end
->>>>>>>> developement:lib/tasks/fake.rake
-    end
-  puts "-----------------------"
-  end
-
-    
-
-=======
-          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          quote: quote,
-        )
       end
     end
     #data = JSON.load file
     #pp hash["addresses"]
     puts "-----------------------"
   end
->>>>>>> developement
 end
