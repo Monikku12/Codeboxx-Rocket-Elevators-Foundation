@@ -38,6 +38,7 @@ namespace :fake do
         service_technical_authority_phone: Faker::PhoneNumber.phone_number,
         service_technical_manager_email: Faker::Internet.email,
         user: user,
+       
       )
 
         building = Building.create!(  
@@ -59,14 +60,14 @@ namespace :fake do
         value: Faker::Lorem.sentence(word_count: 2),
         building: building,
       )
-
-      # employee = Employee.create!(
-      #   first_name: Faker::Name.first_name,
-      #   last_name: Faker::Name.last_name,
-      #   title: Faker::Name.middle_name,
-      #   email: Faker::Internet.email,  
-      #   user: user,
-      # )
+      
+      employee = Employee.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        title: Faker::Name.middle_name,
+        email: Faker::Internet.email,  
+        user: user,
+      )
 
       5.times do
         battery = Battery.create!(
@@ -79,6 +80,7 @@ namespace :fake do
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           building: building,
+          employee: employee,
         )
 
         column = Column.create!(
@@ -105,7 +107,12 @@ namespace :fake do
         
       end
 
+
+
       25.times do  
+       
+
+        
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -116,33 +123,32 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-        )
-      end 
-        # quote = Quote.create!(
-        #   building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-        #   number_of_apartments: Faker::Number.between(from:40, to:800),
-        #   number_of_floors: Faker::Number.between(from:5, to:100),
-        #   number_of_basement: Faker::Number.between(from:1, to:5),
-        #   number_of_businesses: Faker::Number.between(from:1, to:20),
-        #   number_of_parking_space: Faker::Number.between(from:1, to:350),
-        #   number_of_elevator_cages: Faker::Number.between(from:1, to:20),
-        #   number_of_seperate_tenant_companies: Faker::Number.between(from:1, to:20),
-        #   maximum_number_of_occupants_per_floor: Faker::Number.between(from:80, to:300),
-        #   hours_of_activity: Faker::Number.between(from:1, to:24),
-        #   quality_of_elevator_service: ["Standard", "premium", "Excelium"].sample,
-        #   unit_price_of_each_elevator: Faker::Number.number(digits: 4),
-        #   amount_of_elevator_needed: Faker::Number.between(from:4, to:12),
-        #   total_price_of_the_elevators: Faker::Number.number(digits: 6),
-        #   installation_fees: Faker::Number.number(digits: 3),
-        #   final_price: Faker::Number.number(digits: 7),
-        #   quote_email: Faker::Internet.email,
-        #   compagny_name: Faker::Company.industry,
-        #   lead: lead,
           
-        # )
-            
-       
-      
+        )
+
+        quote = Quote.create!(
+          building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          number_of_apartments: Faker::Number.between(from:40, to:800),
+          number_of_floors: Faker::Number.between(from:5, to:100),
+          number_of_basement: Faker::Number.between(from:1, to:5),
+          number_of_businesses: Faker::Number.between(from:1, to:20),
+          number_of_parking_space: Faker::Number.between(from:1, to:350),
+          number_of_elevator_cages: Faker::Number.between(from:1, to:20),
+          number_of_seperate_tenant_companies: Faker::Number.between(from:1, to:20),
+          maximum_number_of_occupants_per_floor: Faker::Number.between(from:80, to:300),
+          hours_of_activity: Faker::Number.between(from:1, to:24),
+          quality_of_elevator_service: ["Standard", "premium", "Excelium"].sample,
+          unit_price_of_each_elevator: Faker::Number.number(digits: 4),
+          amount_of_elevator_needed: Faker::Number.between(from:4, to:12),
+          total_price_of_the_elevators: Faker::Number.number(digits: 6),
+          installation_fees: Faker::Number.number(digits: 3),
+          final_price: Faker::Number.number(digits: 7),
+          quote_email: Faker::Internet.email,
+          compagny_name: Faker::Company.industry,
+          
+        )  
+
+      end
     end
     #data = JSON.load file
     #pp hash["addresses"]
