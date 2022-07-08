@@ -38,6 +38,7 @@ namespace :fake do
         service_technical_authority_phone: Faker::PhoneNumber.phone_number,
         service_technical_manager_email: Faker::Internet.email,
         user: user,
+       
       )
 
         building = Building.create!(  
@@ -59,14 +60,14 @@ namespace :fake do
         value: Faker::Lorem.sentence(word_count: 2),
         building: building,
       )
-
-      # employee = Employee.create!(
-      #   first_name: Faker::Name.first_name,
-      #   last_name: Faker::Name.last_name,
-      #   title: Faker::Name.middle_name,
-      #   email: Faker::Internet.email,  
-      #   user: user,
-      # )
+      
+      employee = Employee.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        title: Faker::Name.middle_name,
+        email: Faker::Internet.email,  
+        user: user,
+      )
 
       5.times do
         battery = Battery.create!(
@@ -79,6 +80,7 @@ namespace :fake do
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           building: building,
+          employee: employee,
         )
 
         column = Column.create!(
@@ -105,7 +107,25 @@ namespace :fake do
         
       end
 
+
+
       25.times do  
+       
+
+        
+        lead = Lead.create(
+          full_name: Faker::Name.name,
+          company_name: Faker::Company.industry,
+          email: Faker::Internet.email,
+          phone: Faker::PhoneNumber.phone_number,
+          project_name: Faker::Lorem.paragraphs,
+          project_description: Faker::Lorem.paragraphs,
+          department: Faker::Lorem.paragraph(sentence_count: 2),
+          message: Faker::Lorem.paragraph(sentence_count: 2),
+          file_attachment: ['test'].sample,
+          
+        )
+
         quote = Quote.create!(
           building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           number_of_apartments: Faker::Number.between(from:40, to:800),
@@ -125,21 +145,9 @@ namespace :fake do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
-          customer: customer,
-        )
-            
-        lead = Lead.create(
-          full_name: Faker::Name.name,
-          company_name: Faker::Company.industry,
-          email: Faker::Internet.email,
-          phone: Faker::PhoneNumber.phone_number,
-          project_name: Faker::Lorem.paragraphs,
-          project_description: Faker::Lorem.paragraphs,
-          department: Faker::Lorem.paragraph(sentence_count: 2),
-          message: Faker::Lorem.paragraph(sentence_count: 2),
-          file_attachment: ['test'].sample,
-          quote: quote,
-        )
+          
+        )  
+
       end
     end
     #data = JSON.load file
