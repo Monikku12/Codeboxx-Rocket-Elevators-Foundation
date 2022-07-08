@@ -22,18 +22,18 @@ User.create!(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', p
 
 
 
-Employee.create!(id: 1, first_name: 'Mathieu', last_name: 'Houde', title: 'Gopher', email: 'mathieu.houde@codeboxx.biz', user_id: 1)
-Employee.create!(id: 2, first_name: "Patrick", last_name: "Thibault", title: "Maximalist", email: 'patrick.thibault@codeboxx.biz', user_id: 2)
-Employee.create!(id: 3, first_name: "Francis", last_name: "Patry-Jessop", title: "Captain", email: 'francis.patry-jessop@codeboxx.biz', user_id: 3)
-Employee.create!(id: 4, first_name: "David", last_name: "Amyot", title: "The Man", email: 'david.amyot@codeboxx.biz', user_id: 4)
-Employee.create!(id: 5, first_name: "Marie-Ève", last_name: "Goupil", title: "AI Master", email: 'marie-eve.goupil@codeboxx.biz', user_id: 5)
-Employee.create!(id: 6, first_name: "François", last_name: "Boivin", title: "The Tank", email: 'francois.boivin@codeboxx.biz', user_id: 6)
-Employee.create!(id: 7, first_name: "Timothy", last_name: "Wever", title: "Beard whisperer", email: 'timothy.wever@codeboxx.biz', user_id: 7)
-Employee.create!(id: 8, first_name: "Kiril", last_name: "Kleinerman", title: "I <3 Winnipeg", email: 'kiril.kleinerman@codeboxx.biz', user_id: 8)
-Employee.create!(id: 9, first_name: "Felicia", last_name: "Hartono", title: "Scrums are too early", email: 'felicia.hartono@codeboxx.biz', user_id: 9)
-Employee.create!(id: 10, first_name: "Eileen", last_name: "Ai", title: "They really are.", email: 'eileen.ai@codeboxx.biz', user_id: 10)
+# Employee.create!(id: 1, first_name: 'Mathieu', last_name: 'Houde', title: 'Gopher', email: 'mathieu.houde@codeboxx.biz', user_id: 1)
+# Employee.create!(id: 2, first_name: "Patrick", last_name: "Thibault", title: "Maximalist", email: 'patrick.thibault@codeboxx.biz', user_id: 2)
+# Employee.create!(id: 3, first_name: "Francis", last_name: "Patry-Jessop", title: "Captain", email: 'francis.patry-jessop@codeboxx.biz', user_id: 3)
+# Employee.create!(id: 4, first_name: "David", last_name: "Amyot", title: "The Man", email: 'david.amyot@codeboxx.biz', user_id: 4)
+# Employee.create!(id: 5, first_name: "Marie-Ève", last_name: "Goupil", title: "AI Master", email: 'marie-eve.goupil@codeboxx.biz', user_id: 5)
+# Employee.create!(id: 6, first_name: "François", last_name: "Boivin", title: "The Tank", email: 'francois.boivin@codeboxx.biz', user_id: 6)
+# Employee.create!(id: 7, first_name: "Timothy", last_name: "Wever", title: "Beard whisperer", email: 'timothy.wever@codeboxx.biz', user_id: 7)
+# Employee.create!(id: 8, first_name: "Kiril", last_name: "Kleinerman", title: "I <3 Winnipeg", email: 'kiril.kleinerman@codeboxx.biz', user_id: 8)
+# Employee.create!(id: 9, first_name: "Felicia", last_name: "Hartono", title: "Scrums are too early", email: 'felicia.hartono@codeboxx.biz', user_id: 9)
+# Employee.create!(id: 10, first_name: "Eileen", last_name: "Ai", title: "They really are.", email: 'eileen.ai@codeboxx.biz', user_id: 10)
 
-Faker::Config.locale = 'en-US'
+# Faker::Config.locale = 'en-US'
 
 
 
