@@ -1,4 +1,2 @@
-class FactQuote < ApplicationRecord
-    establish_connection :myapp_development
-    self.fact_quotes = "quotes"
+class FactQuote < SecondBase::Base
 end

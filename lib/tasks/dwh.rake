@@ -1,7 +1,7 @@
-namespace :fake do
+namespace :dwh do
   require "json"
 
-  task data: :environment do
+  task fake: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
@@ -60,22 +60,25 @@ namespace :fake do
         building: building,
       )
 
- 5.times     
-      battery = Battery.create(
-        batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-        status: ["Active", "Inactive", "Intervention"].sample,
-        employeeId: employeeIdtest.id,
-        commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        certificate_of_operation: Faker::Lorem.paragraphs,
-        informations: Faker::Lorem.paragraphs,
-        notes: Faker::Lorem.paragraph(sentence_count: 2),
-        column_id: columntest.id,
-      )
-
+      5.times do  
+        battery = Battery.create(
+          batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          status: ["Active", "Inactive", "Intervention"].sample,
+          employeeId: employeeIdtest.id,
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          certificate_of_operation: Faker::Lorem.paragraphs,
+          informations: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          column_id: columntest.id,
+        )
+      end
+    data = JSON.load file
+    pp hash["addresses"]
     end
-    #data = JSON.load file
-    #pp hash["addresses"]
-    puts "-----------------------"
+  puts "-----------------------"
   end
+
+    
+
 end
