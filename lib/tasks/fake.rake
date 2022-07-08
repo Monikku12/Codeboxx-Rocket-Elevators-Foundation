@@ -1,6 +1,7 @@
 namespace :fake do
   require "json"
 
+  # Create data in mySQL database
   task data: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
@@ -38,7 +39,6 @@ namespace :fake do
         service_technical_authority_phone: Faker::PhoneNumber.phone_number,
         service_technical_manager_email: Faker::Internet.email,
         user: user,
-       
       )
 
         building = Building.create!(  
@@ -104,15 +104,11 @@ namespace :fake do
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           column: column,
         )
-        
       end
 
 
 
-      25.times do  
-       
-
-        
+      25.times do 
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -123,7 +119,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
         quote = Quote.create!(
@@ -146,8 +142,7 @@ namespace :fake do
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        )  
-
+        )
       end
     end
     #data = JSON.load file
@@ -155,10 +150,11 @@ namespace :fake do
     puts "-----------------------"
   end
 
+  # Create data in postgreSQL database
   task postgre: :environment do
     Lead.all.each do |l|
       contact = FactContact.create!(
-        creation_date: l.created_at,
+        creation_date: l.lead_created_at,
         company_name: l.company_name,
         email: l.email,
         project_name: l.project_name,
@@ -167,7 +163,7 @@ namespace :fake do
 
     Quote.all.each do |q|
       quote = FactQuote.create!(
-        creation_date: q.created_at,
+        creation_date: q.quote_created_at,
         company_name: q.compagny_name,
         quote_email: q.quote_email,
         nb_elevator: q.amount_of_elevator_needed,
@@ -209,4 +205,23 @@ namespace :fake do
         puts count_elevator
     end    
   end
+
+# How many contact requests per month
+  task monthly_contact: :environment do
+    monthly_contact = FactContact.all.group_by{ |q| q.creation_date.beginning_of_month }
+    puts monthly_contact
+  end
+
+# How many quotes per month
+task monthly_quotes: :environment do
+  monthly_quotes = FactQuote.all.group_by{ |q| q.creation_date.beginning_of_month }
+  puts monthly_quotes
+end
+
+
+
+  
+
+
+
 end
