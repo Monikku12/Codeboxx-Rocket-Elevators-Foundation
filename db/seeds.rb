@@ -163,13 +163,3 @@ Faker::Config.locale = 'en-US'
 
 # end
 
-
-# 10.times do
-#     createAddressfunction()
-#     createCustomerfunction()
-#     # createEleColBatfunction()
-#     createBuildingdetailsfunction()
-#     createBuildingfunction()
-# end
-
-
