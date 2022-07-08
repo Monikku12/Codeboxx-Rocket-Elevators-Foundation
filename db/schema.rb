@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_07_163700) do
+ActiveRecord::Schema.define(version: 2022_07_08_133449) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
+    t.bigint "employee_id"
     t.index ["building_id"], name: "index_batteries_on_building_id"
+    t.index ["employee_id"], name: "index_batteries_on_employee_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -92,7 +94,9 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "address_id"
+    t.bigint "quote_id"
     t.index ["address_id"], name: "index_customers_on_address_id"
+    t.index ["quote_id"], name: "index_customers_on_quote_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
@@ -135,6 +139,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.binary "file_attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lead_created_at"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -158,6 +163,9 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
     t.datetime "updated_at", null: false
     t.string "quote_email"
     t.string "compagny_name"
+    t.bigint "lead_id"
+    t.string "quote_created_at"
+    t.index ["lead_id"], name: "index_quotes_on_lead_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -171,12 +179,15 @@ ActiveRecord::Schema.define(version: 2022_07_07_163700) do
   end
 
   add_foreign_key "batteries", "buildings"
+  add_foreign_key "batteries", "employees"
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses"
   add_foreign_key "buildings", "customers"
   add_foreign_key "columns", "batteries"
   add_foreign_key "customers", "addresses"
+  add_foreign_key "customers", "quotes"
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "quotes", "leads"
 end
