@@ -74,8 +74,8 @@ namespace :fake do
           batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
           employeeId: ["aaa"].sample,
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           certificate_of_operation: Faker::Lorem.paragraphs,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
@@ -92,13 +92,13 @@ namespace :fake do
           battery: battery,
         )
       
-        elevator = Elevator.create(
+        elevator = Elevator.create!(
           serial_number: Faker::Number.number(digits: 8),
           model: ["Standard", "premium", "Excelium"].sample,
           elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           status: ["Active", "Inactive", "Intervention"].sample,
-          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           inspection_certificate: Faker::Lorem.paragraph,
           information: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
@@ -107,13 +107,9 @@ namespace :fake do
         
       end
 
-
-
       25.times do  
-       
-
-        
-        lead = Lead.create(
+               
+        lead = Lead.create!(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
           email: Faker::Internet.email,
@@ -123,7 +119,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-          
+          lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
         quote = Quote.create!(
@@ -145,7 +141,7 @@ namespace :fake do
           final_price: Faker::Number.number(digits: 7),
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
-          
+          quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )  
 
       end
@@ -153,5 +149,60 @@ namespace :fake do
     #data = JSON.load file
     #pp hash["addresses"]
     puts "-----------------------"
+  end
+
+  task postgre: :environment do
+    Lead.all.each do |l|
+      contact = FactContact.create!(
+        creation_date: l.created_at,
+        company_name: l.company_name,
+        email: l.email,
+        project_name: l.project_name,
+      )
+    end
+
+    Quote.all.each do |q|
+      quote = FactQuote.create!(
+        creation_date: q.created_at,
+        company_name: q.compagny_name,
+        quote_email: q.quote_email,
+        nb_elevator: q.amount_of_elevator_needed,
+      )
+    end
+
+    Elevator.all.each do |e|
+      elevators = FactElevator.create!(
+        serial_number: e.serial_number,
+        date_of_commissioning: e.commissioning_date,
+        building_id: e.column.battery.building,
+        customer_id: e.column.battery.building.customer_id,
+        building_city: e.column.battery.building.address.city,
+      )
+      puts FactElevator.first.inspect
+    end
+    
+    Customer.all.each do |c|
+      count_elevator = 0
+      c.buildings.all.each do |building|
+        puts c.buildings.count
+        building.batteries.all.each do |battery|
+        puts building.batteries.count
+          battery.columns.all.each do |column|
+          puts battery.columns.count
+            count_elevator += column.elevators.count
+            puts column.elevators.count
+          end
+        end
+      end
+      elevators = DimCustomer.create!(
+        creation_date: c.created_at,
+        company_name: c.company_name,
+        full_name: c.company_contact_full_name,
+        company_contact_email: c.company_contact_email,
+        nb_elevator: count_elevator,
+        customer_city: c.address.city,
+        )
+        puts count_elevator
+    end    
   end
 end
