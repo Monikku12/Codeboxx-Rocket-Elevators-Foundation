@@ -1,7 +1,7 @@
-namespace :dwh do
+namespace :fake do
   require "json"
 
-  task fake: :environment do
+  task data: :environment do
     puts "-----------------------"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
@@ -40,8 +40,8 @@ namespace :dwh do
         user: user,
       )
 
-      building = Building.create!(  
-        number_and_street: ['AAA'].sample, 
+        building = Building.create!(  
+        #number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
         building_administrator_email: Faker::Internet.email,
         building_administrator_phone: Faker::PhoneNumber.phone_number,
@@ -50,7 +50,7 @@ namespace :dwh do
         building_technical_contact_phone: Faker::PhoneNumber.phone_number,
         customer: customer,
         #building_detail: building_detail,
-        #battery: batterytest.id,
+        #battery: battery,
         address: _address,
       )
 
@@ -60,19 +60,87 @@ namespace :dwh do
         building: building,
       )
 
- 5.times     
-      battery = Battery.create(
-        batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
-        status: ["Active", "Inactive", "Intervention"].sample,
-        employeeId: employeeIdtest.id,
-        commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
-        certificate_of_operation: Faker::Lorem.paragraphs,
-        informations: Faker::Lorem.paragraphs,
-        notes: Faker::Lorem.paragraph(sentence_count: 2),
-        column_id: columntest.id,
-      )
+      # employee = Employee.create!(
+      #   first_name: Faker::Name.first_name,
+      #   last_name: Faker::Name.last_name,
+      #   title: Faker::Name.middle_name,
+      #   email: Faker::Internet.email,  
+      #   user: user,
+      # )
 
+      5.times do
+        battery = Battery.create!(
+          batterie_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          status: ["Active", "Inactive", "Intervention"].sample,
+          employeeId: ["aaa"].sample,
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          certificate_of_operation: Faker::Lorem.paragraphs,
+          informations: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          building: building,
+        )
+
+        column = Column.create!(
+          column_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          number_of_floors_served: Faker::Number.between(from:2, to:150),
+          status: ["Active", "Inactive", "Intervention"].sample,
+          information: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          battery: battery,
+        )
+      
+        elevator = Elevator.create(
+          serial_number: Faker::Number.number(digits: 8),
+          model: ["Standard", "premium", "Excelium"].sample,
+          elevator_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          status: ["Active", "Inactive", "Intervention"].sample,
+          commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+          inspection_certificate: Faker::Lorem.paragraph,
+          information: Faker::Lorem.paragraphs,
+          notes: Faker::Lorem.paragraph(sentence_count: 2),
+          column: column,
+        )
+        
+      end
+
+      25.times do  
+        quote = Quote.create!(
+          building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
+          number_of_apartments: Faker::Number.between(from:40, to:800),
+          number_of_floors: Faker::Number.between(from:5, to:100),
+          number_of_basement: Faker::Number.between(from:1, to:5),
+          number_of_businesses: Faker::Number.between(from:1, to:20),
+          number_of_parking_space: Faker::Number.between(from:1, to:350),
+          number_of_elevator_cages: Faker::Number.between(from:1, to:20),
+          number_of_seperate_tenant_companies: Faker::Number.between(from:1, to:20),
+          maximum_number_of_occupants_per_floor: Faker::Number.between(from:80, to:300),
+          hours_of_activity: Faker::Number.between(from:1, to:24),
+          quality_of_elevator_service: ["Standard", "premium", "Excelium"].sample,
+          unit_price_of_each_elevator: Faker::Number.number(digits: 4),
+          amount_of_elevator_needed: Faker::Number.between(from:4, to:12),
+          total_price_of_the_elevators: Faker::Number.number(digits: 6),
+          installation_fees: Faker::Number.number(digits: 3),
+          final_price: Faker::Number.number(digits: 7),
+          quote_email: Faker::Internet.email,
+          compagny_name: Faker::Company.industry,
+          quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+        )
+            
+        lead = Lead.create(
+          full_name: Faker::Name.name,
+          company_name: Faker::Company.industry,
+          email: Faker::Internet.email,
+          phone: Faker::PhoneNumber.phone_number,
+          project_name: Faker::Lorem.paragraphs,
+          project_description: Faker::Lorem.paragraphs,
+          department: Faker::Lorem.paragraph(sentence_count: 2),
+          message: Faker::Lorem.paragraph(sentence_count: 2),
+          file_attachment: ['test'].sample,
+          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2020-07-06'),
+        )
+      end
     end
     #data = JSON.load file
     #pp hash["addresses"]
