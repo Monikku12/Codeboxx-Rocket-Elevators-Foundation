@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :customers
+  has_one :customer
+  has_one :employee
     
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
