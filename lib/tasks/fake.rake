@@ -235,11 +235,4 @@ namespace :fake do
     question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
     puts 
   end
-
-
-
-
-
-
-
 end
