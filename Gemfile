@@ -94,18 +94,18 @@ end
 # Use postgresql as the database for the Warehouse
   gem 'pg'
 
-#  Second data base helper
+# Second data base helper
   gem 'secondbase'
 
 # Add fake data
   gem 'faker'
 
- gem 'faker'
+  gem 'faker'
 
- gem 'rubocop-faker'
+  gem 'rubocop-faker'
  
- # To get localization of our data see config/environments for setup
- gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
+# To get localization of our data see config/environments for setup
+  gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
 
-
-
+# To group data per month
+  gem "groupdate"
