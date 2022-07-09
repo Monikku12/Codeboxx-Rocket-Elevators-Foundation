@@ -107,5 +107,5 @@ end
  # To get localization of our data see config/environments for setup
  gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
 
-
-
+# To group per date
+gem "groupdate"
