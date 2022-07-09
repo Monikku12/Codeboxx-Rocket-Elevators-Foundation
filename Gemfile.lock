@@ -132,8 +132,6 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    groupdate (6.1.0)
-      activesupport (>= 5.2)
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
@@ -369,7 +367,6 @@ DEPENDENCIES
   ed25519 (>= 1.2, < 2.0)
   faker
   font-awesome-rails (~> 4.7, >= 4.7.0.2)
-  groupdate
   html-proofer (~> 3.19, >= 3.19.4)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.4)
