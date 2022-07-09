@@ -205,4 +205,17 @@ namespace :fake do
         puts count_elevator
     end    
   end
+
+
+  task question1: :environment do
+    question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
+    puts 
+  end
+
+
+
+
+
+
+
 end

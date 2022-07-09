@@ -21,13 +21,20 @@ class LeadsController < ApplicationController
 
   # POST /leads or /leads.json
   def create
+    puts lead_params
+    puts "=========================================="
     @lead = Lead.new(lead_params)
+    puts lead_params
+    puts "=========================================="
+    puts @lead
+    puts "=========================================="
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to lead_url(@lead), notice: "Lead was successfully created." }
+        format.html { redirect_to "#{root_path}", notice: "Lead was successfully created." }
         format.json { render :show, status: :created, location: @lead }
       else
+        puts"==================DID NOT SAVE==========================="
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
@@ -65,6 +72,6 @@ class LeadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :file_attachment, :date)
+      params.require(:lead).permit(:full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :file_attachment)
     end
 end

@@ -1044,45 +1044,49 @@
 								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
 							</div><!-- /Alert Mandatory -->
 
+							<%# <%= form_with(model: Lead, local: true) do |form| %>
+								
+							<%= form_for Lead.new do |form| %>
 
-							<form action="/assets/php/contact.php" method="post" enctype="multipart/form-data">
+	
+							<%# <form action="leads#create" method="post" enctype="multipart/form-data"> %>
 								<fieldset>
 									<input type="hidden" name="action" value="contact_send" />
 
 									<div class="row">
 											<div class="col-md-4">
-												<label for="contact:name">Full Name *</label>
-												<input required type="text" value="" class="form-control" name="contact[name][required]" id="contact:name">
+												<%= form.label :full_name %>
+												<input required type="text" value="" class="form-control" name="lead[full_name]" id="lead:full_name">
 											</div>
 											<div class="col-md-4">
-												<label for="contact:email">E-mail Address *</label>
-												<input required type="email" value="" class="form-control" name="contact[email][required]" id="contact:email">
+												<label for="lead:email">E-mail</label>
+												<input required type="email" value="" class="form-control" name="lead[email]" id="lead:email">
 											</div>
 											<div class="col-md-4">
-												<label for="contact:phone">Phone</label>
-												<input type="text" value="" class="form-control" name="contact[phone]" id="contact:phone">
+												<label for="lead:phone">Phone</label>
+												<input type="text" value="" class="form-control" name="lead[phone]" id="lead:phone">
 											</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<label for="contact:subject">Company Name *</label>  <!-- newly added item -->
-											<input required type="text" value="" class="form-control" name="contact[company_name][required]" id="contact:company_name">
+											<label for="lead:company_name">Company Name</label>  <!-- newly added item -->
+											<input required type="text" value="" class="form-control" name="lead[company_name]" id="lead:company_name">
 										</div>
 										<div class="col-md-6">
-											<label for="contact:subject">Project Name *</label>  <!-- newly added item -->
-											<input required type="text" value="" class="form-control" name="contact[project_name][required]" id="contact:project_name">
+											<label for="lead:project_name">Project Name</label>  <!-- newly added item -->
+											<input required type="text" value="" class="form-control" name="lead[project_name]" id="lead:project_name">
 										</div>
 									</div>						
 									<div class="row">
 											<div class="col-md-12">
-												<label for="contact:message">Project description *</label> <!-- newly added item -->
-												<textarea required maxlength="8000" rows="6" class="form-control" name="contact[project_description][required]" id="contact:project_description"></textarea>
+												<label for="lead:project_description">Project description</label> <!-- newly added item -->
+												<textarea required maxlength="8000" rows="6" class="form-control" name="lead[project_description]" id="lead:project_description"></textarea>
 											</div>		
 									</div>		
 									<div class="row">		
 											<div class="col-md-12">
-												<label for="contact_department">Department</label>
-												<select class="form-control pointer" name="contact[department]">
+												<label for="lead:department">Department</label>
+												<select class="form-control pointer" name="lead[department]">
 													<option value="">--- Select ---</option>
 													<option value="Marketing">Residential</option>
 													<option value="Webdesign">Commercial</option>
@@ -1092,19 +1096,19 @@
 									</div>
 									<div class="row">
 											<div class="col-md-12">
-												<label for="contact:message">Message *</label>
-												<textarea required maxlength="10000" rows="8" class="form-control" name="contact[message][required]" id="contact:message"></textarea>
+												<label for="lead:message">Message</label>
+												<textarea required maxlength="10000" rows="8" class="form-control" name="lead[message]" id="lead:message"></textarea>
 											</div>
 									</div>
 									
 									<div class="row">
 											<div class="col-md-12">
-												<label for="contact:attachment">File Attachment (ex. plans)</label>
+												<label for="lead:file_description">File Description (ex. plans)</label>
 
 												<!-- custom file upload -->
 												<div class="fancy-file-upload fancy-file-danger">
 													<i class="fa fa-upload"></i>
-													<input type="file" class="form-control" name="contact[attachment]" onchange="jQuery(this).next('input').val(this.value);" />
+													<input type="file" class="form-control" name="lead[file_attachment]" onchange="jQuery(this).next('input').val(this.value);" />
 													<input type="text" class="form-control" placeholder="no file selected" readonly="" />
 													<span class="button">Select a File</span>
 												
@@ -1122,11 +1126,13 @@
 
 								<div class="row">
 									<div class="col-md-12">
-										<%= link_to "Submit", lead_path, :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
+										
+										<%= form.submit "Submit", :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
 										<%# <button type="submit" class="btn btn-danger"><i class="fa fa-check"></i> SEND MESSAGE</button> %>
 									</div>
 								</div>
-							</form>
+							<% end %>
+							<%# </form> %>
 
 						</div>
 						<!-- /FORM -->
