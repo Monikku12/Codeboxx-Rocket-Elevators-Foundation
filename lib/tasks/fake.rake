@@ -229,4 +229,10 @@ namespace :fake do
     end
     puts "$$$$$Stat$$$$$"
   end
+
+
+  task question1: :environment do
+    question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
+    puts 
+  end
 end
