@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_09_005143) do
+ActiveRecord::Schema.define(version: 2022_07_09_031648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2022_07_09_005143) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.integer "monthly_contact"
-    t.integer "monthly_quotes"
+    t.text "monthly_contact"
+    t.text "monthly_quotes"
     t.integer "number_elevator"
   end
 
