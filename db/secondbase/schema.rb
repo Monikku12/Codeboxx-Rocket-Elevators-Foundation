@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_07_021648) do
+ActiveRecord::Schema.define(version: 2022_07_09_003319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2022_07_07_021648) do
     t.text "company_name"
     t.text "quote_email"
     t.integer "nb_elevator"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer "monthly_contact"
+    t.integer "monthly_quotes"
+    t.integer "number_elevator"
   end
 
 end
