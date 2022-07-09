@@ -32,4 +32,13 @@ Things you may want to cover:
 * Deployment instructions
   Go to www.mathieubernier.com to checkout all the functionalities of the website
 
+* GEM files used
+  Devise, Rail admin, Cancancan are the gems used to create the back admin panel that helps us manage the some of the website functions  
+  Secondbase is a database helper (https://github.com/customink/secondbase)
+  PG is a postgresql ruby interface (https://github.com/ged/ruby-pg)
+  Faker is our data generator for our tables (https://github.com/faker-ruby/faker)
+  Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
+  I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
+  Groupdate is a gem used to create the queries and tables to answer different questions (https://github.com/ankane/groupdate)
+
 
