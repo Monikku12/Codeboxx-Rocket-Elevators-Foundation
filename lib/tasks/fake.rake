@@ -1,8 +1,9 @@
 namespace :fake do
   require "json"
 
+  # Create data in mySQL database
   task data: :environment do
-    puts "-----------------------"
+    puts "-----mySQL-----"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
     data = JSON.parse(file)
     addresses = data["addresses"]
@@ -38,7 +39,6 @@ namespace :fake do
         service_technical_authority_phone: Faker::PhoneNumber.phone_number,
         service_technical_manager_email: Faker::Internet.email,
         user: user,
-       
       )
 
         building = Building.create!(  
@@ -104,15 +104,9 @@ namespace :fake do
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           column: column,
         )
-        
       end
 
-
-
-      25.times do  
-       
-
-        
+      25.times do 
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -123,7 +117,7 @@ namespace :fake do
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
-          lead_create_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
         quote = Quote.create!(
@@ -146,12 +140,93 @@ namespace :fake do
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        )  
-
+        )
       end
     end
     #data = JSON.load file
     #pp hash["addresses"]
-    puts "-----------------------"
+    puts "-----mySQL-----"
+
+    # Create data in postgreSQL database
+    puts "*****postgreSQL*****"
+    Lead.all.each do |l|
+      contact = FactContact.create!(
+        creation_date: l.lead_created_at,
+        company_name: l.company_name,
+        email: l.email,
+        project_name: l.project_name,
+      )
+    end
+
+    Quote.all.each do |q|
+      quote = FactQuote.create!(
+        creation_date: q.quote_created_at,
+        company_name: q.compagny_name,
+        quote_email: q.quote_email,
+        nb_elevator: q.amount_of_elevator_needed,
+      )
+    end
+
+    Elevator.all.each do |e|
+      elevators = FactElevator.create!(
+        serial_number: e.serial_number,
+        date_of_commissioning: e.commissioning_date,
+        building_id: e.column.battery.building,
+        customer_id: e.column.battery.building.customer_id,
+        building_city: e.column.battery.building.address.city,
+      )
+    end
+    
+    Customer.all.each do |c|
+      count_elevator = 0
+      c.buildings.all.each do |building|
+        building.batteries.all.each do |battery|
+          battery.columns.all.each do |column|
+            count_elevator += column.elevators.count
+          end
+        end
+      end
+      elevators = DimCustomer.create!(
+        creation_date: c.created_at,
+        company_name: c.company_name,
+        full_name: c.company_contact_full_name,
+        company_contact_email: c.company_contact_email,
+        nb_elevator: count_elevator,
+        customer_city: c.address.city,
+        )
+    end
+    puts "*****postgreSQL*****"
+
+    # How many contact requests per month
+    puts "%%%%%monthly_contact%%%%%"
+      monthly_contact = FactContact.group_by_month(:creation_date).count
+      puts monthly_contact
+    puts "%%%%%monthly_contact%%%%%"
+
+    # How many quotes per month
+    puts "&&&&&monthly_quotes&&&&&"
+    monthly_quotes = FactQuote.group_by_month(:creation_date).count
+      puts monthly_quotes
+    puts "&&&&&monthly_quotes&&&&&"
+
+    # # Create data in Stats table database
+    puts "$$$$$Stat$$$$$"
+    Customer.all.each do |c|
+      count_elevator = 0
+      c.buildings.all.each do |building|
+        building.batteries.all.each do |battery|
+          battery.columns.all.each do |column|
+            count_elevator += column.elevators.count
+          end
+        end
+      end
+    stat = Stat.create!(
+      monthly_contact: monthly_contact,
+      monthly_quotes: monthly_quotes,
+      number_elevator: count_elevator,
+    )
+    puts stat.inspect
+    end
+    puts "$$$$$Stat$$$$$"
   end
 end
