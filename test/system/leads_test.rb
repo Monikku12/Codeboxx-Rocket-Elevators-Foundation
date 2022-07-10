@@ -26,7 +26,7 @@ class LeadsTest < ApplicationSystemTestCase
     fill_in "Project name", with: @lead.project_name
     click_on "Create Lead"
 
-    assert_text "Lead was successfully created"
+    assert_text "Your message was successfully created"
     click_on "Back"
   end
 
@@ -44,9 +44,9 @@ class LeadsTest < ApplicationSystemTestCase
     fill_in "Phone", with: @lead.phone
     fill_in "Project description", with: @lead.project_description
     fill_in "Project name", with: @lead.project_name
-    click_on "Update Lead"
+    click_on "Update Message"
 
-    assert_text "Lead was successfully updated"
+    assert_text "Your message was successfully updated"
     click_on "Back"
   end
 

@@ -1079,11 +1079,11 @@
 
 									<div class="row">
 											<div class="col-md-4">
-												<%= form.label :full_name %>
+												<label for="contact:name">Full Name *</label>
 												<input required type="text" value="" class="form-control" name="lead[full_name]" id="lead:full_name">
 											</div>
 											<div class="col-md-4">
-												<label for="lead:email">E-mail</label>
+												<label for="lead:email">E-mail *</label>
 												<input required type="email" value="" class="form-control" name="lead[email]" id="lead:email">
 											</div>
 											<div class="col-md-4">
@@ -1093,17 +1093,17 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<label for="lead:company_name">Company Name</label>  <!-- newly added item -->
+											<label for="lead:company_name">Company Name *</label>  <!-- newly added item -->
 											<input required type="text" value="" class="form-control" name="lead[company_name]" id="lead:company_name">
 										</div>
 										<div class="col-md-6">
-											<label for="lead:project_name">Project Name</label>  <!-- newly added item -->
+											<label for="lead:project_name">Project Name *</label>  <!-- newly added item -->
 											<input required type="text" value="" class="form-control" name="lead[project_name]" id="lead:project_name">
 										</div>
 									</div>						
 									<div class="row">
 											<div class="col-md-12">
-												<label for="lead:project_description">Project description</label> <!-- newly added item -->
+												<label for="lead:project_description">Project description *</label> <!-- newly added item -->
 												<textarea required maxlength="8000" rows="6" class="form-control" name="lead[project_description]" id="lead:project_description"></textarea>
 											</div>		
 									</div>		
@@ -1112,15 +1112,18 @@
 												<label for="lead:department">Department</label>
 												<select class="form-control pointer" name="lead[department]">
 													<option value="">--- Select ---</option>
-													<option value="Marketing">Residential</option>
-													<option value="Webdesign">Commercial</option>
+													<option value="Commercial">Commercial</option>
+													<option value="Corporate">Corporate</option>
+													<option value="Hybrid">Hybrid</option>
+													<option value="Residential">Residential</option>
+													
 											<!-- comment out section		<option value="Architecture">Architecture</option>  -->
 												</select>
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-12">
-												<label for="lead:message">Message</label>
+												<label for="lead:message">Message *</label>
 												<textarea required maxlength="10000" rows="8" class="form-control" name="lead[message]" id="lead:message"></textarea>
 											</div>
 									</div>

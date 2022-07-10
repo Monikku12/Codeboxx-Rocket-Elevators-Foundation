@@ -31,7 +31,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to "#{root_path}", notice: "Lead was successfully created." }
+        format.html { redirect_to lead_url(@lead), notice: "Your message was successfully sent." }
         format.json { render :show, status: :created, location: @lead }
       else
         puts"==================DID NOT SAVE==========================="
@@ -45,7 +45,7 @@ class LeadsController < ApplicationController
   def update
     respond_to do |format|
       if @lead.update(lead_params)
-        format.html { redirect_to lead_url(@lead), notice: "Lead was successfully updated." }
+        format.html { redirect_to lead_url(@lead), notice: "Your message was successfully updated." }
         format.json { render :show, status: :ok, location: @lead }
       else
         format.html { render :edit, status: :unprocessable_entity }
