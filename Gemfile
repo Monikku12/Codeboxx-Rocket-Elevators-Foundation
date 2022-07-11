@@ -107,3 +107,6 @@ end
 
 # To group data per month
   gem "groupdate"
+
+# To protect our 
+  gem "figaro"
