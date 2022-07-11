@@ -33,7 +33,7 @@ class LeadsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update lead" do
+  test "should update Message" do
     patch lead_url(@lead), params: { lead: { company_name: @lead.company_name, date: @lead.date, department: @lead.department, email: @lead.email, file_attachment: @lead.file_attachment, full_name: @lead.full_name, message: @lead.message, phone: @lead.phone, project_description: @lead.project_description, project_name: @lead.project_name } }
     assert_redirected_to lead_url(@lead)
   end

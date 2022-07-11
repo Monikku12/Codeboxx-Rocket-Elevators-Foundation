@@ -1,4 +1,4 @@
-
+<%# Quote Form %>
 <%= form_with(model: quote, local: true) do |form| %>
   <% if quote.errors.any? %>
     <div id="error_explanation">
@@ -25,11 +25,9 @@
   </div>
   
 
-  <div class="field">
-    
+  <div class="field">    
     <%= form.label :number_of_apartments, class: ["residential", "formField"] %>
     <%= form.number_field :number_of_apartments, class: ["residential", "formField"] %>
-
   </div>
 
   <div class="field">
