@@ -100,8 +100,6 @@ end
 # Add fake data
   gem 'faker'
 
-  gem 'faker'
-
   gem 'rubocop-faker'
  
 # To get localization of our data see config/environments for setup
