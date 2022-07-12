@@ -132,6 +132,7 @@ GEM
       thor (>= 0.14.0, < 2)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
+    freshdesk-rest (0.1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     groupdate (6.1.0)
@@ -372,6 +373,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-rails (~> 4.7, >= 4.7.0.2)
+  freshdesk-rest (~> 0.1.4)
   groupdate
   html-proofer (~> 3.19, >= 3.19.4)
   jbuilder (~> 2.5)

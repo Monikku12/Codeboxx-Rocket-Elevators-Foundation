@@ -110,3 +110,6 @@ end
 
 # To protect our 
   gem "figaro"
+
+# To manage requests made through contact or quotes forms
+  gem 'freshdesk-rest', '~> 0.1.4'
