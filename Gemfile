@@ -107,3 +107,9 @@ end
 
 # To group data per month
   gem "groupdate"
+
+#For Slack wedhook API
+  gem "slack-notifier"
+
+#For securing API keys
+  gem 'figaro'

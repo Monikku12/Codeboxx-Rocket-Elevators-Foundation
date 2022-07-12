@@ -44,5 +44,5 @@ Things you may want to cover:
   Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
   I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
   Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
-
+  slack-notifier is the gem used to work with the slack API for slack notification
 
