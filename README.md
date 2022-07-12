@@ -27,6 +27,10 @@ Things you may want to cover:
   DBeaver community : https://dbeaver.io/download/
 
 * Database initialization
+  To initialize de data base:
+    1- be sure to have your mySQL and postgreSQL server started. 
+    2- to setup the database, run the command: rails db:setup
+    3- to fill your database with fake data and see all the information in the back office, run the command: rails fake:data
   From the website, a login panel will get you to the admin section. You will be able to manage your users, your employees and the quotes requested by your clients.
 
 * Deployment instructions
@@ -39,6 +43,10 @@ Things you may want to cover:
   Faker is our data generator for our tables (https://github.com/faker-ruby/faker)
   Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
   I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
-  Groupdate is a gem used to create the queries and tables to answer different questions (https://github.com/ankane/groupdate)
+  Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
+
+* To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
+  This gem is enabling us to use Twilio with our website as an API.
+  
 
 

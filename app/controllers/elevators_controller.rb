@@ -1,4 +1,8 @@
 class ElevatorsController < ApplicationController
+  include ActiveModel::Dirty
+  require 'rubygems'
+  require 'twilio-ruby'
+  before_save :do_something, if: :elevator_status_changed?
   before_action :set_elevator, only: %i[ show edit update destroy ]
 
   # GET /elevators or /elevators.json
@@ -36,10 +40,11 @@ class ElevatorsController < ApplicationController
 
   # PATCH/PUT /elevators/1 or /elevators/1.json
   def update
+    
     respond_to do |format|
       if @elevator.update(elevator_params)
-        format.html { redirect_to elevator_url(@elevator), notice: "Elevator was successfully updated." }
-        format.json { render :show, status: :ok, location: @elevator }
+          format.html { redirect_to elevator_url(@elevator), notice: "Elevator was successfully updated." }
+          format.json { render :show, status: :ok, location: @elevator }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @elevator.errors, status: :unprocessable_entity }
@@ -67,4 +72,21 @@ class ElevatorsController < ApplicationController
     def elevator_params
       params.require(:elevator).permit(:serial_number, :model, :type, :status, :commissioning_date, :last_inspection_date, :inspection_certificate, :information, :notes)
     end
-end
+
+
+    # To get the changes to send SMS
+    def do_something
+      if @elevator_status_changed = "intervention" then 
+          
+        account_sid = ENV['TWILIO_ACCOUNT_SID']
+        auth_token = ENV['TWILIO_AUTH_TOKEN']
+        @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+        message = @client.messages.create(
+            to: '+14182346159',
+            from: '++15203416848',
+            body: 'We have trouble ! Come over here !'      
+        )
+      end
+    end
+  end    

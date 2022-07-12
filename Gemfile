@@ -100,8 +100,6 @@ end
 # Add fake data
   gem 'faker'
 
-  gem 'faker'
-
   gem 'rubocop-faker'
  
 # To get localization of our data see config/environments for setup
@@ -109,3 +107,9 @@ end
 
 # To group data per month
   gem "groupdate"
+
+# Secret keeper !
+  gem 'figaro'  
+
+# To install the twilio gem
+  gem 'twilio-ruby'
