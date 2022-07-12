@@ -45,4 +45,8 @@ Things you may want to cover:
   I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
   Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
 
+* To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
+  This gem is enabling us to use Twilio with our website as an API.
+  
+
 

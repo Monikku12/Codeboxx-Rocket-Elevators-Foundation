@@ -25,7 +25,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-Rocket_Elevators_Information_System/*
 
 /Rocket_Elevators_Information_System/*
 /Rocket_Elevators_Information_System/assets/*

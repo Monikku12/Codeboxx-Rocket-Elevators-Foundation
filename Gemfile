@@ -108,8 +108,11 @@ end
 # To group data per month
   gem "groupdate"
 
-# To protect our 
-  gem "figaro"
+# Secret keeper !
+  gem 'figaro'
 
 # To manage requests made through contact or quotes forms
   gem 'freshdesk-rest', '~> 0.1.4'
+
+# To install the twilio gem
+  gem 'twilio-ruby'
