@@ -107,3 +107,9 @@ end
 
 # To group data per month
   gem "groupdate"
+
+# Secret keeper !
+  gem 'figaro'  
+
+# To install the twilio gem
+  gem 'twilio-ruby'
