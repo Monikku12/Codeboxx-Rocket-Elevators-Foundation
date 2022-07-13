@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+  require 'rest-client'
   before_action :set_lead, only: %i[ show edit update destroy ]
 
   # GET /leads or /leads.json
@@ -21,20 +22,13 @@ class LeadsController < ApplicationController
 
   # POST /leads or /leads.json
   def create
-    puts lead_params
-    puts "=========================================="
     @lead = Lead.new(lead_params)
-    puts lead_params
-    puts "=========================================="
-    puts @lead
-    puts "=========================================="
-
+    
     respond_to do |format|
       if @lead.save
         format.html { redirect_to lead_url(@lead), notice: "Your message was successfully sent." }
         format.json { render :show, status: :created, location: @lead }
       else
-        puts"==================DID NOT SAVE==========================="
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
@@ -74,4 +68,26 @@ class LeadsController < ApplicationController
     def lead_params
       params.require(:lead).permit(:full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :file_attachment)
     end
+    
+    # set to private à checker
+    # def Freshdesk  
+    #     Freshdesk::Rest.configure do |config|
+    #     config.api_key = ENV['FRESHDESK_API_KEY']
+    #     config.domain = ENV['FRESHDESK_DOMAIN']
+    #     puts ENV['FRESHDESK_DOMAIN']
+    #     end
+    #   end
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
