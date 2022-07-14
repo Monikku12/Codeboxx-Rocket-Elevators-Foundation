@@ -1,0 +1,2 @@
+class Googlemapsforemp < ApplicationRecord
+end

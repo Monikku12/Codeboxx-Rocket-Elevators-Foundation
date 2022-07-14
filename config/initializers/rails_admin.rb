@@ -6,7 +6,10 @@ config.authenticate_with do
   warden.authenticate! scope: :user
   end
 config.current_user_method(&:current_user)
-  
+
+config.parent_controller = "Admin::BaseController"
+
+
 
   ### Popular gems integration
 
@@ -32,7 +35,9 @@ config.current_user_method(&:current_user)
   # config.show_gravatar = true
 
   config.actions do
+    #root actions
     dashboard                     # mandatory
+    
     index                         # mandatory
     new
     export

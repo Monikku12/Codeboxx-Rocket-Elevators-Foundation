@@ -47,6 +47,9 @@ Things you may want to cover:
 
 * To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
   This gem is enabling us to use Twilio with our website as an API.
+
+* To install the gem for Googlemaps (https://rubygems.org/gems/gmaps4rails)
+  This gem is enabling us to geolocalize the customer on a map and display statistics on a location of their building (markers). These informations are available only to authenticated users of the website, through the admin section.
   
 
 
