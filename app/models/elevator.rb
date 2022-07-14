@@ -1,26 +1,26 @@
+require 'slack-notifier'
 class Elevator < ApplicationRecord
     belongs_to :column
-    # after_update :test
+    after_update :hello
+
+    def hello
+        puts '---------------'
+        puts 'hello'
+        puts '---------------'
+
+        notifier = Slack::Notifier.new ENV['slack_key']
+        notifier.ping "The Elevator #{id} with Serial Number #{serial_number} changed status from #{status_before_last_save} to #{status} "
+    end    
+
+    # def do_something
+    #     puts '------does it work ?------'
+    #     ENV['slack_key']
+    #     notifier = Slack::Notifier.new "https://hooks.slack.com/services/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L"
+    #     notifier.ping "Hello World"
+    # end  
+
     after_update :twilio
     
-    
-    # def test
-    #     puts "------------------"
-    #     puts "test"
-    #     puts "------------------"
-
-    #     account_sid = ENV['TWILIO_ACCOUNT_SID']
-    #     auth_token = ENV['TWILIO_AUTH_TOKEN']
-    #     @client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    #     message = @client.messages.create(
-    #         to: '+14182346159',
-    #         from: '++15203416848',
-    #         body: 'The status from elevator' {elevator_id} 'in building' {elevator_id.building} 'has changed from' {elevator_id} 'to' {new_elevator_id}     
-    #     )
-    # end
-
-
     def twilio
         if @elevator_status_changed = "Intervention" then 
             
@@ -36,3 +36,4 @@ class Elevator < ApplicationRecord
         end
     end
 end
+ 

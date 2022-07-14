@@ -108,9 +108,12 @@ end
 # To group data per month
   gem "groupdate"
 
-# Secret keeper !
-  gem 'figaro'
+#For Slack wedhook API
+  gem "slack-notifier"
 
+#For securing API keys
+  gem 'figaro'
+  
 # To manage requests made through contact or quotes forms
   gem 'rest-client', '~> 2.1'
   gem 'mime-types', '>= 1.16', '< 4.0'

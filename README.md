@@ -37,28 +37,29 @@ Things you may want to cover:
   Go to www.mathieubernier.com to checkout all the functionalities of the website
 
 * GEM files used
-  Devise, Rail admin, Cancancan are the gems used to create the back admin panel that helps us manage the some of the website functions  
-  Secondbase is a database helper (https://github.com/customink/secondbase)
-  PG is a postgresql ruby interface (https://github.com/ged/ruby-pg)
-  Faker is our data generator for our tables (https://github.com/faker-ruby/faker)
-  Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
-  I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
-  Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
+    - Devise, Rail admin, Cancancan are the gems used to create the back admin panel that helps us manage the some of the website functions  
+    - Secondbase is a database helper (https://github.com/customink/secondbase)
+    - PG is a postgresql ruby interface (https://github.com/ged/ruby-pg)
+    - Faker is our data generator for our tables (https://github.com/faker-ruby/faker)
+    - Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
+    - I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
+    - Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
+    - slack-notifier is the gem used to work with the slack API for slack notification
 
 * To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
   This gem is enabling us to use Twilio with our website as an API.
 
 * API
-  Twilio: To send sns alert.
+  Twilio: To send sns alerts
   Slack: Generate history events for technical staff
   FreshDesk: Generate ticket for support staff
-  Google Map: To visualize contracts' locations
+  Google Maps: To visualize contracts' locations
   Dropbox: 
 
 
 * Freshdesk
   To use Freshdesk first you need to open the dashboard on https://codeboxx3519.freshdesk.com/
-    Click on the login icon in the upper right
+    Click on the [login] icon in the upper right
     Your e-mail address: monique.kaigawa@gmail.com
     Password: Codeboxx1!
   Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment. 

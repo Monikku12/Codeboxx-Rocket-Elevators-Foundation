@@ -31,6 +31,8 @@ class ElevatorsController < ApplicationController
       if @elevator.save
         format.html { redirect_to elevator_url(@elevator), notice: "Elevator was successfully created." }
         format.json { render :show, status: :created, location: @elevator }
+       
+          
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @elevator.errors, status: :unprocessable_entity }
@@ -72,5 +74,4 @@ class ElevatorsController < ApplicationController
     def elevator_params
       params.require(:elevator).permit(:serial_number, :model, :type, :status, :commissioning_date, :last_inspection_date, :inspection_certificate, :information, :notes)
     end
-
-  end    
+end
