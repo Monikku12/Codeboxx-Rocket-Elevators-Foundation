@@ -1,2 +1,0 @@
-class Googlemapsforemp < ApplicationRecord
-end

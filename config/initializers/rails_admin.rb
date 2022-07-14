@@ -7,7 +7,7 @@ config.authenticate_with do
   end
 config.current_user_method(&:current_user)
 
-config.parent_controller = "Admin::BaseController"
+# config.parent_controller = "Admin::BaseController"
 
 
 
@@ -35,10 +35,13 @@ config.parent_controller = "Admin::BaseController"
   # config.show_gravatar = true
 
   config.actions do
+
+
     #root actions
-    dashboard                     # mandatory
-    
-    index                         # mandatory
+    dashboard                  # mandatory
+    # root :my_googlemaps, :maps    
+
+    index                      # mandatory
     new
     export
     bulk_delete

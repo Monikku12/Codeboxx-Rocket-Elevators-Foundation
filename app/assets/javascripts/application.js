@@ -25,7 +25,6 @@
 //= require jquery_ujs
 
 //= require index
-//= require index
 //= require quote
 //= require contact
 //= require_tree .

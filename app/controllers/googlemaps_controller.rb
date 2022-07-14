@@ -2,8 +2,29 @@ class GooglemapsController < ApplicationController
     before_action :authenticate_user!
     
     def index
-    end
+        #@test = Building.all
 
+
+        @test = []
+
+        Building.all.each do |b|
+            @test.push(
+                lat: b.address.latitude,
+                lng: b.address.longitude,
+                address: b.address.number_and_street,
+                customername: b.customer.company_contact_full_name,
+                numberofbattery: b.battery_ids.count,
+                techcontactname: b.building_technical_contact_full_name,
+                numberofcolumns: b.batteries.columns.count,
+                numberofelevators: b.batteries.columns.elevators.count
+            )
+        end
+        puts "-----"
+        puts @test
+        puts "-----"
+
+    end
+   
     def googlemapspage
     end
 

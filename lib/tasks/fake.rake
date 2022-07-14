@@ -25,6 +25,8 @@ namespace :fake do
         city: address["city"],
         postal_code: address["postalCode"],
         country: address["state"],
+        latitude: address["coordinates"]["lat"],
+        longitude: address["coordinates"]["lng"],
         notes: Faker::Lorem.paragraph(sentence_count: 2),
       )
 
