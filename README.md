@@ -27,7 +27,7 @@ Things you may want to cover:
   DBeaver community : https://dbeaver.io/download/
 
 * Database initialization
-  To initialize de data base:
+  To initialize the database:
     1- be sure to have your mySQL and postgreSQL server started. 
     2- to setup the database, run the command: rails db:setup
     3- to fill your database with fake data and see all the information in the back office, run the command: rails fake:data
@@ -47,6 +47,18 @@ Things you may want to cover:
 
 * To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
   This gem is enabling us to use Twilio with our website as an API.
-  
+
+* API
+  Twilio: To send sns alert.
+  Slack: Generate history events for technical staff
+  FreshDesk: Generate ticket for support staff
+  Google Map: To visualize contracts' locations
+  Dropbox: 
 
 
+* Freshdesk
+  To use Freshdesk first you need to open the dashboard on https://codeboxx3519.freshdesk.com/
+    Click on the login icon in the upper right
+    Your e-mail address: monique.kaigawa@gmail.com
+    Password: Codeboxx1!
+  Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment. 
