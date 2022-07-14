@@ -54,3 +54,11 @@ Things you may want to cover:
   FreshDesk: Generate ticket for support staff
   Google Map: To visualize contracts' locations
   Dropbox: 
+
+
+* Freshdesk
+  To use Freshdesk first you need to open the dashboard on https://codeboxx3519.freshdesk.com/
+    Click on the login icon in the upper right
+    Your e-mail address: monique.kaigawa@gmail.com
+    Password: Codeboxx1!
+  Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment. 

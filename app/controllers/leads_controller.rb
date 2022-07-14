@@ -1,5 +1,8 @@
 class LeadsController < ApplicationController
-  require 'rest-client'
+  require 'rubygems'
+  require 'rest_client'
+  require 'json'
+
   before_action :set_lead, only: %i[ show edit update destroy ]
 
   # GET /leads or /leads.json
@@ -26,6 +29,29 @@ class LeadsController < ApplicationController
     
     respond_to do |format|
       if @lead.save
+        contact_us = {
+          email: "#{@lead.email}", 
+          priority: 1, 
+          status: 2,
+          type: "Question",
+          subject: "#{@lead.full_name} from #{@lead.company_name}",
+          description: "The contact #{@lead.full_name} from company #{@lead.company_name} can be reached at email #{@lead.email} and at phone number #{@lead.phone}. 
+          #{@lead.department} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators. 
+          #{@lead.project_description}",
+        }.to_json
+    
+        contact_us_ticket = RestClient::Request.execute(
+          method: :post, 
+          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+          user: ENV["freshdesk_api_key"],
+          password: "x",
+          headers: {
+            content_type: "application/json"
+          },
+          payload: contact_us
+        )
+        puts contact_us_ticket
+           
         format.html { redirect_to lead_url(@lead), notice: "Your message was successfully sent." }
         format.json { render :show, status: :created, location: @lead }
       else
@@ -68,26 +94,4 @@ class LeadsController < ApplicationController
     def lead_params
       params.require(:lead).permit(:full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :file_attachment)
     end
-    
-    # set to private à checker
-    # def Freshdesk  
-    #     Freshdesk::Rest.configure do |config|
-    #     config.api_key = ENV['FRESHDESK_API_KEY']
-    #     config.domain = ENV['FRESHDESK_DOMAIN']
-    #     puts ENV['FRESHDESK_DOMAIN']
-    #     end
-    #   end
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
