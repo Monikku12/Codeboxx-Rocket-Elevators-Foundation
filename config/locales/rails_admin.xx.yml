@@ -1,0 +1,8 @@
+xx:
+  admin:
+    actions:
+      messages: 
+        title: "polly_messages"
+        menu: "polly_messages"
+        breadcrumb: 'dashboard'
+        

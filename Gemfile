@@ -113,3 +113,9 @@ end
 
 #For securing API keys
   gem 'figaro'
+
+#For amazon web service 
+gem 'aws-sdk-polly', '~> 1.46'
+gem 'aws-sdk-rails'
+gem 'aws-sdk'
+#for custom action in rails_admin
