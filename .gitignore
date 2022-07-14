@@ -25,16 +25,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-<<<<<<< HEAD
-Rocket_Elevators_Information_System/*
-=======
 
 /Rocket_Elevators_Information_System/*
 /Rocket_Elevators_Information_System/assets/*
 
 /Rocket_Elevators_Information_System/ *
->>>>>>> developement
-
 
 # Sensitive files
 /config/database.yml
