@@ -44,7 +44,9 @@ Things you may want to cover:
     - Rubocup-faker is a Faker extension that helps us autocorrect our commands (https://github.com/koic/rubocop-faker)
     - I18n gem helped us with the localization of our data (https://github.com/svenfuchs/rails-i18n)
     - Groupdate is a gem used to group datas by dates to answer different questions (https://github.com/ankane/groupdate)
-    - slack-notifier is the gem used to work with the slack API for slack notification
+    - slack-notifier is the gem used to work with the slack API for slack notification (https://github.com/slack-notifier/slack-notifier)
+    - rest-client is the gem chosen to help manage the Freshdesk API (https://github.com/rest-client/rest-client)
+    - DropboxApi as its named indicates it is the gem for Dropbox (https://github.com/Jesus/dropbox_api)
 
 * To install the gem for Twilio (https://rubygems.org/gems/twilio-ruby/versions/4.11.1)  
   This gem is enabling us to use Twilio with our website as an API.

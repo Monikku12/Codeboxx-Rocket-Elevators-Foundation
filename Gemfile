@@ -123,3 +123,6 @@ end
 
 # To install the twilio gem
   gem 'twilio-ruby'
+
+# For the dropbox API
+  gem 'dropbox_api', '~> 0.1.21'
