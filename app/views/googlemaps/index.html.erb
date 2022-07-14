@@ -36,7 +36,7 @@
 
 					google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-							infowindow.setContent("<%= b[:address] %>, <%= b[:customername] %>, <%= b[:numberofbattery] %>, <%= b[:techcontactname] %>, <%= b[:numberofcolumns] %>");
+							infowindow.setContent("<%= b[:address] %>, <%= b[:customername] %>, <%= b[:numberofbattery] %>, <%= b[:techcontactname] %>, <%= b[:numberofcolumns] %>, <%= b[:numberofelevators] %>");
 							infowindow.open(map, marker);
 						}
 					})(marker));

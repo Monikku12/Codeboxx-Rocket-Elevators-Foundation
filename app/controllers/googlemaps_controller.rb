@@ -6,7 +6,7 @@ class GooglemapsController < ApplicationController
 
 
         @test = []
-
+        @test2 = []
         Building.all.each do |b|
             @test.push(
                 lat: b.address.latitude,
@@ -16,13 +16,14 @@ class GooglemapsController < ApplicationController
                 numberofbattery: b.battery_ids.count,
                 techcontactname: b.building_technical_contact_full_name,
                 numberofcolumns: b.batteries.columns.count,
-                numberofelevators: b.batteries.columns.elevators.count
             )
+                        
         end
         puts "-----"
         puts @test
         puts "-----"
 
+    
     end
    
     def googlemapspage
