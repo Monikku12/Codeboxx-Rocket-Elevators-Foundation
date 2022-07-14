@@ -16,7 +16,7 @@ class Elevator < ApplicationRecord
     #     message = @client.messages.create(
     #         to: '+14182346159',
     #         from: '++15203416848',
-    #         body: 'We have trouble ! Come over here !'      
+    #         body: 'The status from elevator' {elevator_id} 'in building' {elevator_id.building} 'has changed from' {elevator_id} 'to' {new_elevator_id}     
     #     )
     # end
 
@@ -30,8 +30,8 @@ class Elevator < ApplicationRecord
   
           message = @client.messages.create(
               to: '+14182346159',
-              from: '++15203416848',
-              body: 'We have trouble ! Come over here !'      
+              from: '+15203416848',
+              body: "The status from elevator #{id} in building #{column.battery.building.id} has changed from #{status_before_last_save} to #{status}."
           )
         end
     end
