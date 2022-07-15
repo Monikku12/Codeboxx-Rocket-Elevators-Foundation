@@ -31,6 +31,8 @@ class ElevatorsController < ApplicationController
       if @elevator.save
         format.html { redirect_to elevator_url(@elevator), notice: "Elevator was successfully created." }
         format.json { render :show, status: :created, location: @elevator }
+       
+          
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @elevator.errors, status: :unprocessable_entity }
@@ -72,21 +74,4 @@ class ElevatorsController < ApplicationController
     def elevator_params
       params.require(:elevator).permit(:serial_number, :model, :type, :status, :commissioning_date, :last_inspection_date, :inspection_certificate, :information, :notes)
     end
-
-
-    # To get the changes to send SMS
-    def do_something
-      if @elevator_status_changed = "intervention" then 
-          
-        account_sid = ENV['TWILIO_ACCOUNT_SID']
-        auth_token = ENV['TWILIO_AUTH_TOKEN']
-        @client = Twilio::REST::Client.new(account_sid, auth_token)
-
-        message = @client.messages.create(
-            to: '+14182346159',
-            from: '++15203416848',
-            body: 'We have trouble ! Come over here !'      
-        )
-      end
-    end
-  end    
+end
