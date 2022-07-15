@@ -126,3 +126,9 @@ end
 
 # To install the Sendgrid gem
   gem 'sendgrid-ruby', '~> 5.0'
+
+# To install the googlemaps gem
+  # gem 'google_maps_service', '~> 0.4.2'
+
+# To install the Googlemaps gem for markers
+  gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'

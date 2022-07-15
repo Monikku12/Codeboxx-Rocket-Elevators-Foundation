@@ -10,4 +10,7 @@ class IndexController < ApplicationController
 
   def quote
   end
+
+  def googlemapspage
+  end
 end
