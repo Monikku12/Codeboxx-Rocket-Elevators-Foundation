@@ -123,3 +123,6 @@ end
 
 # To install the twilio gem
   gem 'twilio-ruby'
+
+# To install the Sendgrid gem
+  gem 'sendgrid-ruby', '~> 5.0'
