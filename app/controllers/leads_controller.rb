@@ -55,13 +55,14 @@ class LeadsController < ApplicationController
         # puts contact_us_ticket
         
         from = SendGrid::Email.new(email: 'gabmathmo123@gmail.com')
-                to = SendGrid::Email.new(email: 'mathieubernier27@gmail.com')
+                to = SendGrid::Email.new(email: "#{@lead.email}")
                 subject = "Greetings"
-                content = SendGrid::Content.new(type: 'text/html', value: "Greetings #{@lead.full_name} !
-                We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project #{@lead.project_name}.
-                A representative from our team will be in touch with you very soon. We look forward to demonstrating the value of our solutions and helping you choose the appropriate product given your requirements.
-                We will Talk soon
-                The Rocket Team"
+                content = SendGrid::Content.new(type: 'text/html', value: "Greetings #{@lead.full_name} ! </br>
+                <p>We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project #{@lead.project_name}.</p></br>
+                A representative from our team will be in touch with you very soon. We look forward to demonstrating the value of our solutions and helping you choose the appropriate product given your requirements.</br>
+                <p>We will Talk soon</p> </br>
+                The Rocket Team </br>
+                <p><img width=800 src=https://mathieubernier.com/assets/R2-3c6296bf2343b849b947f8ccfce0de61dd34ba7f9e2a23a53d0a743bc4604e3c.png></p>"
                 )
                 mail = SendGrid::Mail.new(from, subject, to, content)
                 puts "====================================="
@@ -73,7 +74,7 @@ class LeadsController < ApplicationController
                 puts "====================================="
                 puts response.body
                 puts "====================================="
-                # puts response.parsed_body
+                #puts response.parsed_body
                 puts "====================================="
                 puts response.headers
 
