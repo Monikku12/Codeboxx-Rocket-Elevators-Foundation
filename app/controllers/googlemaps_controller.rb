@@ -3,11 +3,27 @@ class GooglemapsController < ApplicationController
     
     def index
         #@test = Building.all
-
+        
 
         @test = []
-        @test2 = []
+        
         Building.all.each do |b|
+            nbofelevator = 0
+            b.batteries.all.each do |battery|
+                battery.columns.all.each do |column|
+                    column.elevators.count
+                    nbofelevator += column.elevators.count
+                end
+            end
+
+            nboffloors = 0
+            b.batteries.all.each do |battery|
+                battery.columns.all.each do |column|
+                    column.number_of_floors_served
+                nboffloors += column.number_of_floors_served
+                end  
+            end
+           
             @test.push(
                 lat: b.address.latitude,
                 lng: b.address.longitude,
@@ -16,6 +32,8 @@ class GooglemapsController < ApplicationController
                 numberofbattery: b.battery_ids.count,
                 techcontactname: b.building_technical_contact_full_name,
                 numberofcolumns: b.batteries.columns.count,
+                numberofelevators: nbofelevator,
+                numberoffloors: nboffloors,
             )
                         
         end

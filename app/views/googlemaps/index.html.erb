@@ -36,18 +36,16 @@
 
 					google.maps.event.addListener(marker, 'click', (function(marker) {
 						return function() {
-							infowindow.setContent("<%= b[:address] %>, <%= b[:customername] %>, <%= b[:numberofbattery] %>, <%= b[:techcontactname] %>, <%= b[:numberofcolumns] %>, <%= b[:numberofelevators] %>");
+							infowindow.setContent("Address: <%= b[:address] %>, <br>Client name: <%= b[:customername] %>, <br>Number of batteries: <%= b[:numberofbattery] %>, <br>Technical contact name: <%= b[:techcontactname] %>, <br>Number of columns: <%= b[:numberofcolumns] %>, <br>Number of elevators: <%= b[:numberofelevators] %>, <br>Number of floors: <%= b[:numberoffloors] %>");
+							
+							
+							
+							
 							infowindow.open(map, marker);
 						}
 					})(marker));
 
-					// marker.addListener("click", () => {
-					// 	infowindow.open({
-					// 		anchor: marker,
-					// 		map,
-					// 		shouldFocus: false,
-					// 	});
-					// });
+					
 				<% end %>
 			}
 		</script>
