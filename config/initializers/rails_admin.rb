@@ -6,7 +6,10 @@ config.authenticate_with do
   warden.authenticate! scope: :user
   end
 config.current_user_method(&:current_user)
-  
+
+# config.parent_controller = "Admin::BaseController"
+
+
 
   ### Popular gems integration
 
@@ -32,8 +35,13 @@ config.current_user_method(&:current_user)
   # config.show_gravatar = true
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+
+
+    #root actions
+    dashboard                  # mandatory
+    # root :my_googlemaps, :maps    
+
+    index                      # mandatory
     new
     export
     bulk_delete
