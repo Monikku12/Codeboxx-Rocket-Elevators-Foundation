@@ -40,17 +40,17 @@ class LeadsController < ApplicationController
           #{@lead.project_description}",
         }.to_json
     
-        contact_us_ticket = RestClient::Request.execute(
-          method: :post, 
-          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          user: ENV["freshdesk_api_key"],
-          password: "x",
-          headers: {
-            content_type: "application/json"
-          },
-          payload: contact_us
-        )
-        puts contact_us_ticket
+        # contact_us_ticket = RestClient::Request.execute(
+        #   method: :post, 
+        #   url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+        #   user: ENV["freshdesk_api_key"],
+        #   password: "x",
+        #   headers: {
+        #     content_type: "application/json"
+        #   },
+        #   payload: contact_us
+        # )
+        # puts contact_us_ticket
            
         format.html { redirect_to lead_url(@lead), notice: "Your message was successfully sent." }
         format.json { render :show, status: :created, location: @lead }
