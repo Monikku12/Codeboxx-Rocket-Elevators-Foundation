@@ -6,8 +6,9 @@ module RailsAdmin
       include RailsAdmin::MainHelper
       include RailsAdmin::ApplicationHelper
       require 'aws-sdk-polly'  
-      before_action :check_for_cancel
       before_action :_patate
+      before_action :check_for_cancel
+    
   
       def bulk_action
         get_model

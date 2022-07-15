@@ -2,10 +2,7 @@
 RailsAdmin.config do |config|
   config.actions do
     # root actions
-    # root :google_map :dashboard
-    dashboard do
-      i18n_key :messages
-    end                
+    dashboard                     # mandatory           
     # collection actions 
     index                         # mandatory
     new

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
-  get '/test', to: 'messages#index', as: "patate"
+  get '/test', to: 'messages#patate'
   get 'termsAndConditions', to: 'index#termsAndConditions', as: "termsAndConditions"
   get 'privacy', to: 'index#privacy', as: "privacy"
   get 'commercial', to: 'index#commercialpage', as: "commercial"

@@ -66,10 +66,6 @@ en:
       item: "Item"
       message: "Message"
     actions:
-      messages: 
-        title: "polly_messages"
-        menu: "polly_messages"
-        breadcrumb: 'messages'
       dashboard:
         title: "Site Administration"
         menu: "Dashboard"
