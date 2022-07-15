@@ -124,6 +124,9 @@ end
 # To install the twilio gem
   gem 'twilio-ruby'
 
+# To install the Sendgrid gem
+  gem 'sendgrid-ruby', '~> 5.0'
+
 # To install the googlemaps gem
   # gem 'google_maps_service', '~> 0.4.2'
 
