@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'residential', to: 'index#residentialpage', as: "residential"
   get 'index', to: 'index#index'
   post 'lead', to: 'leads#create', as: "leadcreate"
+  get 'dropbox/auth' => 'dropbox#auth'
+  get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'index#index'
 
