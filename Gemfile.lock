@@ -1592,8 +1592,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    secondbase (2.2.0)
-      rails (>= 4.0)
     selenium-webdriver (4.3.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -1703,7 +1701,6 @@ DEPENDENCIES
   rest-client (~> 2.1)
   rubocop-faker
   sass-rails (~> 5.0)
-  secondbase
   selenium-webdriver
   sendgrid-ruby (~> 5.0)
   slack-notifier
