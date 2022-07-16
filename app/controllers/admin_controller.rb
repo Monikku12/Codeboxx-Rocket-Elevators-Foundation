@@ -9,5 +9,4 @@ class AdminController < ActionController::Base
             # https://github.com/ruby-i18n/i18n/commit/9b14943d5e814723296cd501283d9343985fca4e
             I18n.with_locale(I18n.default_locale, &block)
         end
-    end
 end

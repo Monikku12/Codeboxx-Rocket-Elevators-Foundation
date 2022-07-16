@@ -6,6 +6,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory           
     # collection actions 
     index                         # mandatory
+  end
 
 config.authenticate_with do
   warden.authenticate! scope: :user
@@ -42,11 +43,11 @@ config.current_user_method(&:current_user)
   config.actions do
 
 
-    #root actions
-    dashboard                  # mandatory
-    # root :my_googlemaps, :maps    
+    # #root actions
+    # dashboard                  # mandatory
+    # # root :my_googlemaps, :maps    
 
-    index                      # mandatory
+    # index                      # mandatory
 
     new
     export
