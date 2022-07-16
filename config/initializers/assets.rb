@@ -14,4 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join('audio')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )+
 
-Rails.application.config.assets.precompile += %w( quote.js )
+Rails.application.config.assets.precompile += %w( quote.js maps.js )

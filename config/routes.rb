@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+ 
   resources :quotes
   resources :employee_lists
   resources :building_details
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :addresses
   resources :leads
   resources :messages
+  resources :googlemaps
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
   get 'residential', to: 'index#residentialpage', as: "residential"
   get 'index', to: 'index#index'
   post 'lead', to: 'leads#create', as: "leadcreate"
+  get 'googlemap', to: 'googlemaps#index', as: "maps"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'index#index'
 

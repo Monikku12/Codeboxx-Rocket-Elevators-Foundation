@@ -115,7 +115,27 @@ end
   gem 'figaro'
 
 #For amazon web service 
-gem 'aws-sdk-polly', '~> 1.46'
-gem 'aws-sdk-rails'
-gem 'aws-sdk'
+  gem 'aws-sdk-polly', '~> 1.46'
+  gem 'aws-sdk-rails'
+  gem 'aws-sdk'
 #for custom action in rails_admin
+  
+# To manage requests made through contact or quotes forms
+  gem 'rest-client', '~> 2.1'
+  gem 'mime-types', '>= 1.16', '< 4.0'
+  gem 'netrc', '~> 0.8'
+  gem 'http-accept', '>= 1.7.0', '< 2.0'
+  gem 'http-cookie', '>= 1.0.2', '< 2.0'  
+
+# To install the twilio gem
+  gem 'twilio-ruby'
+
+# To install the Sendgrid gem
+  gem 'sendgrid-ruby', '~> 5.0'
+
+# To install the googlemaps gem
+  # gem 'google_maps_service', '~> 0.4.2'
+
+# To install the Googlemaps gem for markers
+  gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
