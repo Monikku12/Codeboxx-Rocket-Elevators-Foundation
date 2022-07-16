@@ -113,6 +113,12 @@ end
 
 #For securing API keys
   gem 'figaro'
+
+#For amazon web service 
+  gem 'aws-sdk-polly', '~> 1.46'
+  gem 'aws-sdk-rails'
+  gem 'aws-sdk'
+#for custom action in rails_admin
   
 # To manage requests made through contact or quotes forms
   gem 'rest-client', '~> 2.1'
@@ -132,3 +138,4 @@ end
 
 # To install the Googlemaps gem for markers
   gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+

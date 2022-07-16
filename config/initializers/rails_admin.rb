@@ -1,7 +1,12 @@
+# config/initializers/rails_admin.rb
 RailsAdmin.config do |config|
 
+  config.actions do
+    # root actions
+    dashboard                     # mandatory           
+    # collection actions 
+    index                         # mandatory
 
- 
 config.authenticate_with do
   warden.authenticate! scope: :user
   end
@@ -42,16 +47,16 @@ config.current_user_method(&:current_user)
     # root :my_googlemaps, :maps    
 
     index                      # mandatory
+
     new
     export
+    history_index
     bulk_delete
+    # member actions
     show
     edit
     delete
+    history_show
     show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
 end
