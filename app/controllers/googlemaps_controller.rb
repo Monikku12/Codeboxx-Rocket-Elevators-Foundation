@@ -25,8 +25,8 @@ class GooglemapsController < ApplicationController
             end
            
             @test.push(
-                # lat: b.address.latitude,
-                # lng: b.address.longitude,
+                lat: b.addresses.latitude,
+                lng: b.addresses.longitude,
                 address: b.address.number_and_street,
                 customername: b.customer.company_contact_full_name,
                 numberofbattery: b.battery_ids.count,
