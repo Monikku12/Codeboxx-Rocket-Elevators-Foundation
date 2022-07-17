@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+ 
   resources :quotes
   resources :employee_lists
   resources :building_details
@@ -10,10 +11,13 @@ Rails.application.routes.draw do
   resources :customers
   resources :addresses
   resources :leads
+  resources :messages
+  resources :googlemaps
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
+  get '/test', to: 'messages#patate'
   get 'termsAndConditions', to: 'index#termsAndConditions', as: "termsAndConditions"
   get 'privacy', to: 'index#privacy', as: "privacy"
   get 'commercial', to: 'index#commercialpage', as: "commercial"
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   post 'lead', to: 'leads#create', as: "leadcreate"
   get 'dropbox/auth' => 'dropbox#auth'
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+  get 'googlemap', to: 'googlemaps#index', as: "maps"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'index#index'

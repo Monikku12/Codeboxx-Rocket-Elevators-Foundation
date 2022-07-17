@@ -1,2 +1,2 @@
-class Stat < SecondBase::Base
-end
+# class Stat < SecondBase::Base
+# end

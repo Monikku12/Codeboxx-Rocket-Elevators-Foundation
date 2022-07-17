@@ -95,7 +95,7 @@ end
   gem 'pg'
 
 # Second data base helper
-  gem 'secondbase'
+  # gem 'secondbase'
 
 # Add fake data
   gem 'faker'
@@ -113,6 +113,12 @@ end
 
 #For securing API keys
   gem 'figaro'
+
+#For amazon web service 
+  gem 'aws-sdk-polly', '~> 1.46'
+  gem 'aws-sdk-rails'
+  gem 'aws-sdk'
+#for custom action in rails_admin
   
 # To manage requests made through contact or quotes forms
   gem 'rest-client', '~> 2.1'
@@ -126,3 +132,12 @@ end
 
 # For the dropbox API
   gem 'dropbox_api', '~> 0.1.21'
+# To install the Sendgrid gem
+  gem 'sendgrid-ruby', '~> 5.0'
+
+# To install the googlemaps gem
+  # gem 'google_maps_service', '~> 0.4.2'
+
+# To install the Googlemaps gem for markers
+  gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+

@@ -1,12 +1,21 @@
+# config/initializers/rails_admin.rb
 RailsAdmin.config do |config|
 
+  config.actions do
+    # root actions
+    dashboard                     # mandatory           
+    # collection actions 
+    index                         # mandatory
+  end
 
- 
 config.authenticate_with do
   warden.authenticate! scope: :user
   end
 config.current_user_method(&:current_user)
-  
+
+# config.parent_controller = "Admin::BaseController"
+
+
 
   ### Popular gems integration
 
@@ -32,18 +41,23 @@ config.current_user_method(&:current_user)
   # config.show_gravatar = true
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+
+
+    # #root actions
+    # dashboard                  # mandatory
+    # # root :my_googlemaps, :maps    
+
+    # index                      # mandatory
+
     new
     export
+    history_index
     bulk_delete
+    # member actions
     show
     edit
     delete
+    history_show
     show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
 end

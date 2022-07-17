@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+
 //= require bootstrap
 //= require rails-ujs
 //= require jquery
@@ -23,8 +24,7 @@
 //= require jquery
 //= require jquery_ujs
 
-
-
+//= require index
 //= require quote
 //= require contact
 //= require_tree .

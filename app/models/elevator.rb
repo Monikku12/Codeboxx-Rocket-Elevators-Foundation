@@ -1,6 +1,7 @@
 require 'slack-notifier'
 class Elevator < ApplicationRecord
     belongs_to :column
+    after_update :twilio
     after_update :hello
 
     def hello
@@ -18,8 +19,6 @@ class Elevator < ApplicationRecord
     #     notifier = Slack::Notifier.new "https://hooks.slack.com/services/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L"
     #     notifier.ping "Hello World"
     # end  
-
-    after_update :twilio
     
     def twilio
         if @elevator_status_changed = "Intervention" then 

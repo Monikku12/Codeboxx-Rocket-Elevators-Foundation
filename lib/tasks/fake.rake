@@ -25,6 +25,8 @@ namespace :fake do
         city: address["city"],
         postal_code: address["postalCode"],
         country: address["state"],
+        latitude: address["coordinates"]["lat"],
+        longitude: address["coordinates"]["lng"],
         notes: Faker::Lorem.paragraph(sentence_count: 2),
       )
 
@@ -147,92 +149,92 @@ namespace :fake do
     #pp hash["addresses"]
     puts "-----mySQL-----"
 
-    # Create data in postgreSQL database
-    puts "*****postgreSQL*****"
-    Lead.all.each do |l|
-      contact = FactContact.create!(
-        creation_date: l.lead_created_at,
-        company_name: l.company_name,
-        email: l.email,
-        project_name: l.project_name,
-      )
-    end
+    # # Create data in postgreSQL database
+    # puts "*****postgreSQL*****"
+    # Lead.all.each do |l|
+    #   contact = FactContact.create!(
+    #     creation_date: l.lead_created_at,
+    #     company_name: l.company_name,
+    #     email: l.email,
+    #     project_name: l.project_name,
+    #   )
+    # end
 
-    Quote.all.each do |q|
-      quote = FactQuote.create!(
-        creation_date: q.quote_created_at,
-        company_name: q.compagny_name,
-        quote_email: q.quote_email,
-        nb_elevator: q.amount_of_elevator_needed,
-      )
-    end
+    # Quote.all.each do |q|
+    #   quote = FactQuote.create!(
+    #     creation_date: q.quote_created_at,
+    #     company_name: q.compagny_name,
+    #     quote_email: q.quote_email,
+    #     nb_elevator: q.amount_of_elevator_needed,
+    #   )
+    # end
 
-    Elevator.all.each do |e|
-      elevators = FactElevator.create!(
-        serial_number: e.serial_number,
-        date_of_commissioning: e.commissioning_date,
-        building_id: e.column.battery.building,
-        customer_id: e.column.battery.building.customer_id,
-        building_city: e.column.battery.building.address.city,
-      )
-    end
+    # Elevator.all.each do |e|
+    #   elevators = FactElevator.create!(
+    #     serial_number: e.serial_number,
+    #     date_of_commissioning: e.commissioning_date,
+    #     building_id: e.column.battery.building,
+    #     customer_id: e.column.battery.building.customer_id,
+    #     building_city: e.column.battery.building.address.city,
+    #   )
+    # end
     
-    Customer.all.each do |c|
-      count_elevator = 0
-      c.buildings.all.each do |building|
-        building.batteries.all.each do |battery|
-          battery.columns.all.each do |column|
-            count_elevator += column.elevators.count
-          end
-        end
-      end
-      elevators = DimCustomer.create!(
-        creation_date: c.created_at,
-        company_name: c.company_name,
-        full_name: c.company_contact_full_name,
-        company_contact_email: c.company_contact_email,
-        nb_elevator: count_elevator,
-        customer_city: c.address.city,
-        )
-    end
-    puts "*****postgreSQL*****"
+    # Customer.all.each do |c|
+    #   count_elevator = 0
+    #   c.buildings.all.each do |building|
+    #     building.batteries.all.each do |battery|
+    #       battery.columns.all.each do |column|
+    #         count_elevator += column.elevators.count
+    #       end
+    #     end
+    #   end
+    #   elevators = DimCustomer.create!(
+    #     creation_date: c.created_at,
+    #     company_name: c.company_name,
+    #     full_name: c.company_contact_full_name,
+    #     company_contact_email: c.company_contact_email,
+    #     nb_elevator: count_elevator,
+    #     customer_city: c.address.city,
+    #     )
+    # end
+    # puts "*****postgreSQL*****"
 
-    # How many contact requests per month
-    puts "%%%%%monthly_contact%%%%%"
-      monthly_contact = FactContact.group_by_month(:creation_date).count
-      puts monthly_contact
-    puts "%%%%%monthly_contact%%%%%"
+    # # How many contact requests per month
+    # puts "%%%%%monthly_contact%%%%%"
+    #   monthly_contact = FactContact.group_by_month(:creation_date).count
+    #   puts monthly_contact
+    # puts "%%%%%monthly_contact%%%%%"
 
-    # How many quotes per month
-    puts "&&&&&monthly_quotes&&&&&"
-    monthly_quotes = FactQuote.group_by_month(:creation_date).count
-      puts monthly_quotes
-    puts "&&&&&monthly_quotes&&&&&"
+    # # How many quotes per month
+    # puts "&&&&&monthly_quotes&&&&&"
+    # monthly_quotes = FactQuote.group_by_month(:creation_date).count
+    #   puts monthly_quotes
+    # puts "&&&&&monthly_quotes&&&&&"
 
-    # # Create data in Stats table database
-    puts "$$$$$Stat$$$$$"
-    Customer.all.each do |c|
-      count_elevator = 0
-      c.buildings.all.each do |building|
-        building.batteries.all.each do |battery|
-          battery.columns.all.each do |column|
-            count_elevator += column.elevators.count
-          end
-        end
-      end
-    stat = Stat.create!(
-      monthly_contact: monthly_contact,
-      monthly_quotes: monthly_quotes,
-      number_elevator: count_elevator,
-    )
-    puts stat.inspect
-    end
-    puts "$$$$$Stat$$$$$"
+    # # # Create data in Stats table database
+    # puts "$$$$$Stat$$$$$"
+    # Customer.all.each do |c|
+    #   count_elevator = 0
+    #   c.buildings.all.each do |building|
+    #     building.batteries.all.each do |battery|
+    #       battery.columns.all.each do |column|
+    #         count_elevator += column.elevators.count
+    #       end
+    #     end
+    #   end
+    # stat = Stat.create!(
+    #   monthly_contact: monthly_contact,
+    #   monthly_quotes: monthly_quotes,
+    #   number_elevator: count_elevator,
+    # )
+    # puts stat.inspect
+    # end
+    # puts "$$$$$Stat$$$$$"
   end
 
 
-  task question1: :environment do
-    question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
-    puts 
-  end
+  # task question1: :environment do
+  #   question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
+  #   puts 
+  # end
 end
