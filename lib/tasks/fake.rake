@@ -118,7 +118,7 @@ namespace :fake do
           project_description: Faker::Lorem.paragraphs,
           department: Faker::Lorem.paragraph(sentence_count: 2),
           message: Faker::Lorem.paragraph(sentence_count: 2),
-          file_attachment: ['test'].sample,
+          file_attachment: Faker::File.file_name(dir: 'mydocuments/project', name: 'new_project', ext: 'pdf'),
           lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
