@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_171013) do
     t.string "city"
     t.string "postal_code"
     t.string "country"
+    #New columns for GoogleMaps (latitude & longitude)
     t.string "latitude"
     t.string "longitude"
     t.text "notes"
