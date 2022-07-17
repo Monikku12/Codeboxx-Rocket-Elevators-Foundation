@@ -33,5 +33,6 @@ class DropboxController < ApplicationController
 
   def redirect_uri
     dropbox_auth_callback_url # => http://localhost:3000/dropbox/auth_callback
+    dropbox_auth_callback_url # => https://monichan.com/dropbox/auth_callback
   end
 end

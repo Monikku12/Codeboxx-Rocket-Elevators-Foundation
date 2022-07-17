@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  require 'json'
+  require 'dropbox'
   before_action :set_customer, only: %i[ show edit update destroy ]
 
   # GET /customers or /customers.json
@@ -25,6 +27,51 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+
+
+
+        uplaod = {
+          email: "#{@quote.quote_email}", 
+          priority: 1, 
+          status: 2,
+          type: "Feature Request",
+          subject: "From #{@quote.compagny_name}",
+          description: "A quote resquest for #{@quote.compagny_name} company from the email #{@quote.quote_email} has been made. 
+            The quote is for a #{@quote.building_type} building and request a total of #{@quote.amount_of_elevator_needed} elevators from Rocket Elevators.",
+        }.to_json
+    
+        upload_file = DropboxApi::Client.new(ENV["token"])
+          method: :post, 
+          url: 'https://content.dropboxapi.com/2/files/upload',
+          headers: {
+            Dropbox-API-Arg:{
+              "path": "/rocket_elevators/#{@customers.company_name}/#{@leads.file_attachment}",
+              "mode": "add",
+              "autorename": true,
+              "mute": false,
+              "strict_conflict": false
+            }
+            Dropbox-API-Path-Root:{
+              ".tag": "namespace_id",
+              "namespace_id": "2"
+            }
+            Dropbox-API-Select-User:dbmid:FDFSVF-DFSDF
+            Dropbox-API-Select-Admin:dbmid:FDFSVF-DFSDF
+          },
+          payload: upload
+        )
+        puts upload_file
+
+
+
+
+
+
+
+
+
+
+
         format.html { redirect_to customer_url(@customer), notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
