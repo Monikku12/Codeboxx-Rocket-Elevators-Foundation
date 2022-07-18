@@ -64,4 +64,7 @@ Things you may want to cover:
     Click on the [login] icon in the upper right
     Your e-mail address: monique.kaigawa@gmail.com
     Password: Codeboxx1!
-  Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment. 
+  Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment.
+
+* Dropbox
+  Couldn't be implemented due to admin bug, that rended any testing impossible. See dropbox branch for further information.
