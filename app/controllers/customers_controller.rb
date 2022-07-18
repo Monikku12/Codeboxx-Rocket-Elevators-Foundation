@@ -27,40 +27,73 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        if "#{@customers.company_contact_email}" = "#{@leads.email}" do |dropbox|
+          search_folder = DropboxApi::Client.new(ENV["token"])
+          method: :post, 
+          url: 'https://api.dropboxapi.com/2/files/search_v2',
+          headers: {
+            Content-Type:application/json
+          },
+          {
+            "query": "#{@customers.company_name}", 
+            "include_highlights": false
+          }
+          puts search_folder
 
 
 
-        # uplaod = {
-        #   email: "#{@quote.quote_email}", 
-        #   priority: 1, 
-        #   status: 2,
-        #   type: "Feature Request",
-        #   subject: "From #{@quote.compagny_name}",
-        #   description: "A quote resquest for #{@quote.compagny_name} company from the email #{@quote.quote_email} has been made. 
-        #     The quote is for a #{@quote.building_type} building and request a total of #{@quote.amount_of_elevator_needed} elevators from Rocket Elevators.",
-        # }.to_json
-    
-        # upload_file = DropboxApi::Client.new(ENV["token"])
-        #   method: :post, 
-        #   url: 'https://content.dropboxapi.com/2/files/upload',
-        #   headers: {
-        #     Dropbox-API-Arg:{
-        #       "path": "/rocket_elevators/#{@customers.company_name}/#{@leads.file_attachment}",
-        #       "mode": "add",
-        #       "autorename": true,
-        #       "mute": false,
-        #       "strict_conflict": false
-        #     }
-        #     Dropbox-API-Path-Root:{
-        #       ".tag": "namespace_id",
-        #       "namespace_id": "2"
-        #     }
-        #     Dropbox-API-Select-User:dbmid:FDFSVF-DFSDF
-        #     Dropbox-API-Select-Admin:dbmid:FDFSVF-DFSDF
-        #   },
-        #   payload: upload
-        # )
-        # puts upload_file
+
+        create_folder = DropboxApi::Client.new(ENV["token"])
+        method: :post, 
+        url: 'https://api.dropboxapi.com/2/files/create_folder_v2',
+        headers: {
+          Content-Type:application/json
+          Dropbox-API-Path-Root:{
+            ".tag": "namespace_id",
+            "namespace_id": "2"
+          }
+          Dropbox-API-Select-User:dbmid:FDFSVF-DFSDF
+          Dropbox-API-Select-Admin:dbmid:FDFSVF-DFSDF
+        },
+        {
+          "path": "/rocket_elevators/#{@customers.company_name}", 
+          "autorename": false
+        }
+        puts create_folder
+
+
+
+        # Once file created
+        upload_file = DropboxApi::Client.new(ENV["token"])
+          method: :post, 
+          url: 'https://content.dropboxapi.com/2/files/upload',
+          headers: {
+            Dropbox-API-Arg:{
+              "path": "create_folder/#{@leads.file_attachment}",
+              "mode": "add",
+              "autorename": true,
+              "mute": false,
+              "strict_conflict": false
+            }
+            Dropbox-API-Path-Root:{
+              ".tag": "namespace_id",
+              "namespace_id": "2"
+            }
+            Dropbox-API-Select-User:dbmid:FDFSVF-DFSDF
+            Dropbox-API-Select-Admin:dbmid:FDFSVF-DFSDF
+          },
+          puts upload_file
+
+
+
+
+          # on success of Upload file.
+          delete_file = 
+
+
+
+
+        puts delete_file
 
 
 
