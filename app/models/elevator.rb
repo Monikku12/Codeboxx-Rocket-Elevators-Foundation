@@ -28,7 +28,7 @@ class Elevator < ApplicationRecord
           @client = Twilio::REST::Client.new(account_sid, auth_token)
   
           message = @client.messages.create(
-              to: '+14182346159',
+              to: '+14186557999',
               from: '+15203416848',
               body: "The status from elevator #{id} in building #{column.battery.building.id} has changed from #{status_before_last_save} to #{status}."
           )

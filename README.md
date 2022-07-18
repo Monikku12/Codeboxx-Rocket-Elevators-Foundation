@@ -66,5 +66,9 @@ Things you may want to cover:
     Password: Codeboxx1!
   Once logged in, you will be automatically directed to the dashboard and see all the tickets in treatment.
 
+* Twilio
+  This API sends you a text notification when an elevator's status is set to "inactive". 
+  To set an elevator to "inactive", go to the Rocket Elevators website, click on LOGIN in the top menu (it's on the right side) and log yourself in. One logged in, click on the elevators link. This will brings you to a table with all the elevators listed. Choose an elevator and click on the little information icon "i" on the right. A pop-up window will appear. In the field status, write "inactive" and save the modification by clicking the button at the bottom. You should then receive the text message.
+
 * Dropbox
   Couldn't be implemented due to admin bug, that rended any testing impossible. See dropbox branch for further information.
