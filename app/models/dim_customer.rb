@@ -1,2 +1,2 @@
-# class DimCustomer < SecondBase::Base
-# end
+class DimCustomer < SecondBase::Base
+end

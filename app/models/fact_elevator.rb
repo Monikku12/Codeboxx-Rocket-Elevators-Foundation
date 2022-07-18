@@ -1,2 +1,2 @@
-# class FactElevator < SecondBase::Base
-# end
+class FactElevator < SecondBase::Base
+end

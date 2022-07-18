@@ -1,2 +1,2 @@
-# class FactContact < SecondBase::Base
-# end
+class FactContact < SecondBase::Base
+end

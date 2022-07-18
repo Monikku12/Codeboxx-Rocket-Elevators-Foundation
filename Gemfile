@@ -95,7 +95,7 @@ end
   gem 'pg'
 
 # Second data base helper
-  # gem 'secondbase'
+ gem 'secondbase'
 
 # Add fake data
   gem 'faker'

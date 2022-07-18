@@ -1,2 +1,2 @@
-# class FactQuote < SecondBase::Base
-# end
+class FactQuote < SecondBase::Base
+end
