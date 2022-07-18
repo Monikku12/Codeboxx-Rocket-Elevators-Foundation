@@ -21,7 +21,7 @@ class Elevator < ApplicationRecord
     # end  
     
     def twilio
-        if @elevator_status_changed = "Intervention" then 
+        if @elevator_status_changed == "Intervention" then 
             
           account_sid = ENV['TWILIO_ACCOUNT_SID']
           auth_token = ENV['TWILIO_AUTH_TOKEN']
