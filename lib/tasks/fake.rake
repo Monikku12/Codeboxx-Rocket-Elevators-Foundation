@@ -114,9 +114,9 @@ namespace :fake do
           company_name: Faker::Company.industry,
           email: Faker::Internet.email,
           phone: Faker::PhoneNumber.phone_number,
-          project_name: Faker::Lorem.paragraphs,
-          project_description: Faker::Lorem.paragraphs,
-          department: Faker::Lorem.paragraph(sentence_count: 2),
+          project_name: Faker::Lorem.sentence(word_count: 3),
+          project_description: Faker::Lorem.paragraph(sentence_count: 2),
+          department: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           message: Faker::Lorem.paragraph(sentence_count: 2),
           file_attachment: ['test'].sample,
           lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
@@ -149,7 +149,9 @@ namespace :fake do
     #pp hash["addresses"]
     puts "-----mySQL-----"
 
-    # Create data in postgreSQL database
+    ########################################
+    ## Create data in postgreSQL database ##
+    ########################################
     puts "*****postgreSQL*****"
     Lead.all.each do |l|
       contact = FactContact.create!(
@@ -197,18 +199,53 @@ namespace :fake do
         customer_city: c.address.city,
         )
     end
+
+    #################################
+    ## Fact_intervention Fake:data ##
+    #################################
+    Employee.all.each do |i|
+      puts "******************************"
+      employeeElevator = 0
+      i.batteries.all.each do |battery|
+        battery.columns.all.each do |column|
+          employeeElevator = column.elevators.find(elevator_id = column.id)
+          # employeeElevator = elevator.find(elevator_id = elevator.id)
+
+            puts employeeElevator.id
+
+      # battery = Battery.find(employee_id = i.id)
+      #   puts "battery is: #{battery.id}"
+      #   batteryID = Column.find(battery_id = Battery.id)
+      #     puts "battery is: #{batteryID.id}"
+      #     Elevator.find(column_id) do |el|
+      #       employeeElevator = el
+          # end
+        end
+      end
+    intervention = FactIntervention.create!(
+        EmployeeID: i.id,
+        BuildingID: employeeElevator.column.battery.building_id,
+        BatteryID: employeeElevator.column.battery_id,
+        ColumnID: employeeElevator.column_id,
+        ElevatorID: employeeElevator.id,
+        Intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+        Intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+        Result: ["Success", "Failure", "Incomplete"].sample,
+        Report: Faker::Lorem.paragraph(sentence_count: 2),
+        Status: ["Pending", "InProgress", "Interrupted", "Resumed", "Complete"].sample,
+      )
+    end
+
     puts "*****postgreSQL*****"
 
     # How many contact requests per month
     puts "%%%%%monthly_contact%%%%%"
       monthly_contact = FactContact.group_by_month(:creation_date).count
-      puts monthly_contact
     puts "%%%%%monthly_contact%%%%%"
 
     # How many quotes per month
     puts "&&&&&monthly_quotes&&&&&"
     monthly_quotes = FactQuote.group_by_month(:creation_date).count
-      puts monthly_quotes
     puts "&&&&&monthly_quotes&&&&&"
 
     # # Create data in Stats table database
@@ -227,14 +264,12 @@ namespace :fake do
       monthly_quotes: monthly_quotes,
       number_elevator: count_elevator,
     )
-    puts stat.inspect
     end
     puts "$$$$$Stat$$$$$"
   end
 
 
-  # task question1: :environment do
-  #   question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
-  #   puts 
-  # end
+  task question1: :environment do
+    question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
+  end
 end
