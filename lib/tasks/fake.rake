@@ -78,7 +78,7 @@ namespace :fake do
           employeeId: ["aaa"].sample,
           commissioning_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
           last_inspection_date: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          certificate_of_operation: Faker::Lorem.paragraphs,
+          certificate_of_operation: Faker::Lorem.sentence,
           informations: Faker::Lorem.paragraphs,
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           building: building,
@@ -207,7 +207,7 @@ namespace :fake do
           employeeElevator = column.elevators.find(column.id)
         end
       end
-    intervention = FactIntervention.create!(
+      intervention = FactIntervention.create!(
         EmployeeID: i.id,
         BuildingID: employeeElevator.column.battery.building_id,
         BatteryID: employeeElevator.column.battery_id,
@@ -225,7 +225,7 @@ namespace :fake do
 
     # How many contact requests per month
     puts "%%%%%monthly_contact%%%%%"
-      monthly_contact = FactContact.group_by_month(:creation_date).count
+    monthly_contact = FactContact.group_by_month(:creation_date).count
     puts "%%%%%monthly_contact%%%%%"
 
     # How many quotes per month
@@ -257,4 +257,5 @@ namespace :fake do
     task question1: :environment do
       question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
     end
+  end
 end
