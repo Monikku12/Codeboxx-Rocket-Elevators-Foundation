@@ -205,24 +205,28 @@ namespace :fake do
     #################################
     Employee.all.each do |i|
       puts "******************************"
+      puts i.inspect
+      puts "******************************"
+     
+     
       employeeElevator = 0
       i.batteries.all.each do |battery|
         battery.columns.all.each do |column|
-          employeeElevator = column.elevators.find(elevator_id = column.id)
-          # employeeElevator = elevator.find(elevator_id = elevator.id)
-
-            puts employeeElevator.id
-
+          employeeElevator = column.elevators.find(column.id)
+        end
+      end
+      #       puts "=================================="
+      #       puts employeeElevator.inspect
+      #       puts "=================================="
       # battery = Battery.find(employee_id = i.id)
       #   puts "battery is: #{battery.id}"
       #   batteryID = Column.find(battery_id = Battery.id)
       #     puts "battery is: #{batteryID.id}"
-      #     Elevator.find(column_id) do |el|
-      #       employeeElevator = el
-          # end
-        end
-      end
-    intervention = FactIntervention.create!(
+      #     # Elevator.find(column_id) do |el|
+      #     #   employeeElevator = el
+      # end
+      
+      intervention = FactIntervention.create!(
         EmployeeID: i.id,
         BuildingID: employeeElevator.column.battery.building_id,
         BatteryID: employeeElevator.column.battery_id,
@@ -238,38 +242,38 @@ namespace :fake do
 
     puts "*****postgreSQL*****"
 
-    # How many contact requests per month
-    puts "%%%%%monthly_contact%%%%%"
-      monthly_contact = FactContact.group_by_month(:creation_date).count
-    puts "%%%%%monthly_contact%%%%%"
+    # # How many contact requests per month
+    # puts "%%%%%monthly_contact%%%%%"
+    #   monthly_contact = FactContact.group_by_month(:creation_date).count
+    # puts "%%%%%monthly_contact%%%%%"
 
-    # How many quotes per month
-    puts "&&&&&monthly_quotes&&&&&"
-    monthly_quotes = FactQuote.group_by_month(:creation_date).count
-    puts "&&&&&monthly_quotes&&&&&"
+    # # How many quotes per month
+    # puts "&&&&&monthly_quotes&&&&&"
+    # monthly_quotes = FactQuote.group_by_month(:creation_date).count
+    # puts "&&&&&monthly_quotes&&&&&"
 
-    # # Create data in Stats table database
-    puts "$$$$$Stat$$$$$"
-    Customer.all.each do |c|
-      count_elevator = 0
-      c.buildings.all.each do |building|
-        building.batteries.all.each do |battery|
-          battery.columns.all.each do |column|
-            count_elevator += column.elevators.count
-          end
-        end
-      end
-    stat = Stat.create!(
-      monthly_contact: monthly_contact,
-      monthly_quotes: monthly_quotes,
-      number_elevator: count_elevator,
-    )
+    # # # Create data in Stats table database
+    # puts "$$$$$Stat$$$$$"
+    # Customer.all.each do |c|
+    #   count_elevator = 0
+    #   c.buildings.all.each do |building|
+    #     building.batteries.all.each do |battery|
+    #       battery.columns.all.each do |column|
+    #         count_elevator += column.elevators.count
+    #       end
+    #     end
+    #   end
+    #     stat = Stat.create!(
+    #       monthly_contact: monthly_contact,
+    #       monthly_quotes: monthly_quotes,
+    #       number_elevator: count_elevator,
+    #     )
+    # end
+    # puts "$$$$$Stat$$$$$"
+  
+
+
+    # task question1: :environment do
+    #   question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
     end
-    puts "$$$$$Stat$$$$$"
-  end
-
-
-  task question1: :environment do
-    question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
-  end
 end
