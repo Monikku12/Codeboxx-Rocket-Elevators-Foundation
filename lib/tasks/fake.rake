@@ -200,26 +200,11 @@ namespace :fake do
         )
     end
 
-    #################################
-    ## Fact_intervention Fake:data ##
-    #################################
     Employee.all.each do |i|
-      puts "******************************"
       employeeElevator = 0
       i.batteries.all.each do |battery|
         battery.columns.all.each do |column|
-          employeeElevator = column.elevators.find(elevator_id = column.id)
-          # employeeElevator = elevator.find(elevator_id = elevator.id)
-
-            puts employeeElevator.id
-
-      # battery = Battery.find(employee_id = i.id)
-      #   puts "battery is: #{battery.id}"
-      #   batteryID = Column.find(battery_id = Battery.id)
-      #     puts "battery is: #{batteryID.id}"
-      #     Elevator.find(column_id) do |el|
-      #       employeeElevator = el
-          # end
+          employeeElevator = column.elevators.find(column.id)
         end
       end
     intervention = FactIntervention.create!(
