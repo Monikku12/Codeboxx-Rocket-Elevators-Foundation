@@ -1,0 +1,77 @@
+<%= form_with(model: intervention, local: true) do |form| %>
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.number_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customerID %>
+    <%= form.number_field :customerID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buildingID %>
+    <%= form.number_field :buildingID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :batteryID %>
+    <%= form.number_field :batteryID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :columnID %>
+    <%= form.number_field :columnID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :elevatorID %>
+    <%= form.number_field :elevatorID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employeeID %>
+    <%= form.number_field :employeeID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intervention_started_at %>
+    <%= form.datetime_select :intervention_started_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intervention_ended_at %>
+    <%= form.datetime_select :intervention_ended_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_field :result %>
+  </div>
+
+  <div class="field">
+    <%= form.label :report %>
+    <%= form.text_area :report %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
