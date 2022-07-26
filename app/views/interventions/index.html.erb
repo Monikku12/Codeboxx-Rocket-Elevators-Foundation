@@ -6,12 +6,12 @@
   <thead>
     <tr>
       <th>Author</th>
-      <th>Customerid</th>
-      <th>Buildingid</th>
-      <th>Batteryid</th>
-      <th>Columnid</th>
-      <th>Elevatorid</th>
-      <th>Employeeid</th>
+      <th>Customer</th>
+      <th>Building</th>
+      <th>Battery</th>
+      <th>Column</th>
+      <th>Elevator</th>
+      <th>Employee</th>
       <th>Intervention started at</th>
       <th>Intervention ended at</th>
       <th>Result</th>
@@ -25,12 +25,12 @@
     <% @interventions.each do |intervention| %>
       <tr>
         <td><%= intervention.author %></td>
-        <td><%= intervention.customerID %></td>
-        <td><%= intervention.buildingID %></td>
-        <td><%= intervention.batteryID %></td>
-        <td><%= intervention.columnID %></td>
-        <td><%= intervention.elevatorID %></td>
-        <td><%= intervention.employeeID %></td>
+        <td><%= intervention.customer_id %></td>
+        <td><%= intervention.building_id %></td>
+        <td><%= intervention.battery_id %></td>
+        <td><%= intervention.column_id %></td>
+        <td><%= intervention.elevator_id %></td>
+        <td><%= intervention.employee_id %></td>
         <td><%= intervention.intervention_started_at %></td>
         <td><%= intervention.intervention_ended_at %></td>
         <td><%= intervention.result %></td>

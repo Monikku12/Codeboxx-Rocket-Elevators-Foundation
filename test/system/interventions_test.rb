@@ -15,12 +15,12 @@ class InterventionsTest < ApplicationSystemTestCase
     click_on "New Intervention"
 
     fill_in "Author", with: @intervention.author
-    fill_in "Batteryid", with: @intervention.batteryID
-    fill_in "Buildingid", with: @intervention.buildingID
-    fill_in "Columnid", with: @intervention.columnID
-    fill_in "Customerid", with: @intervention.customerID
-    fill_in "Elevatorid", with: @intervention.elevatorID
-    fill_in "Employeeid", with: @intervention.employeeID
+    fill_in "Battery", with: @intervention.battery_id
+    fill_in "Building", with: @intervention.building_id
+    fill_in "Column", with: @intervention.column_id
+    fill_in "Customer", with: @intervention.customer_id
+    fill_in "Elevator", with: @intervention.elevator_id
+    fill_in "Employee", with: @intervention.employee_id
     fill_in "Intervention ended at", with: @intervention.intervention_ended_at
     fill_in "Intervention started at", with: @intervention.intervention_started_at
     fill_in "Report", with: @intervention.report
@@ -37,12 +37,12 @@ class InterventionsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Author", with: @intervention.author
-    fill_in "Batteryid", with: @intervention.batteryID
-    fill_in "Buildingid", with: @intervention.buildingID
-    fill_in "Columnid", with: @intervention.columnID
-    fill_in "Customerid", with: @intervention.customerID
-    fill_in "Elevatorid", with: @intervention.elevatorID
-    fill_in "Employeeid", with: @intervention.employeeID
+    fill_in "Battery", with: @intervention.battery_id
+    fill_in "Building", with: @intervention.building_id
+    fill_in "Column", with: @intervention.column_id
+    fill_in "Customer", with: @intervention.customer_id
+    fill_in "Elevator", with: @intervention.elevator_id
+    fill_in "Employee", with: @intervention.employee_id
     fill_in "Intervention ended at", with: @intervention.intervention_ended_at
     fill_in "Intervention started at", with: @intervention.intervention_started_at
     fill_in "Report", with: @intervention.report

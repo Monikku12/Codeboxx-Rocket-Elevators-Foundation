@@ -17,7 +17,7 @@ class InterventionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create intervention" do
     assert_difference('Intervention.count') do
-      post interventions_url, params: { intervention: { author: @intervention.author, batteryID: @intervention.batteryID, buildingID: @intervention.buildingID, columnID: @intervention.columnID, customerID: @intervention.customerID, elevatorID: @intervention.elevatorID, employeeID: @intervention.employeeID, intervention_ended_at: @intervention.intervention_ended_at, intervention_started_at: @intervention.intervention_started_at, report: @intervention.report, result: @intervention.result, status: @intervention.status } }
+      post interventions_url, params: { intervention: { author: @intervention.author, battery_id: @intervention.battery_id, building_id: @intervention.building_id, column_id: @intervention.column_id, customer_id: @intervention.customer_id, elevator_id: @intervention.elevator_id, employee_id: @intervention.employee_id, intervention_ended_at: @intervention.intervention_ended_at, intervention_started_at: @intervention.intervention_started_at, report: @intervention.report, result: @intervention.result, status: @intervention.status } }
     end
 
     assert_redirected_to intervention_url(Intervention.last)
@@ -34,7 +34,7 @@ class InterventionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update intervention" do
-    patch intervention_url(@intervention), params: { intervention: { author: @intervention.author, batteryID: @intervention.batteryID, buildingID: @intervention.buildingID, columnID: @intervention.columnID, customerID: @intervention.customerID, elevatorID: @intervention.elevatorID, employeeID: @intervention.employeeID, intervention_ended_at: @intervention.intervention_ended_at, intervention_started_at: @intervention.intervention_started_at, report: @intervention.report, result: @intervention.result, status: @intervention.status } }
+    patch intervention_url(@intervention), params: { intervention: { author: @intervention.author, battery_id: @intervention.battery_id, building_id: @intervention.building_id, column_id: @intervention.column_id, customer_id: @intervention.customer_id, elevator_id: @intervention.elevator_id, employee_id: @intervention.employee_id, intervention_ended_at: @intervention.intervention_ended_at, intervention_started_at: @intervention.intervention_started_at, report: @intervention.report, result: @intervention.result, status: @intervention.status } }
     assert_redirected_to intervention_url(@intervention)
   end
 

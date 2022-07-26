@@ -2,28 +2,28 @@
 
 one:
   author: 1
-  customerID: 1
-  buildingID: 1
-  batteryID: 1
-  columnID: 1
-  elevatorID: 1
-  employeeID: 1
-  intervention_started_at: 2022-07-26 10:23:32
-  intervention_ended_at: 2022-07-26 10:23:32
+  customer_id: 1
+  building_id: 1
+  battery_id: 1
+  column_id: 1
+  elevator_id: 1
+  employee_id: 1
+  intervention_started_at: 2022-07-26 13:27:43
+  intervention_ended_at: 2022-07-26 13:27:43
   result: MyString
   report: MyText
   status: MyString
 
 two:
   author: 1
-  customerID: 1
-  buildingID: 1
-  batteryID: 1
-  columnID: 1
-  elevatorID: 1
-  employeeID: 1
-  intervention_started_at: 2022-07-26 10:23:32
-  intervention_ended_at: 2022-07-26 10:23:32
+  customer_id: 1
+  building_id: 1
+  battery_id: 1
+  column_id: 1
+  elevator_id: 1
+  employee_id: 1
+  intervention_started_at: 2022-07-26 13:27:43
+  intervention_ended_at: 2022-07-26 13:27:43
   result: MyString
   report: MyText
   status: MyString
