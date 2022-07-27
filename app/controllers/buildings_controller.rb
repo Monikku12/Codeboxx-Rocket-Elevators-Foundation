@@ -64,14 +64,14 @@ class BuildingsController < ApplicationController
       format.json { render :json => @buildings }
     end
   end
-  def buildings_search
+  def building_search
     if params[:customer].present? && params[:customer].strip != ""
       @buildings = Building.where("customer_id = ?", params[:customer])
     else
       @buildings = Building.all
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_building

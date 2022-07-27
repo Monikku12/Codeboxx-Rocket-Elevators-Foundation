@@ -28,5 +28,12 @@ Rails.application.routes.draw do
   post 'lead', to: 'leads#create', as: "leadcreate"
   get 'googlemap', to: 'googlemaps#index', as: "maps"
   get 'get_buildings_by_customer/:customer_id', to: 'buildings#get_buildings_by_customer'
-  get '/buildings_search' => 'buildings#buildings_search'
+  get 'get_batteries_by_building/:building_id', to: 'batteries#get_batteries_by_building'
+  get 'get_colums_by_battery/:battery_id', to: 'colums#get_colums_by_battery'
+  get 'get_elevators_by_colum/:colum_id', to: 'elevators#get_elevators_by_colum'
+  get '/building_search' => 'buildings#building_search'
+  get '/battery_search' => 'batteries#battery_search'
+  get '/column_search' => 'columns#column_search'
+  get '/elevator_search' => 'elevators#elevator_search'
+
 end

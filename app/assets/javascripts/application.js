@@ -24,6 +24,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require buildings
+//= require batteries
+//= require columns
+//= require elevators
 
 //= require index
 //= require quote
