@@ -57,6 +57,21 @@ class BuildingsController < ApplicationController
     end
   end
 
+  # For dynamic dropdown lists in intervention form
+  def get_buildings_by_customer
+    @buildings = Building.where("customer_id = ?", params[:customer_id])
+    respond_to do |format|
+      format.json { render :json => @buildings }
+    end
+  end
+  def buildings_search
+    if params[:customer].present? && params[:customer].strip != ""
+      @buildings = Building.where("customer_id = ?", params[:customer])
+    else
+      @buildings = Building.all
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_building

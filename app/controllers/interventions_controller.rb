@@ -13,8 +13,8 @@ class InterventionsController < ApplicationController
   # GET /interventions/new
   def new
     @employee_id = Employee.all.map{ |e| [ "#{e.id}" + " " + e.first_name + " " + e.last_name, e.id ] }
-    @customer_id = Customer.all.map{ |c| [ "#{c.id}" + " " + c.company_name] }
-    @building_id = Building.where(customer_id: @customer_id).map{ |bu| [ "#{bu.id}" + " " + bu.number_and_street] }
+    @customer_id = Customer.all.map{ |c| [ "#{c.id}" + " " + c.company_name, c.id] }
+    @building_id = Building.all.select{ |bu| bu.customer_id  == @customer_id }.map{ |bu| [ "#{bu.id}" + " " + bu.number_and_street, bu.id] }
     @intervention = Intervention.new
   end
 

@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   get 'index', to: 'index#index'
   post 'lead', to: 'leads#create', as: "leadcreate"
   get 'googlemap', to: 'googlemaps#index', as: "maps"
+  get 'get_buildings_by_customer/:customer_id', to: 'buildings#get_buildings_by_customer'
+  gwt '/buildings_search' => 'buildings#buildings_search'
 end
