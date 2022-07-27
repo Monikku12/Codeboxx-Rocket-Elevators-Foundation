@@ -23,6 +23,7 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require buildings
 
 //= require index
 //= require quote
