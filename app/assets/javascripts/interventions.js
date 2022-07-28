@@ -1,142 +1,156 @@
-// /**********************	INTERVENTIONS FORM **********************/
+/**********************	INTERVENTIONS FORM **********************/
 
 
 
-// // FIELDS VIEWS --------------------------------
-// $(function() { 
-//     $("#step_2").hide();
-//     $("#step_3").hide();
-//     $("#step_4").hide();
-//     $("#step_5").hide();
+// FIELDS VIEWS --------------------------------
+$(function() { 
+    $('.customerId').on('click', function () {
+		initialize();
+	});
+    $("#step_2").hide();
+    $("#step_3").hide();
+    $("#step_4").hide();
+    $("#step_5").hide();
     
-//     var numberOfApartments;
-//     var numberOfBasements;
-//     var numberOfCompanies;
-//     var numberOfCorporations;
-//     var numberOfElevators;
-//     var numberOfFloors;
-//     var maximumOccupancy;
-//     var businessHours;
-//     var numberTotalOfFloors;
-//     var totalNumberOfOccupants;
-//     var numberOfColumns;
-//     var numberOfElevatorsPerColumn;
-//     var totalNumberOfElevators;
-//     var averageOfApartmentsPerFloor;
+    var author;
+    var customerId;
+    var building_id;
+    var battery_id;
+    var column_id;
+    var elevator_id;
+    var employee_id;
+    var intervention_started_at;
+    var intervention_ended_at;
+    var result;
+    var report;
+    var status;
+    var created_at;
+    var updated_at;
 
-//     // Retrieve value from quote form ↓↓↓
-//     $("#number-of-apartments").keyup(function(){
-//         numberOfApartments = $("input[name=number-of-apartments]").val();
-//     });
-//     $("#number-of-floors").keyup(function(){
-//         numberOfFloors = $("input[name=number-of-floors]").val();
-//     });
-//     $("#number-of-basements").keyup(function(){
-//         numberOfBasements = $("input[name=number-of-basements]").val();
-//     });
-//     $("#number-of-companies").keyup(function(){
-//         numberOfCompanies = $("input[name=number-of-companies]").val();
-//     });
-//     $("#number-of-parking-spots").keyup(function(){
-//         numberOfParkingSpots = $("input[name=number-of-parking-spots]").val();
-//     });
-//     $("#number-of-elevators").keyup(function(){
-//         $("output[name=elevator-amount]").val($("input[name=number-of-elevators]").val());
-//     });
-//     $("#number-of-corporations").keyup(function(){
-//         numberOfCorporations = $("input[name=number-of-corporations]").val();
-//     });
-//     $("#maximum-occupancy").keyup(function(){
-//         maximumOccupancy = $("input[name=maximum-occupancy]").val();
-//     });
-//     $("#business-hours").keyup(function(){
-//         businessHours = $("input[name=business-hours]").val();
-//     });
-//     $("#number-of-basements").keyup(function(){
-//         numberTotalOfFloors = (+numberOfFloors + +numberOfBasements);
-//     });
-//     $("#number-of-floors").keyup(function(){
-//         numberTotalOfFloors = (+numberOfFloors + +numberOfBasements);
-//     });
-//        // Radio buttons Effects ↓↓↓
-//     $("input[name='building-type-radio']").click(function() {
-//         $("#step2").show();
-//         $("#arrows").show();
-//       if ($("#residential").is(":checked")) {
-//         $("#number-of-apartments").show();
-//         $("#number-of-floors").show();
-//         $("#number-of-basements").show();
-//         $("#number-of-companies").hide();
-//         $("#number-of-parking-spots").hide();
-//         $("#number-of-elevators").hide();
-//         $("#number-of-corporations").hide();
-//         $("#maximum-occupancy").hide();
-//         $("#business-hours").hide();
-//         $("input").keyup(function(){ // Residential Calculations
-//             averageOfApartmentsPerFloor = Math.ceil(numberOfApartments / numberOfFloors);
-//             numberOfElevators = Math.ceil(averageOfApartmentsPerFloor / 6);
-//             numberOfColumns = Math.ceil(numberOfFloors / 20);
-//             totalNumberOfElevators = Math.ceil(numberOfColumns * numberOfElevators);
-//             $("output[name=elevator-amount]").val(totalNumberOfElevators);
-//             $("#step3").show();
-//         });
-//     } if ($("#commercial").is(":checked")) {
-//         $("#number-of-companies").show();
-//         $("#number-of-floors").show();
-//         $("#number-of-basements").show();
-//         $("#number-of-parking-spots").show();
-//         $("#number-of-elevators").show();
-//         $("#number-of-apartments").hide();
-//         $("#number-of-corporations").hide();
-//         $("#maximum-occupancy").hide();
-//         $("#business-hours").hide();
-//         $("input").keyup(function(){
-//             $("#step3").show();
-//             });
-//     } if ($("#corporate").is(":checked")) {
-//         $("#number-of-corporations").show();
-//         $("#number-of-floors").show();
-//         $("#number-of-basements").show();
-//         $("#number-of-parking-spots").show();
-//         $("#maximum-occupancy").show();
-//         $("#number-of-apartments").hide();
-//         $("#number-of-companies").hide();
-//         $("#number-of-elevators").hide();
-//         $("#business-hours").hide();
-//         $("input").keyup(function(){ // Corporate Calculations
-//             totalNumberOfOccupants = numberTotalOfFloors * maximumOccupancy;
-//             numberOfElevators = Math.ceil(totalNumberOfOccupants / 1000);
-//             numberOfColumns = Math.ceil(numberTotalOfFloors / 20);
-//             numberOfElevatorsPerColumn = Math.ceil(numberOfElevators / numberOfColumns);
-//             totalNumberOfElevators = numberOfElevatorsPerColumn * numberOfColumns;
-//             $("output[name=elevator-amount]").val(totalNumberOfElevators);
-//             $("#step3").show();
-//             });
-//     } if ($("#hybrid").is(":checked")) {
-//         $("#number-of-companies").show();
-//         $("#number-of-floors").show();
-//         $("#number-of-basements").show();
-//         $("#number-of-parking-spots").show();
-//         $("#maximum-occupancy").show();
-//         $("#business-hours").show();
-//         $("#number-of-corporations").hide();
-//         $("#number-of-elevators").hide();
-//         $("#number-of-apartments").hide();
-//         $("input").keyup(function(){ // Hybrid Calculations
-//             totalNumberOfOccupants = numberTotalOfFloors * maximumOccupancy;
-//             numberOfElevators = Math.ceil(totalNumberOfOccupants / 1000);
-//             numberOfColumns = Math.ceil(numberTotalOfFloors / 20);
-//             numberOfElevatorsPerColumn = Math.ceil(numberOfElevators / numberOfColumns);
-//             totalNumberOfElevators = numberOfElevatorsPerColumn * numberOfColumns;
-//             $("output[name=elevator-amount]").val(totalNumberOfElevators);
-//             $("#step3").show();
-//         });
-//     }
-//     // $("totalNumberOfElevators.val()").change(function() {
-//     //     $("#step3").show();
-//     // });
-// });
-// })
+    // Retrieve value from quote form ↓↓↓
+    $('.customerId').on('click', function () {
+		initialize();
+	});
+
+	function initialize() {
+		$('.formField').val('');
+		$('.formFieldReadOnly').val(0)
+		$('.quality_of_service').prop('checked', false);
+	};
+
+
+
+    // $("#number-of-apartments").keyup(function(){
+    //     numberOfApartments = $("input[name=number-of-apartments]").val();
+    // });
+    // $("#number-of-floors").keyup(function(){
+    //     numberOfFloors = $("input[name=number-of-floors]").val();
+    // });
+    // $("#number-of-basements").keyup(function(){
+    //     numberOfBasements = $("input[name=number-of-basements]").val();
+    // });
+    // $("#number-of-companies").keyup(function(){
+    //     numberOfCompanies = $("input[name=number-of-companies]").val();
+    // });
+    // $("#number-of-parking-spots").keyup(function(){
+    //     numberOfParkingSpots = $("input[name=number-of-parking-spots]").val();
+    // });
+    // $("#number-of-elevators").keyup(function(){
+    //     $("output[name=elevator-amount]").val($("input[name=number-of-elevators]").val());
+    // });
+    // $("#number-of-corporations").keyup(function(){
+    //     numberOfCorporations = $("input[name=number-of-corporations]").val();
+    // });
+    // $("#maximum-occupancy").keyup(function(){
+    //     maximumOccupancy = $("input[name=maximum-occupancy]").val();
+    // });
+    // $("#business-hours").keyup(function(){
+    //     businessHours = $("input[name=business-hours]").val();
+    // });
+    // $("#number-of-basements").keyup(function(){
+    //     numberTotalOfFloors = (+numberOfFloors + +numberOfBasements);
+    // });
+    // $("#number-of-floors").keyup(function(){
+    //     numberTotalOfFloors = (+numberOfFloors + +numberOfBasements);
+    // });
+    //    Dropdown List Selection Effects ↓↓↓
+    $("input[#step_1]").click(function() {
+        $("#step_2").show();
+    //   if ($("#residential").is(":checked")) {
+    //     $("#number-of-apartments").show();
+    //     $("#number-of-floors").show();
+    //     $("#number-of-basements").show();
+    //     $("#number-of-companies").hide();
+    //     $("#number-of-parking-spots").hide();
+    //     $("#number-of-elevators").hide();
+    //     $("#number-of-corporations").hide();
+    //     $("#maximum-occupancy").hide();
+    //     $("#business-hours").hide();
+    //     $("input").keyup(function(){ // Residential Calculations
+    //         averageOfApartmentsPerFloor = Math.ceil(numberOfApartments / numberOfFloors);
+    //         numberOfElevators = Math.ceil(averageOfApartmentsPerFloor / 6);
+    //         numberOfColumns = Math.ceil(numberOfFloors / 20);
+    //         totalNumberOfElevators = Math.ceil(numberOfColumns * numberOfElevators);
+    //         $("output[name=elevator-amount]").val(totalNumberOfElevators);
+    //         $("#step3").show();
+    //     });
+    // } if ($("#commercial").is(":checked")) {
+    //     $("#number-of-companies").show();
+    //     $("#number-of-floors").show();
+    //     $("#number-of-basements").show();
+    //     $("#number-of-parking-spots").show();
+    //     $("#number-of-elevators").show();
+    //     $("#number-of-apartments").hide();
+    //     $("#number-of-corporations").hide();
+    //     $("#maximum-occupancy").hide();
+    //     $("#business-hours").hide();
+    //     $("input").keyup(function(){
+    //         $("#step3").show();
+    //         });
+    // } if ($("#corporate").is(":checked")) {
+    //     $("#number-of-corporations").show();
+    //     $("#number-of-floors").show();
+    //     $("#number-of-basements").show();
+    //     $("#number-of-parking-spots").show();
+    //     $("#maximum-occupancy").show();
+    //     $("#number-of-apartments").hide();
+    //     $("#number-of-companies").hide();
+    //     $("#number-of-elevators").hide();
+    //     $("#business-hours").hide();
+    //     $("input").keyup(function(){ // Corporate Calculations
+    //         totalNumberOfOccupants = numberTotalOfFloors * maximumOccupancy;
+    //         numberOfElevators = Math.ceil(totalNumberOfOccupants / 1000);
+    //         numberOfColumns = Math.ceil(numberTotalOfFloors / 20);
+    //         numberOfElevatorsPerColumn = Math.ceil(numberOfElevators / numberOfColumns);
+    //         totalNumberOfElevators = numberOfElevatorsPerColumn * numberOfColumns;
+    //         $("output[name=elevator-amount]").val(totalNumberOfElevators);
+    //         $("#step3").show();
+    //         });
+    // } if ($("#hybrid").is(":checked")) {
+    //     $("#number-of-companies").show();
+    //     $("#number-of-floors").show();
+    //     $("#number-of-basements").show();
+    //     $("#number-of-parking-spots").show();
+    //     $("#maximum-occupancy").show();
+    //     $("#business-hours").show();
+    //     $("#number-of-corporations").hide();
+    //     $("#number-of-elevators").hide();
+    //     $("#number-of-apartments").hide();
+    //     $("input").keyup(function(){ // Hybrid Calculations
+    //         totalNumberOfOccupants = numberTotalOfFloors * maximumOccupancy;
+    //         numberOfElevators = Math.ceil(totalNumberOfOccupants / 1000);
+    //         numberOfColumns = Math.ceil(numberTotalOfFloors / 20);
+    //         numberOfElevatorsPerColumn = Math.ceil(numberOfElevators / numberOfColumns);
+    //         totalNumberOfElevators = numberOfElevatorsPerColumn * numberOfColumns;
+    //         $("output[name=elevator-amount]").val(totalNumberOfElevators);
+    //         $("#step3").show();
+    //     });
+    // }
+    // // $("totalNumberOfElevators.val()").change(function() {
+    // //     $("#step3").show();
+    // // });
+});
+})
 
 // // PRODUCTS LINE FUNCTIONS
 // $("input").keyup(function(){
