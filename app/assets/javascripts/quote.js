@@ -27,8 +27,7 @@ $(function() {
 	var numberOfElevatorShaft = 0;
 	var numberOfColumns = 0;
 	var finalPrice = 0;
-// 	console.log(numberOfApartments , " = nombre dapp")
-// 	console.log("hello world")
+
 
 
 	$('.buildingType').on('click', function () {

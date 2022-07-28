@@ -21,7 +21,6 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/edit
   def edit
-
   end
 
   # POST /quotes or /quotes.json

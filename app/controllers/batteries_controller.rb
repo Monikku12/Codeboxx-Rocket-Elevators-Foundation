@@ -57,6 +57,21 @@ class BatteriesController < ApplicationController
     end
   end
 
+ # For dynamic dropdown lists in intervention form
+ def get_batteries_by_building
+    @batteries = Battery.where("building_id = ?", params[:building_id])
+    respond_to do |format|
+      format.json { render :json => @batteries }
+    end
+  end
+  def battery_search
+    if params[:building].present? && params[:building].strip != ""
+      @batteries = Battery.where("building_id = ?", params[:building])
+    else
+      @batteries = Battery.all
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_battery

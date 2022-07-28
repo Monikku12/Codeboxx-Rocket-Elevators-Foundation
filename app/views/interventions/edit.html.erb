@@ -1,0 +1,11 @@
+<%= render "partials/header" %>
+
+<%# Editing Interventions %>
+<h1>Editing Intervention</h1>
+
+<%= render 'form', intervention: @intervention %>
+
+<%= link_to 'Show', @intervention %> |
+<%= link_to 'Home', root_path, 'data-turbolinks': false %>
+
+<%= render "partials/footer" %>

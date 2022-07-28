@@ -2,7 +2,7 @@ class ElevatorsController < ApplicationController
   include ActiveModel::Dirty
   require 'rubygems'
   require 'twilio-ruby'
-  before_save :do_something, if: :elevator_status_changed?
+  # before_save :do_something, if: :elevator_status_changed?
   before_action :set_elevator, only: %i[ show edit update destroy ]
 
   # GET /elevators or /elevators.json
@@ -63,6 +63,24 @@ class ElevatorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    # For dynamic dropdown lists in intervention form
+    def get_elevators_by_column
+      @elevators = Elevator.where("column_id = ?", params[:column_id])
+      puts "*********************************"
+      puts @elevators
+      puts "*********************************"
+      respond_to do |format|
+        format.json { render :json => @elevators }
+      end
+    end
+    def elevator_search
+      if params[:column].present? && params[:column].strip != ""
+        @elevators = Elevator.where("column_id = ?", params[:column])
+      else
+        @elevators = Elevator.all
+      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
