@@ -1,6 +1,14 @@
 // For populating the interventions dropdown lists
 
 $(function() {
+    $("#step_2").hide();
+    $("#step_3").hide();
+    $("#step_4").hide();
+    $("#step_5").hide();
+    // $("#author").data(currentUser);
+    // console.log("**********************");
+    // console.log(current_user.id)
+    // console.log("**********************");
 
     // Buildings dropdown list
     if ($("select#customer").val() == "") {
@@ -34,6 +42,7 @@ $(function() {
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.building_administrator_full_name + "</option>";
                         $(row).appendTo("select#building");
+                        $("#step_2").show();
                     });
                 }
             });
@@ -72,6 +81,7 @@ $(function() {
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.batterie_type + "</option>";
                         $(row).appendTo("select#battery");
+                        $("#step_3").show();
                     });
                 }
             });
@@ -110,6 +120,7 @@ $(function() {
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.column_type + "</option>";
                         $(row).appendTo("select#column");
+                        $("#step_4").show();
                     });
                 }
             });
@@ -129,9 +140,6 @@ $(function() {
             var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
             $(row).appendTo("select#elevator");
         } else {
-            console.log ("******************************");
-            console.log (id_value_string);
-            console.log ("******************************");
             // Send the request and update elevators dropdown
             $.ajax({
                 dataType: "json",
@@ -151,6 +159,7 @@ $(function() {
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.serial_number + "</option>";
                         $(row).appendTo("select#elevator");
+                        $("#step_5").show();
                     });
                 }
             });

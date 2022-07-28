@@ -2,7 +2,7 @@ class ElevatorsController < ApplicationController
   include ActiveModel::Dirty
   require 'rubygems'
   require 'twilio-ruby'
-  before_save :do_something, if: :elevator_status_changed?
+  # before_save :do_something, if: :elevator_status_changed?
   before_action :set_elevator, only: %i[ show edit update destroy ]
 
   # GET /elevators or /elevators.json

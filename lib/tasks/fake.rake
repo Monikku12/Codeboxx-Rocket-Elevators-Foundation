@@ -106,9 +106,24 @@ namespace :fake do
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           column: column,
         )
-      end
 
-      25.times do 
+        interventions = Intervention.create!(
+          author: user,
+          customer_id: customer,
+          building_id: building,
+          battery_id: battery,
+          column_id: column,
+          elevator_id: elevator,
+          employee_id: employee,
+          intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          result: ["Incompleted", "Completed"].sample,
+          report: Faker::Lorem.paragraph(sentence_count: 2),
+          status: ["Pending", "Completed", "InProgress"].sample,
+          created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+        )
+ 
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -121,7 +136,7 @@ namespace :fake do
           file_attachment: ['test'].sample,
           lead_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
-
+        
         quote = Quote.create!(
           building_type: ["Residential", "Corportate", "Commercial", "Hybrid"].sample,
           number_of_apartments: Faker::Number.between(from:40, to:800),
@@ -143,24 +158,8 @@ namespace :fake do
           compagny_name: Faker::Company.industry,
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
-
-        interventions = Intervention.create!(
-          author: user,
-          customer: customer,
-          building: building,
-          battery: Column.battery_id,
-          column: column,
-          elevator: elevator,
-          employee: employee,
-          intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          result: ["Incompleted", "Completed"].sample,
-          report: Faker::Lorem.paragraph(sentence_count: 2),
-          status: ["Pending", "Completed", "InProgress"].sample,
-          created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        )
       end
+
     end
     #data = JSON.load file
     #pp hash["addresses"]

@@ -12,10 +12,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field @current_user, class: "formFieldReadOnly", readonly: true %>
-  </div>
+  <%# <div class="field"> %>
+    <%# <%= form.label :author %>
+    <%# <%= form.text_field :authenticate_user_id, class: "formFieldReadOnly", readonly: true %>
+  <%# </div> %>
 
   <%# <div class="field"> %>
     <%# <%= form.label :customer_id %>
@@ -30,6 +30,10 @@
   <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
     <div class="col-md-12 home-form">
       <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
+      <%# <div id="author"> %>
+        <%# <%= form.label :author %>
+        <%# <%= form.text_field value: 1, class: "formFieldReadOnly", readonly: true %>
+      <%# </div> %>
       <div id="step_1">
         <%= form.label "Step 1 - Select Customer" %>
         <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "id"), prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
