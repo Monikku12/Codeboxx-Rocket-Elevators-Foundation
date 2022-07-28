@@ -4,10 +4,7 @@
 
 // FIELDS VIEWS --------------------------------
 $(function() { 
-    $('.customerId').on('click', function () {
-		initialize();
-	});
-    $("#step_2").hide();
+    $("#intervention_step_2").hide();
     $("#step_3").hide();
     $("#step_4").hide();
     $("#step_5").hide();
@@ -38,6 +35,11 @@ $(function() {
 		$('.quality_of_service').prop('checked', false);
 	};
 
+    // 
+    $("input").click(function() {
+		console.log("clicker")
+		
+		if ($("#quote_building_type_residential").is(":checked")) {
 
 
     // $("#number-of-apartments").keyup(function(){

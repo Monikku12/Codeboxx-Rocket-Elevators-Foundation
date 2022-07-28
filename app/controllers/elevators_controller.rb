@@ -67,6 +67,9 @@ class ElevatorsController < ApplicationController
     # For dynamic dropdown lists in intervention form
     def get_elevators_by_column
       @elevators = Elevator.where("column_id = ?", params[:column_id])
+      puts "*********************************"
+      puts @elevators
+      puts "*********************************"
       respond_to do |format|
         format.json { render :json => @elevators }
       end

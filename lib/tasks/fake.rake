@@ -144,22 +144,22 @@ namespace :fake do
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
 
-        # interventions = Intervention.create!(
-        #   author: user,
-        #   customer: customer,
-        #   building: building,
-        #   battery: battery,
-        #   column: column,
-        #   elevator: elevator,
-        #   employee: employee,
-        #   intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        #   intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        #   result: ["Incompleted", "Completed"].sample,
-        #   report: Faker::Lorem.paragraph(sentence_count: 2),
-        #   status: ["Pending", "Completed", "InProgress"].sample,
-        #   created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        #   updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        # )
+        interventions = Intervention.create!(
+          author: user,
+          customer: customer,
+          building: building,
+          battery: Column.battery_id,
+          column: column,
+          elevator: elevator,
+          employee: employee,
+          intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          result: ["Incompleted", "Completed"].sample,
+          report: Faker::Lorem.paragraph(sentence_count: 2),
+          status: ["Pending", "Completed", "InProgress"].sample,
+          created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+        )
       end
     end
     #data = JSON.load file

@@ -129,6 +129,9 @@ $(function() {
             var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
             $(row).appendTo("select#elevator");
         } else {
+            console.log ("******************************");
+            console.log (id_value_string);
+            console.log ("******************************");
             // Send the request and update elevators dropdown
             $.ajax({
                 dataType: "json",
