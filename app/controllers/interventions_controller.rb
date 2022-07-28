@@ -12,7 +12,8 @@ class InterventionsController < ApplicationController
 
   # GET /interventions/new
   def new
-    @employee_id = Employee.all.map{ |e| [ "#{e.id}" + " " + e.first_name + " " + e.last_name, e.id ] }
+    # @currentUser = current_user.id + " " + current_user.first_name + " " + current_user.last_name
+    # @employee_id = Employee.all.map{ |e| [ "#{e.id}" + " " + e.first_name + " " + e.last_name, e.id ] }
     # @customer_id = "Customer.id + " " + Customer.company_name"
     # @building_id = Building.all.select{ |bu| bu.customer_id  == @customer_id }.map{ |bu| [ "#{bu.id}" + " " + bu.number_and_street, bu.id] }
     @intervention = Intervention.new

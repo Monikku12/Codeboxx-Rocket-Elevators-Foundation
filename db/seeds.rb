@@ -18,7 +18,7 @@ User.create!(id: 7, email: 'timothy.wever@codeboxx.biz', password: 'password123'
 User.create!(id: 8, email: 'kiril.kleinerman@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
 User.create!(id: 9, email: 'felicia.hartono@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
 User.create!(id: 10, email: 'eileen.ai@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
-
+User.create!(id: 11, email: 'monique.test@codeboxx.biz', password: 'password123', password_confirmation: 'password123')
 
 
 

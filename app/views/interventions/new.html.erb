@@ -1,5 +1,9 @@
+<%= render "partials/header" %>
+
 <h1>New Intervention</h1>
 
 <%= render 'form', intervention: @intervention %>
 
-<%= link_to 'Back', interventions_path %>
+<%= link_to 'Home', root_path, 'data-turbolinks': false %>
+
+<%= render "partials/footer" %>

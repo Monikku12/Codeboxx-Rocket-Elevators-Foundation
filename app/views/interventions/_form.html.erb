@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :author %>
-    <%= form.select(:author, options_for_select(@employee_id)) %>
+    <%= form.text_field @current_user,:readonly => true %>
   </div>
 
   <%# <div class="field"> %>
@@ -30,11 +30,26 @@
   <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
     <div class="col-md-12 home-form">
       <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
-      <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "id"), prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
-      <%= select_tag "buildings", options_from_collection_for_select(Building.all, "id", "id"), prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
-      <%= select_tag "batteries", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
-      <%= select_tag "columns", options_from_collection_for_select(Column.all, "id", "id"), prompt: "< Select coloumn >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
-      <%= select_tag "elevators", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "< Select elevator >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      <div id="step_1">
+        <%= form.label "Step 1 - Select customer" %>
+        <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "id"), prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      </div>
+      <div id="step_2">
+        <%= form.label "Step 2 - Select building" %>
+        <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "id"), prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      </div>
+      <div id="step_3">
+        <%= form.label "Step 3 - Select battery" %>
+        <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      </div>
+      <div id="step_4">
+        <%= form.label "Step 4 - Select column" %>
+        <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "< Select column >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      </div>
+      <div id="step_5">
+        <%= form.label "Step 5 - Select elevator" %>
+        <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "< Select elevator >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+      </div>
       <%= submit_tag("Search", class: "btn btn-primary") %>
   <% end %>
     </div>
@@ -45,20 +60,20 @@
   <%# </div> %>
 
 
-  <div class="field">
-    <%= form.label :battery_id %>
-    <%= form.number_field :battery_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# <%= form.label :battery_id %>
+    <%# <%= form.number_field :battery_id %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :column_id %>
-    <%= form.number_field :column_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# <%= form.label :column_id %>
+    <%# <%= form.number_field :column_id %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :elevator_id %>
-    <%= form.number_field :elevator_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# <%= form.label :elevator_id %>
+    <%# <%= form.number_field :elevator_id %>
+  <%# </div> %>
 
   <div class="field">
     <%= form.label :employee_id %>

@@ -64,7 +64,7 @@ class ColumnsController < ApplicationController
       format.json { render :json => @columns }
     end
   end
-  def columns_search
+  def column_search
     if params[:battery].present? && params[:battery].strip != ""
       @columns = Column.where("battery_id = ?", params[:battery])
     else

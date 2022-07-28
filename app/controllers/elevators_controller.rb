@@ -71,7 +71,7 @@ class ElevatorsController < ApplicationController
         format.json { render :json => @elevators }
       end
     end
-    def elevators_search
+    def elevator_search
       if params[:column].present? && params[:column].strip != ""
         @elevators = Elevator.where("column_id = ?", params[:column])
       else
