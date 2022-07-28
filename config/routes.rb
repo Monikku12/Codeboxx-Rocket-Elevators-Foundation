@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :interventions
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
@@ -18,7 +17,8 @@ Rails.application.routes.draw do
   resources :leads
   resources :messages
   resources :googlemaps
-
+  resources :interventions
+  
   get '/test', to: 'messages#patate'
   get 'termsAndConditions', to: 'index#termsAndConditions', as: "termsAndConditions"
   get 'privacy', to: 'index#privacy', as: "privacy"

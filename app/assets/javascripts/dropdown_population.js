@@ -81,14 +81,14 @@ $(function() {
      // Columns dropdown list
      if ($("select#battery").val() == "") {
         $("select#column option").remove();
-        var row = "<option value=\"" + "" + "\">" + "< Select column >" + "</option>";
+        var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
         $(row).appendTo("select#column");
     }
     $("select#battery").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("select#column option").remove();
-            var row = "<option value=\"" + "" + "\">" + "< Select column >" + "</option>";
+            var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
             $(row).appendTo("select#column");
         } else {
             // Send the request and update columns dropdown
@@ -104,7 +104,7 @@ $(function() {
                     // Clear all options from columns select
                     $("select#column option").remove();
                     // put in a empty default line
-                    var row = "<option value=\"" + "" + "\">" + "< Select column >" + "</option>";
+                    var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
                     $(row).appendTo("select#column");
                     // Fill column select
                     $.each(data, function(i, j) {
@@ -119,14 +119,14 @@ $(function() {
     // Elevators dropdown list
     if ($("select#column").val() == "") {
         $("select#elevator option").remove();
-        var row = "<option value=\"" + "" + "\">" + "< Select elevator >" + "</option>";
+        var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
         $(row).appendTo("select#elevator");
     }
     $("select#column").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("select#elevator option").remove();
-            var row = "<option value=\"" + "" + "\">" + "< Select elevator >" + "</option>";
+            var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
             $(row).appendTo("select#elevator");
         } else {
             // Send the request and update elevators dropdown
@@ -142,7 +142,7 @@ $(function() {
                     // Clear all options from elevator select
                     $("select#elevator option").remove();
                     // put in a empty default line
-                    var row = "<option value=\"" + "" + "\">" + "< Select elevator >" + "</option>";
+                    var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
                     $(row).appendTo("select#elevator");
                     // Fill elevator select
                     $.each(data, function(i, j) {
