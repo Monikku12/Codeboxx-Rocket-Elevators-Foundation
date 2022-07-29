@@ -5,20 +5,6 @@ $(function() {
     $("#step_3").hide();
     $("#step_4").hide();
     $("#step_5").hide();
-    // $("#author").data(currentUser);
-    // console.log("**********************");
-    // console.log(current_user.id)
-    // console.log("**********************");
-
-    // $('.buildingType').on('click', function () {
-	// 	initialize();
-	// });
-
-	// function initialize() {
-	// 	$('.formField').val('');
-	// 	$('.formFieldReadOnly').val(0)
-	// 	$('.quality_of_service').prop('checked', false);
-	// };
 
     // Buildings dropdown list
     if ($("select#customer_id").val() == "") {
@@ -177,4 +163,3 @@ $(function() {
     });
 
 });
-
