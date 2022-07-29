@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   get '/battery_search' => 'batteries#battery_search'
   get '/column_search' => 'columns#column_search'
   get '/elevator_search' => 'elevators#elevator_search'
+  delete 'logout', to: 'sessions#destroy'
 
 end

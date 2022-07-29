@@ -30,33 +30,29 @@
   <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
     <div class="col-md-12 home-form">
       <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
-      <%# <div id="author"> %>
-        <%# <%= form.label :author %>
-        <%# <%= form.text_field value: 1, class: "formFieldReadOnly", readonly: true %>
-      <%# </div> %>
       <div id="step_1">
         <%= form.label "Step 1 - Select Customer" %>
-        <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "id"), prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :customer_id, options_from_collection_for_select(Customer.all, "id", "id"), include_blank: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_2">
         <%= form.label "Step 2 - Select Building" %>
-        <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "id"), prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :building_id, options_from_collection_for_select(Building.all, "id", "id"), prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_3">
         <%= form.label "Step 3 - Select Battery" %>
-        <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :battery_id, options_from_collection_for_select(Battery.all, "id", "id"), prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_4">
         <%= form.label "Step 4 - Select Column" %>
-        <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), include_blank: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_5">
         <%= form.label "Step 5 - Select Elevator" %>
-        <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :elevator_id, options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="employee">
         <%= form.label "Assigned Employee" %>
-        <%= select_tag "employee_id", options_from_collection_for_select(Employee.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :employee_id, options_from_collection_for_select(Employee.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="description">
         <%= form.label "Description" %>

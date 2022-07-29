@@ -10,18 +10,28 @@ $(function() {
     // console.log(current_user.id)
     // console.log("**********************");
 
+    // $('.buildingType').on('click', function () {
+	// 	initialize();
+	// });
+
+	// function initialize() {
+	// 	$('.formField').val('');
+	// 	$('.formFieldReadOnly').val(0)
+	// 	$('.quality_of_service').prop('checked', false);
+	// };
+
     // Buildings dropdown list
-    if ($("select#customer").val() == "") {
-        $("select#building option").remove();
+    if ($("select#customer_id").val() == "") {
+        $("select#building_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "< Select building >" + "</option>";
-        $(row).appendTo("select#building");
+        $(row).appendTo("select#building_id");
     }
-    $("select#customer").change(function() {
+    $("select#customer_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
-            $("select#building option").remove();
+            $("select#building_id option").remove();
             var row = "<option value=\"" + "" + "\">" + "< Select building >" + "</option>";
-            $(row).appendTo("select#building");
+            $(row).appendTo("select#building_id");
         } else {
             // Send the request and update buildings dropdown
             $.ajax({
@@ -34,14 +44,14 @@ $(function() {
                 },
                 success: function(data) {
                     // Clear all options from buildings select
-                    $("select#building option").remove();
+                    $("select#building_id option").remove();
                     // put in a empty default line
                     var row = "<option value=\"" + "" + "\">" + "< Select building >" + "</option>";
-                    $(row).appendTo("select#building");
+                    $(row).appendTo("select#building_id");
                     // Fill building select
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.building_administrator_full_name + "</option>";
-                        $(row).appendTo("select#building");
+                        $(row).appendTo("select#building_id");
                         $("#step_2").show();
                     });
                 }
@@ -50,17 +60,17 @@ $(function() {
     });
   
     // Batteries dropdown list
-    if ($("select#building").val() == "") {
-        $("select#battery option").remove();
+    if ($("select#building_id").val() == "") {
+        $("select#battery_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "< Select battery >" + "</option>";
-        $(row).appendTo("select#battery");
+        $(row).appendTo("select#battery_id");
     }
-    $("select#building").change(function() {
+    $("select#building_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
-            $("select#battery option").remove();
+            $("select#battery_id option").remove();
             var row = "<option value=\"" + "" + "\">" + "< Select battery >" + "</option>";
-            $(row).appendTo("select#battery");
+            $(row).appendTo("select#battery_id");
         } else {
             // Send the request and update batteries dropdown
             $.ajax({
@@ -73,14 +83,14 @@ $(function() {
                 },
                 success: function(data) {
                     // Clear all options from batteries select
-                    $("select#battery option").remove();
+                    $("select#battery_id option").remove();
                     // put in a empty default line
                     var row = "<option value=\"" + "" + "\">" + "< Select battery >" + "</option>";
-                    $(row).appendTo("select#battery");
+                    $(row).appendTo("select#battery_id");
                     // Fill battery select
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.batterie_type + "</option>";
-                        $(row).appendTo("select#battery");
+                        $(row).appendTo("select#battery_id");
                         $("#step_3").show();
                     });
                 }
@@ -89,17 +99,17 @@ $(function() {
     });
 
      // Columns dropdown list
-     if ($("select#battery").val() == "") {
-        $("select#column option").remove();
+     if ($("select#battery_id").val() == "") {
+        $("select#column_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-        $(row).appendTo("select#column");
+        $(row).appendTo("select#column_id");
     }
-    $("select#battery").change(function() {
+    $("select#battery_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
-            $("select#column option").remove();
+            $("select#column_id option").remove();
             var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-            $(row).appendTo("select#column");
+            $(row).appendTo("select#column_id");
         } else {
             // Send the request and update columns dropdown
             $.ajax({
@@ -112,14 +122,14 @@ $(function() {
                 },
                 success: function(data) {
                     // Clear all options from columns select
-                    $("select#column option").remove();
+                    $("select#column_id option").remove();
                     // put in a empty default line
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(row).appendTo("select#column");
+                    $(row).appendTo("select#column_id");
                     // Fill column select
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.column_type + "</option>";
-                        $(row).appendTo("select#column");
+                        $(row).appendTo("select#column_id");
                         $("#step_4").show();
                     });
                 }
@@ -128,17 +138,17 @@ $(function() {
     });
 
     // Elevators dropdown list
-    if ($("select#column").val() == "") {
-        $("select#elevator option").remove();
+    if ($("select#column_id").val() == "") {
+        $("select#elevator_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-        $(row).appendTo("select#elevator");
+        $(row).appendTo("select#elevator_id");
     }
-    $("select#column").change(function() {
+    $("select#column_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
-            $("select#elevator option").remove();
+            $("select#elevator_id option").remove();
             var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-            $(row).appendTo("select#elevator");
+            $(row).appendTo("select#elevator_id");
         } else {
             // Send the request and update elevators dropdown
             $.ajax({
@@ -151,14 +161,14 @@ $(function() {
                 },
                 success: function(data) {
                     // Clear all options from elevator select
-                    $("select#elevator option").remove();
+                    $("select#elevator_id option").remove();
                     // put in a empty default line
                     var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-                    $(row).appendTo("select#elevator");
+                    $(row).appendTo("select#elevator_id");
                     // Fill elevator select
                     $.each(data, function(i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + " - " + j.serial_number + "</option>";
-                        $(row).appendTo("select#elevator");
+                        $(row).appendTo("select#elevator_id");
                         $("#step_5").show();
                     });
                 }
