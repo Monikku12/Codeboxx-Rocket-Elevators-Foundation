@@ -63,7 +63,8 @@
         <%= form.text_area :report, class: "mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div class="actions">
-      <%= form.submit %>
+      <%# <%= form.submit %>
+      <%= form.submit "Submit", :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
     </div>
   <% end %>
     </div>

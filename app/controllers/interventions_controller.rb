@@ -46,28 +46,28 @@ class InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.save
-    #     contact_us = {
-    #       requester: "#{@intervention.author}", 
+        contact_us = {
+          requester: "#{@intervention.author}", 
     #       Customer: "#{@customer.company_name}",
-    #       building_id: "#{@intervention.building_id}",
-    #       battery_id: "#{@intervention.battery_id}",
-    #       column_id: "#{@intervention.column_id}",
-    #       elevator_id: "#{@intervention.elevator_id}",
-    #       assigned_to: "#{@intervention.employee_id}",
-    #       description: "#{@intervention.report}",
-    #     }.to_json
+          building_id: "#{@intervention.building_id}",
+          battery_id: "#{@intervention.battery_id}",
+          column_id: "#{@intervention.column_id}",
+          elevator_id: "#{@intervention.elevator_id}",
+          assigned_to: "#{@intervention.employee_id}",
+          description: "#{@intervention.report}",
+        }.to_json
     
-    #     contact_us_ticket = RestClient::Request.execute(
-    #       method: :post, 
-    #       url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-    #       user: ENV["freshdesk_api_key"],
-    #       password: "x",
-    #       headers: {
-    #         content_type: "application/json"
-    #       },
-    #       payload: contact_us
-    #     )
-    #     puts contact_us_ticket
+        contact_us_ticket = RestClient::Request.execute(
+          method: :post, 
+          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+          user: ENV["freshdesk_api_key"],
+          password: "x",
+          headers: {
+            content_type: "application/json"
+          },
+          payload: contact_us
+        )
+        puts contact_us_ticket
 
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }
