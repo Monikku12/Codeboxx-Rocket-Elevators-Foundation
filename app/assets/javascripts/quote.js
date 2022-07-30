@@ -414,7 +414,7 @@ $(function() {
 
 
 
-// function to get the value of the choosen line product
+// function to get the value of the chosen line product
 
 
 function myFunction(line) {

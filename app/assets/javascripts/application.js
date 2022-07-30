@@ -23,6 +23,7 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require customers
 //= require buildings
 //= require batteries
 //= require columns

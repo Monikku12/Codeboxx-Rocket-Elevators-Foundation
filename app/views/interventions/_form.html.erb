@@ -44,22 +44,23 @@
       </div>
       <div id="step_4">
         <%= form.label "Step 4 - Select Column" %>
-        <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), include_blank: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_5">
         <%= form.label "Step 5 - Select Elevator" %>
-        <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :elevator_id, options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="employee">
         <%= form.label "Assigned Employee" %>
-        <%= select_tag "employee_id", options_from_collection_for_select(Employee.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :employee_id, options_from_collection_for_select(Employee.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="description">
         <%= form.label "Description" %>
         <%= form.text_area :report, class: "mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div class="actions">
-      <%= form.submit %>
+      <%# <%= form.submit %>
+      <%= form.submit "Submit", :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
     </div>
   <% end %>
     </div>

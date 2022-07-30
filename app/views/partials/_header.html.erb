@@ -121,6 +121,7 @@
 									</li>
 									<li><!-- LOGIN -->
 										<%= link_to "LOGIN", rails_admin_path, 'data-turbolinks': false %>
+										<%= link_to "LOGOUT", destroy_user_session_path, method: :delete  %>
 									</li>
 									<li><!-- MAPSTEST -->
 										<%= link_to "MAPS", maps_path, 'data-turbolinks': false %>

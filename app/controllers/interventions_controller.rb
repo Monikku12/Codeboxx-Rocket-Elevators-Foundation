@@ -76,6 +76,15 @@ class InterventionsController < ApplicationController
         )
         puts intervention_ticket
 
+        format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
+        format.json { render :show, status: :created, location: @intervention }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @intervention.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   # PATCH/PUT /interventions/1 or /interventions/1.json
   def update
     respond_to do |format|

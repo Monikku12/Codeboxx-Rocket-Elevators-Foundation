@@ -1,7 +1,10 @@
 namespace :fake do
   require "json"
 
-  # Create data in mySQL database
+  ###################################
+  ## Create data in mySQL database ##
+  ###################################
+
   task data: :environment do
     puts "-----mySQL-----"
     file = File.read(File.join(Rails.root, 'lib', 'addresses.json'))
@@ -44,7 +47,6 @@ namespace :fake do
       )
 
         building = Building.create!(  
-        #number_and_street: ['AAA'].sample, 
         building_administrator_full_name: Faker::Name.name,
         building_administrator_email: Faker::Internet.email,
         building_administrator_phone: Faker::PhoneNumber.phone_number,
@@ -52,8 +54,6 @@ namespace :fake do
         building_technical_contact_email: Faker::Internet.email,
         building_technical_contact_phone: Faker::PhoneNumber.phone_number,
         customer: customer,
-        #building_detail: building_detail,
-        #battery: battery,
         address: _address,
       )
 
@@ -106,24 +106,7 @@ namespace :fake do
           notes: Faker::Lorem.paragraph(sentence_count: 2),
           column: column,
         )
-
-        interventions = Intervention.create!(
-          author: user,
-          customer_id: customer,
-          building_id: building,
-          battery_id: battery,
-          column_id: column,
-          elevator_id: elevator,
-          employee_id: employee,
-          intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          result: ["Incompleted", "Completed"].sample,
-          report: Faker::Lorem.paragraph(sentence_count: 2),
-          status: ["Pending", "Completed", "InProgress"].sample,
-          created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-          updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
-        )
- 
+        
         lead = Lead.create(
           full_name: Faker::Name.name,
           company_name: Faker::Company.industry,
@@ -157,6 +140,23 @@ namespace :fake do
           quote_email: Faker::Internet.email,
           compagny_name: Faker::Company.industry,
           quote_created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+        )
+
+        interventions = Intervention.create!(
+          author: user.id,
+          customer_id: customer.id,
+          building_id: building.id,
+          battery_id: battery.id,
+          column_id: column.id,
+          elevator_id: elevator.id,
+          employee_id: employee.id,
+          intervention_started_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          intervention_ended_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          result: ["Incompleted", "Completed"].sample,
+          report: Faker::Lorem.paragraph(sentence_count: 2),
+          status: ["Pending", "Completed", "InProgress"].sample,
+          created_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
+          updated_at: Faker::Date.between(from: '2019-07-06', to: '2022-07-06'),
         )
       end
 
@@ -268,8 +268,6 @@ namespace :fake do
     end
     puts "$$$$$Stat$$$$$"
   
-
-
     task question1: :environment do
       question1 =FactQuote.select("date_trunc('month', created_at) as month").group("month")
     end
