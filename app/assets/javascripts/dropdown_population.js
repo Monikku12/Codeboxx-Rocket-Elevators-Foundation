@@ -5,10 +5,6 @@ $(function() {
     $("#step_3").hide();
     $("#step_4").hide();
     $("#step_5").hide();
-    // $("#author").data(currentUser);
-    // console.log("**********************");
-    // console.log(current_user.id)
-    // console.log("**********************");
 
     // Buildings dropdown list
     if ($("select#customer").val() == "") {
@@ -132,7 +128,10 @@ $(function() {
         $("select#elevator option").remove();
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
         $(row).appendTo("select#elevator");
-    }
+    } else if ($("select#column_id").val() == null) {
+        $("select#elevator_id option").val() == null;  
+        var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
+    
     $("select#column").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {

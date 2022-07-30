@@ -33,65 +33,48 @@ class InterventionsController < ApplicationController
   def edit
   end
 
-  # POST /interventions or /interventions.json
+  # # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
       @intervention.author = current_user.id
-      @intervention.customer_id = "#customer"
-      @intervention.building_id = "#building"
-      @intervention.battery_id = "#battery"
-      @intervention.column_id = "#column"
-      @intervention.elevator_id = "#elevator"
-      # @customer.company_name = Customer.all
-
+      @intervention.customer_id = params[:customer_id]
+      @intervention.building_id = params[:building_id]
+      @intervention.battery_id = params[:battery_id]
+      @intervention.column_id = params[:column_id]
+      @intervention.elevator_id = params[:elevator_id]
+      @intervention.employee_id = params[:employee_id]
+      @customer = Customer.find(params[:customer_id])
     respond_to do |format|
       if @intervention.save
-    #     contact_us = {
-    #       requester: "#{@intervention.author}", 
-    #       Customer: "#{@customer.company_name}",
-    #       building_id: "#{@intervention.building_id}",
-    #       battery_id: "#{@intervention.battery_id}",
-    #       column_id: "#{@intervention.column_id}",
-    #       elevator_id: "#{@intervention.elevator_id}",
-    #       assigned_to: "#{@intervention.employee_id}",
-    #       description: "#{@intervention.report}",
-    #     }.to_json
+        intervention = {
+          email: "#{@current_user.email}", 
+          priority: 1, 
+          status: 2,
+          type: "incident",
+          subject: "Incident for #{@customer.company_name} from employee ##{@intervention.author}",
+          description: "This incident request from employee ID #{@intervention.author} is for our customer #{@customer.company_name}. 
+          Their bulding ##{@intervention.building_id} needs an intervention to:
+          Battery ##{@intervention.battery_id}
+          Column ##{@intervention.column_id}
+          Elevator ##{@intervention.elevator_id}
+          The intervention has been assigned to the employee ##{@intervention.employee_id}.
+          Description of the incident: #{@intervention.report}"
+        }.to_json
+        puts "**************************"
+        puts "#{@customer.company_name}"
+        puts "**************************"
     
-    #     contact_us_ticket = RestClient::Request.execute(
-    #       method: :post, 
-    #       url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-    #       user: ENV["freshdesk_api_key"],
-    #       password: "x",
-    #       headers: {
-    #         content_type: "application/json"
-    #       },
-    #       payload: contact_us
-    #     )
-    #     puts contact_us_ticket
-
-        format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
-        format.json { render :show, status: :created, location: @intervention }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @intervention.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # # POST /interventions or /interventions.json
-  # def create
-  #   @intervention = Intervention.new(intervention_params)
-
-  #   respond_to do |format|
-  #     if @intervention.save
-  #       format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
-  #       format.json { render :show, status: :created, location: @intervention }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @intervention.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+        intervention_ticket = RestClient::Request.execute(
+          method: :post, 
+          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+          user: ENV["freshdesk_api_key"],
+          password: "x",
+          headers: {
+            content_type: "application/json"
+          },
+          payload: intervention
+        )
+        puts intervention_ticket
 
   # PATCH/PUT /interventions/1 or /interventions/1.json
   def update
