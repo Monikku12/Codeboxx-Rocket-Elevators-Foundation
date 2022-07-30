@@ -42,8 +42,8 @@ class InterventionsController < ApplicationController
       @intervention.battery_id = params[:battery_id]
       @intervention.column_id = params[:column_id]
       @intervention.elevator_id = params[:elevator_id]
-      @customer = Customer.all
-      @customer.compagny_name = @customer.find()
+      @customer = Customer.find(params[:customer_id])
+      # @customer.compagny_name = 
     puts "**************************"
     puts @intervention
     puts "************************"
@@ -51,7 +51,7 @@ class InterventionsController < ApplicationController
       if @intervention.save
         intervention = {
           requester: "#{@intervention.author}", 
-          Customer: "#{@customer.company_name}",
+          customer: "#{@customer.company_name}",
           building_id: "#{@intervention.building_id}",
           battery_id: "#{@intervention.battery_id}",
           column_id: "#{@intervention.column_id}",
