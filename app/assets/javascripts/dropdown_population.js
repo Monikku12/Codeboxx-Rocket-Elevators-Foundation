@@ -12,6 +12,9 @@ $(function() {
         var row = "<option value=\"" + "" + "\">" + "< Select building >" + "</option>";
         $(row).appendTo("select#building_id");
     }
+    console.log("********************************")
+    console.log("OK");
+    console.log("********************************")
     $("select#customer_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
@@ -127,12 +130,12 @@ $(function() {
     if ($("select#column_id").val() == "") {
         $("select#elevator_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-        $(row).appendTo("select#elevator");
+        $(row).appendTo("select#elevator_id");
     } else if ($("select#column_id").val() == null) {
         $("select#elevator_id option").val() == null;  
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
-    
-    $("select#column").change(function() {
+    }
+    $("select#column_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("select#elevator_id option").remove();

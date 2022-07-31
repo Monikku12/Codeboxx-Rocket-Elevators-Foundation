@@ -32,19 +32,19 @@
       <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
       <div id="step_1">
         <%= form.label "Step 1 - Select Customer" %>
-        <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "id"), :required => true, prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :customer_id, options_from_collection_for_select(Customer.all, "id", "id"), :required => true, prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_2">
         <%= form.label "Step 2 - Select Building" %>
-        <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "id"), :required => true, prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :building_id, options_from_collection_for_select(Building.all, "id", "id"), :required => true, prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_3">
         <%= form.label "Step 3 - Select Battery" %>
-        <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "id"), :required => true, prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :battery_id, options_from_collection_for_select(Battery.all, "id", "id"), :required => true, prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_4">
         <%= form.label "Step 4 - Select Column" %>
-        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), include_blank: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_5">
         <%= form.label "Step 5 - Select Elevator" %>
@@ -59,7 +59,6 @@
         <%= form.text_area :report, class: "mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div class="actions">
-      <%# <%= form.submit %>
       <%= form.submit "Submit", :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
     </div>
   <% end %>

@@ -20,9 +20,6 @@ class InterventionsController < ApplicationController
   def new
     # @currentUser = current_user.find(params[:id])
     # @currentUser = "#{current_user.id}" + " " + current_user.email
-    puts "*****************"
-    puts current_user.id
-    puts "****************"
     # @employee_id = Employee.all.map{ |e| [ "#{e.id}" + " " + e.first_name + " " + e.last_name, e.id ] }
     # @customer_id = "Customer.id + " " + Customer.company_name"
     # @building_id = Building.all.select{ |bu| bu.customer_id  == @customer_id }.map{ |bu| [ "#{bu.id}" + " " + bu.number_and_street, bu.id] }
@@ -33,7 +30,7 @@ class InterventionsController < ApplicationController
   def edit
   end
 
-  # # POST /interventions or /interventions.json
+  # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
       @intervention.author = current_user.id
@@ -43,7 +40,9 @@ class InterventionsController < ApplicationController
       @intervention.column_id = params[:column_id]
       @intervention.elevator_id = params[:elevator_id]
       @intervention.employee_id = params[:employee_id]
+      @intervention.report = params[:report]
       @customer = Customer.find(params[:customer_id])
+  
     respond_to do |format|
       if @intervention.save
         intervention = {
@@ -60,14 +59,15 @@ class InterventionsController < ApplicationController
           The intervention has been assigned to the employee ##{@intervention.employee_id}.
           Description of the incident: #{@intervention.report}"
         }.to_json
-        puts "**************************"
+        puts "&&&&&&&&&&&&&&&&&&&&&&&&"
         puts "#{@customer.company_name}"
-        puts "**************************"
+        puts "&&&&&&&&&&&&&&&&&&&&&&&&"
     
         intervention_ticket = RestClient::Request.execute(
           method: :post, 
           url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          user: ENV["freshdesk_api_key"],
+          user: '2G7cHdPlTUoiAIrsRp',
+          # user: ENV["freshdesk_api_key"],
           password: "x",
           headers: {
             content_type: "application/json"
