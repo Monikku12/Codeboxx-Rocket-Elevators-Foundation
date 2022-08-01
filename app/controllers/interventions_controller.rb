@@ -42,14 +42,14 @@ class InterventionsController < ApplicationController
       @intervention.employee_id = params[:employee_id]
       @intervention.report = params[:report]
       @customer = Customer.find(params[:customer_id])
-  
+      
     respond_to do |format|
       if @intervention.save
-        intervention = {
+        intervention_request = {
           email: "#{@current_user.email}", 
           priority: 1, 
           status: 2,
-          type: "incident",
+          type: "Incident",
           subject: "Incident for #{@customer.company_name} from employee ##{@intervention.author}",
           description: "This incident request from employee ID #{@intervention.author} is for our customer #{@customer.company_name}. 
           Their bulding ##{@intervention.building_id} needs an intervention to:
@@ -60,21 +60,28 @@ class InterventionsController < ApplicationController
           Description of the incident: #{@intervention.report}"
         }.to_json
         puts "&&&&&&&&&&&&&&&&&&&&&&&&"
+        puts "#{@current_user.email}"
         puts "#{@customer.company_name}"
+        puts "#{@intervention.author}"
+        puts "#{@intervention.building_id}"
+        puts "#{@intervention.column_id}"
+        puts "#{@intervention.elevator_id}"
+        puts "#{@intervention.employee_id}"
+        puts "#{@intervention.report}"
         puts "&&&&&&&&&&&&&&&&&&&&&&&&"
-    
-        intervention_ticket = RestClient::Request.execute(
+        
+        intervention_request_ticket = RestClient::Request.execute(
           method: :post, 
           url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          user: '2G7cHdPlTUoiAIrsRp',
-          # user: ENV["freshdesk_api_key"],
+          # user: 'Np2N3cPBQLFWVi4GVYD',
+          user: ENV["freshdesk_api_key"],
           password: "x",
           headers: {
             content_type: "application/json"
           },
-          payload: intervention
+          payload: intervention_request
         )
-        puts intervention_ticket
+        puts intervention_request_ticket
 
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }

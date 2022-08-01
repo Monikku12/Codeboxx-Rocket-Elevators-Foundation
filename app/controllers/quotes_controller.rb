@@ -33,7 +33,7 @@ class QuotesController < ApplicationController
           email: "#{@quote.quote_email}", 
           priority: 1, 
           status: 2,
-          type: "feature request",
+          type: "Feature Request",
           subject: "From #{@quote.compagny_name}",
           description: "A quote resquest for #{@quote.compagny_name} company from the email #{@quote.quote_email} has been made. 
             The quote is for a #{@quote.building_type} building and request a total of #{@quote.amount_of_elevator_needed} elevators from Rocket Elevators.",

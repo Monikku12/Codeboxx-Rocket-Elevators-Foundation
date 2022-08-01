@@ -12,9 +12,6 @@ $(function() {
         var row = "<option value=\"" + "" + "\">" + "< Select building >" + "</option>";
         $(row).appendTo("select#building_id");
     }
-    console.log("********************************")
-    console.log("OK");
-    console.log("********************************")
     $("select#customer_id").change(function() {
         var id_value_string = $(this).val();
         if (id_value_string == "") {
