@@ -30,21 +30,24 @@
   <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
     <div class="col-md-12 home-form">
       <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
+      <div id="author">
+        <%= form.hidden_field current_user.id, class: "formFieldReadOnly", readonly: true %>
+      </div>
       <div id="step_1">
         <%= form.label "Step 1 - Select Customer" %>
-        <%= select_tag :customer_id, options_from_collection_for_select(Customer.all, "id", "id"), include_blank: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :customer_id, options_from_collection_for_select(Customer.all, "id", "id"), :required => true, prompt: "< Select customer>", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_2">
         <%= form.label "Step 2 - Select Building" %>
-        <%= select_tag :building_id, options_from_collection_for_select(Building.all, "id", "id"), prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :building_id, options_from_collection_for_select(Building.all, "id", "id"), :required => true, prompt: "< Select building >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_3">
         <%= form.label "Step 3 - Select Battery" %>
-        <%= select_tag :battery_id, options_from_collection_for_select(Battery.all, "id", "id"), prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :battery_id, options_from_collection_for_select(Battery.all, "id", "id"), :required => true, prompt: "< Select battery >", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_4">
         <%= form.label "Step 4 - Select Column" %>
-        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), include_blank: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag :column_id, options_from_collection_for_select(Column.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
       <div id="step_5">
         <%= form.label "Step 5 - Select Elevator" %>
@@ -54,12 +57,23 @@
         <%= form.label "Assigned Employee" %>
         <%= select_tag :employee_id, options_from_collection_for_select(Employee.all, "id", "id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
       </div>
-      <div id="description">
+      <div id="intervention_started_at">
+        <%= hidden_field_tag :intervention_started_at %>
+      </div>
+      <div id="intervention_ended_at">
+        <%= hidden_field_tag :intervention_ended_at %>
+      </div>
+      <div id="result">
+        <%= hidden_field_tag :result %>
+      </div>
+      <div id="report">
         <%= form.label "Description" %>
-        <%= form.text_area :report, class: "mb-0 mr-sm-0 mb-sm-0" %>
+        <%= text_area_tag :report %>
+      </div>
+      <div id="status">
+        <%= hidden_field_tag :status %>
       </div>
       <div class="actions">
-      <%# <%= form.submit %>
       <%= form.submit "Submit", :class => ["btn btn-danger", "fa fa-check"], :method => :post %>
     </div>
   <% end %>
@@ -101,10 +115,7 @@
     <%# <%= form.text_area :report %>
   <%# </div> %>
 
-  <%# <div class="field"> %>
-    <%# <%= form.label :status %>
-    <%# <%= form.text_field :status %>
-  <%# </div> %>
+  
 
   <%# <div class="actions"> %>
     <%# <%= form.submit %>

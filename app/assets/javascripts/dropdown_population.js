@@ -128,6 +128,9 @@ $(function() {
         $("select#elevator_id option").remove();
         var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
         $(row).appendTo("select#elevator_id");
+    } else if ($("select#column_id").val() == null) {
+        $("select#elevator_id option").val() == null;  
+        var row = "<option value=\"" + "" + "\">" + "None" + "</option>";
     }
     $("select#column_id").change(function() {
         var id_value_string = $(this).val();

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_30_025244) do
+ActiveRecord::Schema.define(version: 2022_07_31_062020) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "type_of_address"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2022_07_30_025244) do
     t.datetime "intervention_started_at"
     t.datetime "intervention_ended_at"
     t.string "result", default: "Incomplete"
-    t.text "report", null: false
+    t.text "report"
     t.string "status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

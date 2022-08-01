@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   resources :messages
   resources :googlemaps
   resources :interventions
-  
+  resources :users
+    
   get '/test', to: 'messages#patate'
   get 'termsAndConditions', to: 'index#termsAndConditions', as: "termsAndConditions"
   get 'privacy', to: 'index#privacy', as: "privacy"
