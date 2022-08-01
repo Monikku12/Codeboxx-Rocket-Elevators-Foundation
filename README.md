@@ -34,7 +34,7 @@ Things you may want to cover:
   From the website, a login panel will get you to the admin section. You will be able to manage your users, your employees and the quotes requested by your clients.
 
 * Deployment instructions
-  Go to www.mathieubernier.com to checkout all the functionalities of the website
+  Go to www.monichan.com to checkout all the functionalities of the website
 
 * GEM files used
     - Devise, Rail admin, Cancancan are the gems used to create the back admin panel that helps us manage the some of the website functions  
@@ -72,3 +72,12 @@ Things you may want to cover:
 
 * Dropbox
   Couldn't be implemented due to admin bug, that rended any testing impossible. See dropbox branch for further information.
+
+* API requests
+  To access the repo for the API requests, please see this link: 
+  https://github.com/Monikku12/Rocket-Elevators-Foundation-API.git
+  An easy way to test the request is to use Postman (https://www.postman.com/).
+  Once on the site, follow the sign in instructions. 
+  You can call your request by importing this link:
+  https://www.getpostman.com/collections/f0f25068a6e5acfacd3d
+  You will have access to the collection corresponding to this application.
