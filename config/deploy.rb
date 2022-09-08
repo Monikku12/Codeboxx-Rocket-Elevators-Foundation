@@ -9,6 +9,7 @@ set :rbenv_roles, :all # default value
 
 set :application, "Monique_PaymentBoulanger"
 set :repo_url, "git@github.com:Monikku12/Rocket-Elevators-Foundation.git"
+set :ssh_options, { forward_agent: true }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
