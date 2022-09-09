@@ -138,3 +138,6 @@ end
 
 # To install the Googlemaps gem for markers
   gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
+# New Relic
+  gem 'newrelic_rpm'
