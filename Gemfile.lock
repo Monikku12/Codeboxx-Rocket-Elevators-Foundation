@@ -1407,8 +1407,18 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     gmaps4rails (2.1.2)
+    google-protobuf (3.21.5)
+    google-protobuf (3.21.5-x86_64-linux)
+    googleapis-common-protos-types (1.4.0)
+      google-protobuf (~> 3.14)
     groupdate (6.1.0)
       activesupport (>= 5.2)
+    grpc (1.48.0)
+      google-protobuf (~> 3.19)
+      googleapis-common-protos-types (~> 1.0)
+    grpc (1.48.0-x86_64-linux)
+      google-protobuf (~> 3.19)
+      googleapis-common-protos-types (~> 1.0)
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
@@ -1478,6 +1488,9 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (7.0.1)
     netrc (0.11.0)
+    newrelic-infinite_tracing (8.10.0)
+      grpc (~> 1.34)
+      newrelic_rpm (= 8.10.0)
     newrelic_rpm (8.10.0)
     nio4r (2.5.8)
     nokogiri (1.13.6)
@@ -1701,6 +1714,7 @@ DEPENDENCIES
   mime-types (>= 1.16, < 4.0)
   mysql2 (>= 0.4.4, < 0.6.0)
   netrc (~> 0.8)
+  newrelic-infinite_tracing
   newrelic_rpm
   pg
   puma (~> 4.3.11)
