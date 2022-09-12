@@ -70,18 +70,18 @@ class InterventionsController < ApplicationController
         puts "#{@intervention.report}"
         puts "&&&&&&&&&&&&&&&&&&&&&&&&"
         
-        intervention_request_ticket = RestClient::Request.execute(
-          method: :post, 
-          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          # user: 'Np2N3cPBQLFWVi4GVYD',
-          user: ENV["freshdesk_api_key"],
-          password: "x",
-          headers: {
-            content_type: "application/json"
-          },
-          payload: intervention_request
-        )
-        puts intervention_request_ticket
+        # intervention_request_ticket = RestClient::Request.execute(
+        #   method: :post, 
+        #   url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+        #   # user: 'Np2N3cPBQLFWVi4GVYD',
+        #   user: ENV["freshdesk_api_key"],
+        #   password: "x",
+        #   headers: {
+        #     content_type: "application/json"
+        #   },
+        #   payload: intervention_request
+        # )
+        # puts intervention_request_ticket
 
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
         format.json { render :show, status: :created, location: @intervention }

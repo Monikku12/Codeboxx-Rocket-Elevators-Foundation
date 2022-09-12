@@ -41,17 +41,17 @@ class LeadsController < ApplicationController
           #{@lead.project_description}"
         }.to_json
     
-        contact_us_ticket = RestClient::Request.execute(
-          method: :post, 
-          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          user: ENV["freshdesk_api_key"],
-          password: "x",
-          headers: {
-            content_type: "application/json"
-          },
-          payload: contact_us
-        )
-        puts contact_us_ticket
+        # contact_us_ticket = RestClient::Request.execute(
+        #   method: :post, 
+        #   url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+        #   user: ENV["freshdesk_api_key"],
+        #   password: "x",
+        #   headers: {
+        #     content_type: "application/json"
+        #   },
+        #   payload: contact_us
+        # )
+        # puts contact_us_ticket
         
         from = SendGrid::Email.new(email: 'gabmathmo123@gmail.com')
                 to = SendGrid::Email.new(email: "#{@lead.email}")
