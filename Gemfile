@@ -141,3 +141,4 @@ end
 
 # New Relic
   gem 'newrelic_rpm'
+  gem 'newrelic-infinite_tracing'
