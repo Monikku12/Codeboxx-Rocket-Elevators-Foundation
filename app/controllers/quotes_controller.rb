@@ -39,17 +39,17 @@ class QuotesController < ApplicationController
             The quote is for a #{@quote.building_type} building and request a total of #{@quote.amount_of_elevator_needed} elevators from Rocket Elevators.",
         }.to_json
     
-        quote_ticket = RestClient::Request.execute(
-          method: :post, 
-          url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
-          user: ENV["freshdesk_api_key"],
-          password: "x",
-          headers: {
-            content_type: "application/json"
-          },
-          payload: quote
-        )
-        puts quote_ticket
+        # quote_ticket = RestClient::Request.execute(
+        #   method: :post, 
+        #   url: 'https://codeboxx3519.freshdesk.com/api/v2/tickets',
+        #   user: ENV["freshdesk_api_key"],
+        #   password: "x",
+        #   headers: {
+        #     content_type: "application/json"
+        #   },
+        #   payload: quote
+        # )
+        # puts quote_ticket
 
         format.html { redirect_to quote_url(@quote), notice: "Quote was successfully created." }
         format.json { render :show, status: :created, location: @quote }
