@@ -104,10 +104,10 @@
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: transparent;
+  background-color: #fff;
   color: #1F262D;
   padding: 16px;
-  font-size: 16px;
+  font-size: 13px;
   border: none;
 }
 
