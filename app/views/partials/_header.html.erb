@@ -144,7 +144,14 @@
 									<li><!-- MAPSTEST -->
 										<%= link_to "MAPS", maps_path, 'data-turbolinks': false %>
 									</li>
-									
+									<button class="dropbtn">LOGIN</button>
+										<div class="dropdown-content">
+											<a href="rails_admin_path">DASHBOARD</a>
+											<a href="new_intervention_path">INTERVENTIONS</a>
+											<a href="maps_path">MAPS</a>
+											<% if signed_in? %>
+												<a href="destroy_user_session_path">LOGOUT</a>
+										</div>
 								</ul>
 
 							</nav>
